@@ -1,4 +1,8 @@
 ---
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/600.css";
+import "@fontsource/inter/700.css";
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
@@ -16,13 +20,15 @@ const {
   title,
   description,
   image = "/og-default.jpg",
-  canonicalURL = Astro.url.href,
   schema,
   noindex = false,
 } = Astro.props;
 
 const siteName = "Poêles Godin Évreux";
-const fullTitle = title === siteName ? title : `${title} | ${siteName}`;
+const fullTitle = title.toLowerCase().includes("godin") ? title : `${title} | ${siteName}`;
+
+const cleanURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url).toString();
+const canonicalURL = Astro.props.canonicalURL ?? cleanURL;
 
 const defaultSchema = {
   "@context": "https://schema.org",
@@ -32,8 +38,10 @@ const defaultSchema = {
   alternateName: "Poêles Godin Évreux",
   url: "https://www.poelesgodin.fr",
   logo: "https://www.poelesgodin.fr/images/branding/godin-exclusif.webp",
+  image: "https://www.poelesgodin.fr/og-default.jpg",
   telephone: "+33 2 32 39 59 00",
   email: "contact@poelesgodin.fr",
+  priceRange: "€€-€€€",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Centre commercial Caer",
@@ -47,11 +55,31 @@ const defaultSchema = {
     latitude: "49.0345",
     longitude: "1.1845",
   },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "09:00",
+      closes: "12:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "14:00",
+      closes: "18:00",
+    },
+  ],
   founder: "Julien Verger",
   foundingDate: "1986",
   description:
     "Revendeur officiel Godin depuis 1986. Vente et installation de poêles à bois, à granulés, cheminées, inserts et cuisinières dans l'Eure et en Normandie.",
-  areaServed: ["27", "76", "28", "61", "78"],
+  areaServed: [
+    { "@type": "AdministrativeArea", name: "Eure" },
+    { "@type": "AdministrativeArea", name: "Seine-Maritime" },
+    { "@type": "AdministrativeArea", name: "Eure-et-Loir" },
+    { "@type": "AdministrativeArea", name: "Orne" },
+    { "@type": "AdministrativeArea", name: "Yvelines" },
+  ],
 };
 ---
 
@@ -73,22 +101,15 @@ const defaultSchema = {
     <meta property="og:site_name" content={siteName} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(image, Astro.url).toString()} />
+    <meta property="og:image" content={new URL(image, Astro.site ?? Astro.url).toString()} />
     <meta property="og:url" content={canonicalURL} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={new URL(image, Astro.url).toString()} />
+    <meta name="twitter:image" content={new URL(image, Astro.site ?? Astro.url).toString()} />
 
     <script type="application/ld+json" set:html={JSON.stringify(schema ?? defaultSchema)} />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-    />
   </head>
   <body class="min-h-screen flex flex-col">
     <a
