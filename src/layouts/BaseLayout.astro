@@ -38,7 +38,7 @@ const defaultSchema = {
   name: "Loisirs Habitat Diffusion — Poêles Godin",
   alternateName: "Poêles Godin Évreux",
   url: "https://www.poelesgodin.fr",
-  logo: "https://www.poelesgodin.fr/images/branding/godin-exclusif.webp",
+  logo: "https://www.poelesgodin.fr/images/branding/godin-exclusif.png",
   image: "https://www.poelesgodin.fr/og-default.jpg",
   telephone: "+33 2 32 39 59 00",
   email: "contact@poelesgodin.fr",
@@ -89,7 +89,9 @@ const defaultSchema = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/webp" href="/images/branding/godin-exclusif-sm.webp" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png" />
+    <link rel="apple-touch-icon" href="/favicon-512.png" />
     <meta name="generator" content={Astro.generator} />
     {noindex && <meta name="robots" content="noindex,nofollow" />}
 
