@@ -4,21 +4,65 @@ import CTA from "../components/CTA.astro";
 import Temoignages from "../components/Temoignages.astro";
 
 const milestones = [
-  { year: "1986", event: "Création de Loisirs Habitat Diffusion à Normanville (27)." },
-  { year: "1992", event: "Premier référencement comme revendeur officiel Godin." },
-  { year: "2008", event: "Extension du showroom et constitution de l'équipe d'installateurs salariés." },
-  { year: "2020", event: "Distinction « Meilleure enseigne poêles à bois » par le magazine Capital (palmarès 2020-2021)." },
-  { year: "2026", event: "Plus de 500 installations à notre actif en Normandie." },
+  { year: "1986", event: "Création de Loisirs Habitat Diffusion à Normanville (27). Premier showroom dans l'Eure dédié aux poêles et cheminées.", icon: "🏗️" },
+  { year: "1992", event: "Référencement officiel comme revendeur Godin. Première gamme intégrée.", icon: "🤝" },
+  { year: "2008", event: "Extension du showroom et constitution d'une équipe d'installateurs salariés (vs sous-traitance).", icon: "👷" },
+  { year: "2020", event: "Distinction « Meilleure enseigne poêles à bois » par le magazine Capital (palmarès 2020-2021).", icon: "🏆" },
+  { year: "2026", event: "Plus de 500 installations à notre actif en Normandie et départements limitrophes.", icon: "🔥" },
 ];
+
+const equipe = [
+  { initiales: "JV", role: "Direction", desc: "Pilote l'enseigne depuis 1986. Présent au showroom et en visite technique." },
+  { initiales: "AB", role: "Conseiller technique", desc: "12 ans d'expérience. Spécialisé visites techniques, devis et accompagnement MaPrimeRénov'." },
+  { initiales: "TC", role: "Chef installateur", desc: "Pose les poêles et inserts depuis 8 ans. Forme les nouveaux installateurs." },
+  { initiales: "PD", role: "Installateur / SAV", desc: "Installation, mise en service et SAV chez les clients. C'est lui qui revient des années plus tard." },
+];
+
+const engagements = [
+  {
+    titre: "Visite technique offerte",
+    chiffre: "0 €",
+    desc: "Nos conseillers se déplacent gratuitement chez vous pour étudier conduit, isolation et besoin. Sans engagement.",
+    icon: '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>',
+  },
+  {
+    titre: "Devis personnalisé",
+    chiffre: "48 h",
+    desc: "Réponse chiffrée et détaillée après visite : modèle, puissance, fumisterie, aides MaPrimeRénov' incluses.",
+    icon: '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>',
+  },
+  {
+    titre: "Installation par nos équipes",
+    chiffre: "100 %",
+    desc: "Aucune sous-traitance. Installateurs salariés de l'entreprise, formés Godin, c'est notre marque de fabrique.",
+    icon: '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h-5m-9 0H3m2 0h7m-5 0V11a1 1 0 011-1h2a1 1 0 011 1v10"/></svg>',
+  },
+  {
+    titre: "SAV interne",
+    chiffre: "à vie",
+    desc: "La personne qui pose votre poêle reste joignable pour le SAV. Pas de standard externalisé, pas de hotline anonyme.",
+    icon: '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/></svg>',
+  },
+];
+
+const zonesCouvertes = ["27", "76", "28", "61", "78"];
+const zonesLabels = {
+  "27": "Eure",
+  "76": "Seine-Maritime",
+  "28": "Eure-et-Loir",
+  "61": "Orne",
+  "78": "Yvelines",
+};
 ---
 
 <BaseLayout
   title="Notre histoire — 39 ans d'expertise Godin"
   description="Loisirs Habitat Diffusion : revendeur officiel Godin depuis 1986. Magasin à Normanville (Eure), équipe d'installateurs salariés, accompagnement complet du conseil au SAV."
 >
-  <section class="bg-gradient-to-br from-ink-900 via-ink-800 to-ink-900 text-white py-20">
+  <section class="bg-gradient-to-br from-ink-900 via-ink-800 to-ink-900 text-white py-16 sm:py-20">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <p class="text-sm font-semibold text-brand-400 uppercase tracking-wider">
+      <p class="text-sm font-semibold text-brand-400 uppercase tracking-wider flex items-center gap-2">
+        <span class="inline-block w-8 h-px bg-brand-500"></span>
         Notre maison
       </p>
       <h1 class="mt-3 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
@@ -33,16 +77,19 @@ const milestones = [
     </div>
   </section>
 
-  <section class="py-20">
+  <section class="py-16 sm:py-20">
     <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 prose prose-lg">
       <h2>Pourquoi Godin ?</h2>
       <p>
-        Fondée en 1840 par Jean-Baptiste André Godin à Guise dans l'Aisne, Godin
-        est la <strong>seule entreprise française à produire sa propre fonte</strong>
-        sur ses deux sites de Guise et Liévin. Près de 200 ans d'expertise, une
-        intégration verticale unique, et un savoir-faire qui se transmet de
-        génération en génération : c'est ce qui nous a convaincus dès 1986
-        d'être leur ambassadeur en Normandie.
+        Une fonderie française, fondée en 1840 à Guise, dans l'Aisne. La seule
+        à couler encore sa propre fonte sur le sol national. C'est sur cette
+        continuité que nous nous sommes adossés en 1986 — et que nous ne
+        sommes jamais partis.
+      </p>
+      <p>
+        Près de 200 ans d'expertise, une intégration verticale unique, un
+        savoir-faire qui se transmet de génération en génération. Voilà ce
+        que nous installons chez vous quand vous nous confiez votre projet.
       </p>
 
       <h2>Notre différence : un seul interlocuteur, du début à la fin</h2>
@@ -58,28 +105,149 @@ const milestones = [
         distinction <strong>« Meilleure enseigne poêles à bois » par le magazine
         Capital</strong> au palmarès 2020-2021.
       </p>
+    </div>
+  </section>
 
-      <h2>Notre zone d'intervention</h2>
-      <p>
-        Magasin et showroom à <strong>Normanville</strong>, à 10 minutes
-        d'Évreux. Nous intervenons dans l'Eure (27), la Seine-Maritime (76),
-        l'Eure-et-Loir (28), l'Orne (61), et les Yvelines (78) — partout où il
-        nous est possible d'assurer une visite technique, une installation
-        propre et un SAV réactif.
+  <section class="py-16 sm:py-20 bg-warm-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-10 sm:mb-12">
+        <p class="text-sm font-semibold text-brand-500 uppercase tracking-wider flex items-center gap-2">
+          <span class="inline-block w-8 h-px bg-brand-500"></span>
+          Nos engagements
+        </p>
+        <h2 class="mt-3 text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 leading-tight">
+          Ce que vous obtenez, <span class="text-brand-500">chiffré</span>
+        </h2>
+        <p class="mt-4 text-base sm:text-lg text-ink-600 leading-relaxed">
+          Quatre engagements concrets qui font la différence entre nous et un installateur classique.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+        {engagements.map((e) => (
+          <article class="group relative p-6 rounded-2xl bg-white border border-warm-100 hover:border-brand-300 hover:shadow-xl hover:shadow-brand-500/10 transition-all hover:-translate-y-1">
+            <div class="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-brand-500 text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+              <span set:html={e.icon} />
+            </div>
+            <p class="mt-5 text-3xl sm:text-4xl font-bold text-ink-900 leading-none">{e.chiffre}</p>
+            <h3 class="mt-2 font-bold text-ink-900 text-lg leading-tight">{e.titre}</h3>
+            <p class="mt-3 text-sm text-ink-600 leading-relaxed">{e.desc}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20 bg-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-10 sm:mb-12">
+        <p class="text-sm font-semibold text-brand-500 uppercase tracking-wider flex items-center gap-2">
+          <span class="inline-block w-8 h-px bg-brand-500"></span>
+          Notre équipe
+        </p>
+        <h2 class="mt-3 text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 leading-tight">
+          Les visages derrière <span class="text-brand-500">votre installation</span>
+        </h2>
+        <p class="mt-4 text-base sm:text-lg text-ink-600 leading-relaxed">
+          Quatre personnes principales, salariées, présentes du devis à l'allumage et après. C'est le visage humain de notre engagement « un seul interlocuteur ».
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {equipe.map((m, i) => (
+          <article class="group p-5 sm:p-6 rounded-2xl bg-warm-50 border border-warm-100 hover:border-brand-300 transition-all hover:-translate-y-1 hover:shadow-lg">
+            <div class={`w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold text-white shadow-md ${
+              i % 4 === 0 ? "bg-brand-500" : i % 4 === 1 ? "bg-ink-700" : i % 4 === 2 ? "bg-brand-700" : "bg-ink-600"
+            }`}>
+              {m.initiales}
+            </div>
+            <p class="mt-4 text-xs uppercase tracking-wider text-brand-600 font-semibold">{m.role}</p>
+            <p class="mt-2 text-sm text-ink-700 leading-relaxed">{m.desc}</p>
+          </article>
+        ))}
+      </div>
+
+      <p class="mt-8 text-xs text-ink-500 italic">
+        Photos d'équipe en cours d'ajout — initiales en attendant.
       </p>
     </div>
   </section>
 
-  <section class="py-20 bg-warm-50">
+  <section class="py-16 sm:py-20 bg-warm-50">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-8">
+        <p class="text-sm font-semibold text-brand-500 uppercase tracking-wider flex items-center gap-2">
+          <span class="inline-block w-8 h-px bg-brand-500"></span>
+          Zone d'intervention
+        </p>
+        <h2 class="mt-3 text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 leading-tight">
+          Vérifiez si <span class="text-brand-500">votre commune</span> est couverte
+        </h2>
+        <p class="mt-4 text-base sm:text-lg text-ink-600 leading-relaxed">
+          Magasin et showroom à Normanville (à 10 min d'Évreux). Nous intervenons sur les départements suivants.
+        </p>
+      </div>
+
+      <div class="p-6 sm:p-8 bg-white rounded-2xl border border-warm-100">
+        <div class="flex flex-wrap gap-2 mb-6">
+          {zonesCouvertes.map((dept) => (
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-brand-50 text-brand-700 text-sm font-semibold border border-brand-200">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+              </svg>
+              {dept} · {zonesLabels[dept]}
+            </span>
+          ))}
+        </div>
+
+        <form id="zone-form" class="space-y-4">
+          <label for="codepostal-check" class="block text-sm font-semibold text-ink-900">
+            Vérifier mon code postal
+          </label>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <input
+              type="text"
+              id="codepostal-check"
+              name="codepostal-check"
+              pattern="[0-9]{5}"
+              inputmode="numeric"
+              placeholder="Ex : 27000"
+              maxlength="5"
+              class="flex-1 px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none transition"
+            />
+            <button
+              type="submit"
+              class="inline-flex items-center justify-center px-6 py-3 rounded-md bg-brand-500 text-white font-semibold hover:bg-brand-600 transition shadow-md"
+            >
+              Vérifier
+            </button>
+          </div>
+        </form>
+
+        <div id="zone-result" class="hidden mt-4 p-4 rounded-lg"></div>
+      </div>
+
+      <p class="mt-6 text-sm text-ink-500 text-center">
+        Hors zone ? Appelez-nous au{" "}
+        <a href="tel:+33232395900" class="text-brand-600 hover:text-brand-700 font-semibold">02 32 39 59 00</a>{" "}
+        — on étudie au cas par cas.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20 bg-white">
     <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
       <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900">
         Quelques dates
       </h2>
       <ol class="mt-10 space-y-6">
         {milestones.map((m) => (
-          <li class="flex gap-6 items-start">
-            <span class="flex-shrink-0 w-20 text-2xl font-bold text-brand-500">{m.year}</span>
-            <p class="text-lg text-ink-700 leading-relaxed">{m.event}</p>
+          <li class="flex gap-6 items-start group">
+            <div class="flex-shrink-0 flex flex-col items-center">
+              <span class="text-3xl">{m.icon}</span>
+              <span class="mt-1 text-sm font-bold text-brand-500">{m.year}</span>
+            </div>
+            <p class="text-base sm:text-lg text-ink-700 leading-relaxed pt-1">{m.event}</p>
           </li>
         ))}
       </ol>
@@ -93,3 +261,35 @@ const milestones = [
     description="Notre showroom à Normanville expose une vingtaine de modèles en fonctionnement. Pas besoin de rendez-vous, mais nous vous conseillons d'appeler avant pour vous assurer qu'un conseiller soit disponible."
   />
 </BaseLayout>
+
+<script is:inline define:vars={{ zonesCouvertes }}>
+  const form = document.getElementById("zone-form");
+  const input = document.getElementById("codepostal-check");
+  const result = document.getElementById("zone-result");
+
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const cp = input.value.trim();
+    if (!/^\d{5}$/.test(cp)) {
+      result.className = "mt-4 p-4 rounded-lg bg-red-50 border border-red-200 text-red-800 text-sm";
+      result.innerHTML = "Merci d'entrer un code postal valide à 5 chiffres.";
+      result.classList.remove("hidden");
+      return;
+    }
+    const dept = cp.substring(0, 2);
+    if (zonesCouvertes.includes(dept)) {
+      result.className = "mt-4 p-4 rounded-lg bg-brand-50 border border-brand-300 text-ink-900";
+      result.innerHTML = `
+        <p class="font-bold text-brand-700">✅ Votre commune est dans notre zone d'intervention.</p>
+        <p class="mt-1 text-sm">On peut planifier une visite technique gratuite. <a href="/contact" class="font-semibold text-brand-600 hover:text-brand-700 underline">Demander un devis →</a></p>
+      `;
+    } else {
+      result.className = "mt-4 p-4 rounded-lg bg-warm-50 border border-warm-200 text-ink-900";
+      result.innerHTML = `
+        <p class="font-bold text-ink-900">⚠️ Vous êtes en dehors de notre zone standard.</p>
+        <p class="mt-1 text-sm">On étudie au cas par cas selon la distance. Appelez-nous au <a href="tel:+33232395900" class="font-semibold text-brand-600 hover:text-brand-700">02 32 39 59 00</a> pour vérifier.</p>
+      `;
+    }
+    result.classList.remove("hidden");
+  });
+</script>

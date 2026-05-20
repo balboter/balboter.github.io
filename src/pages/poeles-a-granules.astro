@@ -2,14 +2,16 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CTA from "../components/CTA.astro";
 import AidesEstimator from "../components/AidesEstimator.astro";
+import Faq from "../components/Faq.astro";
 
 const modeles = [
   {
     nom: "Godin Amiel",
     puissance: "8 kW",
     surface: "70-100 m²",
-    rendement: "90%",
+    rendement: "90 %",
     autonomie: "30 h",
+    ideal: "Pavillon récent bien isolé, chauffage principal",
     image: "/images/installations/164.webp",
     desc: "Programmation hebdomadaire, allumage automatique. Idéal en chauffage principal d'un appartement ou pavillon récent.",
   },
@@ -17,19 +19,45 @@ const modeles = [
     nom: "Godin Soldano",
     puissance: "10 kW",
     surface: "90-130 m²",
-    rendement: "91%",
+    rendement: "91 %",
     autonomie: "40 h",
+    ideal: "Grand pavillon, télécommande Wi-Fi pour partir l'esprit léger",
     image: "/images/installations/165.webp",
     desc: "Réservoir grande capacité, télécommande Wi-Fi. Confort maximal pour grands volumes.",
+    best: true,
   },
   {
     nom: "Godin Reggio",
     puissance: "12 kW",
     surface: "110-160 m²",
-    rendement: "92%",
+    rendement: "92 %",
     autonomie: "48 h",
+    ideal: "Maison individuelle 4-5 pièces très bien isolée",
     image: "/images/installations/166.webp",
     desc: "Très haut rendement, silence de fonctionnement. Pour maisons individuelles bien isolées.",
+  },
+];
+
+const faqGranules = [
+  {
+    q: "Un poêle à granulés est-il bruyant ?",
+    a: "Modérément. La ventilation forcée et la chute des granulés émettent un bruit de l'ordre de 30 à 45 dB selon le modèle (équivalent d'un réfrigérateur moderne). Les modèles récents Godin sont silencieux en mode économie. Pour une chambre adjacente, on recommande la fonction « silence nocturne » qui coupe le ventilateur.",
+  },
+  {
+    q: "Que se passe-t-il en cas de coupure de courant ?",
+    a: "Le poêle s'arrête en sécurité (extinction automatique). À la remise en route du courant, il redémarre selon le programme en cours. Pour des coupures fréquentes, on peut équiper le poêle d'un onduleur (~150-200 €) qui assure une autonomie de 30 min à 2 h selon la capacité.",
+  },
+  {
+    q: "Combien je vais consommer de granulés par hiver ?",
+    a: "Comptez 1 à 2 tonnes de granulés par hiver pour une maison de 100 m² bien isolée chauffée principalement aux granulés. À 450-550 € la tonne, soit 500-1 100 € de combustible par an — souvent 2 à 3 fois moins cher que le gaz ou l'électricité au m² chauffé.",
+  },
+  {
+    q: "Comment stocker les granulés ?",
+    a: "Au sec et à l'abri de l'humidité. Sacs de 15 kg empilés dans le garage, la cave ou un local technique (compter 1,5 m³ par tonne). Pour les gros consommateurs, livraison en silo extérieur ou en vrac (camion souffleur) — nous conseillons les fournisseurs locaux d'Évreux qui livrent en 48 h.",
+  },
+  {
+    q: "Les granulés perdent-ils de leur qualité ?",
+    a: "Stockés au sec, les granulés se conservent plusieurs années sans perte de pouvoir calorifique. Le risque principal est l'humidité (gonflement, perte de calories, dégradation du brûleur). Vérifiez la norme NF Biocombustibles Solides à l'achat — c'est le gage de qualité que nous recommandons.",
   },
 ];
 ---
@@ -38,9 +66,10 @@ const modeles = [
   title="Poêles à granulés Godin — Évreux & Normandie"
   description="Poêles à granulés Godin : rendement jusqu'à 92 %, autonomie 30 à 48 h, programmation hebdomadaire. Vente, installation et SAV par nos équipes en Normandie."
 >
-  <section class="bg-gradient-to-br from-ink-900 via-ink-800 to-ink-900 text-white py-20">
+  <section class="bg-gradient-to-br from-ink-900 via-ink-800 to-ink-900 text-white py-16 sm:py-20">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <p class="text-sm font-semibold text-brand-400 uppercase tracking-wider">
+      <p class="text-sm font-semibold text-brand-400 uppercase tracking-wider flex items-center gap-2">
+        <span class="inline-block w-8 h-px bg-brand-500"></span>
         Nos gammes
       </p>
       <h1 class="mt-3 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
@@ -51,29 +80,35 @@ const modeles = [
         autonomie longue, rendement élevé : les poêles à granulés Godin sont la
         solution moderne pour un chauffage principal performant et économique.
       </p>
-      <div class="mt-8 grid grid-cols-3 gap-4 max-w-lg">
+      <div class="mt-8 grid grid-cols-3 gap-4 max-w-2xl">
         <div>
-          <p class="text-3xl font-bold text-brand-400">7,5 ct</p>
-          <p class="text-xs text-ink-400 mt-1">€/kWh granulés</p>
+          <p class="text-3xl font-bold text-brand-400">~1 €/jour</p>
+          <p class="text-xs text-ink-400 mt-1">coût d'usage moyen<br />en chauffage seul</p>
         </div>
-        <div>
+        <div class="border-x border-white/10">
           <p class="text-3xl font-bold text-brand-400">90 %+</p>
-          <p class="text-xs text-ink-400 mt-1">de rendement</p>
+          <p class="text-xs text-ink-400 mt-1">de rendement<br />2-3× moins cher que gaz</p>
         </div>
         <div>
           <p class="text-3xl font-bold text-brand-400">48 h</p>
-          <p class="text-xs text-ink-400 mt-1">d'autonomie max</p>
+          <p class="text-xs text-ink-400 mt-1">d'autonomie max<br />week-end serein</p>
         </div>
       </div>
+      <p class="mt-8 text-sm text-ink-400">
+        Vous avez une cheminée existante ?{" "}
+        <a href="/cheminees-inserts" class="text-brand-400 hover:text-brand-300 underline-offset-4 hover:underline font-semibold">
+          Voir nos inserts à granulés →
+        </a>
+      </p>
     </div>
   </section>
 
-  <section class="py-20">
+  <section class="py-16 sm:py-20">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {modeles.map((m) => (
           <article class="group rounded-2xl overflow-hidden bg-white border border-ink-100 hover:border-brand-300 hover:shadow-xl transition">
-            <div class="aspect-[4/3] overflow-hidden bg-warm-50">
+            <div class="aspect-[4/3] overflow-hidden bg-warm-50 relative">
               <img
                 src={m.image}
                 alt={`${m.nom} ${m.puissance}`}
@@ -82,6 +117,11 @@ const modeles = [
                 loading="lazy"
                 class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
               />
+              {m.best && (
+                <span class="absolute top-3 left-3 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-brand-500 text-white text-xs font-bold uppercase tracking-wider shadow-md">
+                  ⭐ Aide max
+                </span>
+              )}
             </div>
             <div class="p-6">
               <div class="flex items-start justify-between gap-2">
@@ -90,21 +130,28 @@ const modeles = [
                   {m.puissance}
                 </span>
               </div>
-              <p class="mt-3 text-ink-600 leading-relaxed">{m.desc}</p>
-              <dl class="mt-5 pt-4 border-t border-ink-100 grid grid-cols-3 gap-2 text-xs">
+              <p class="mt-3 text-ink-600 leading-relaxed text-sm">{m.desc}</p>
+
+              <div class="mt-4 pt-4 border-t border-warm-100">
+                <p class="text-xs uppercase tracking-wider text-ink-500 font-semibold">Idéal pour</p>
+                <p class="mt-1 text-sm text-ink-700 font-medium">{m.ideal}</p>
+              </div>
+
+              <dl class="mt-4 pt-4 border-t border-warm-100 grid grid-cols-3 gap-2 text-xs">
                 <div>
                   <dt class="text-ink-500">Surface</dt>
                   <dd class="font-semibold text-ink-900">{m.surface}</dd>
                 </div>
                 <div>
-                  <dt class="text-ink-500">Rendement</dt>
-                  <dd class="font-semibold text-ink-900">{m.rendement}</dd>
+                  <dt class="text-ink-500 inline-flex items-center gap-0.5">Rendement <span class="text-brand-500" aria-hidden="true">⭐</span></dt>
+                  <dd class="font-semibold text-brand-700">{m.rendement}</dd>
                 </div>
                 <div>
                   <dt class="text-ink-500">Autonomie</dt>
                   <dd class="font-semibold text-ink-900">{m.autonomie}</dd>
                 </div>
               </dl>
+
               <a
                 href="/contact"
                 class="mt-5 inline-flex items-center text-sm font-semibold text-brand-600 hover:text-brand-700 transition"
@@ -119,6 +166,13 @@ const modeles = [
   </section>
 
   <AidesEstimator />
+
+  <Faq
+    eyebrow="Questions fréquentes — Granulés"
+    heading="Ce qu'on nous demande avant de passer aux granulés"
+    questions={faqGranules}
+    variant="warm"
+  />
 
   <CTA
     heading="Bénéficiez de MaPrimeRénov' 2026"

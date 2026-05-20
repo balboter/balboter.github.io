@@ -1,0 +1,121 @@
+---
+const colonnes = [
+  {
+    type: "bois",
+    titre: "Poêle à bois",
+    sousTitre: "Le feu authentique",
+    icon: '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.24 17 6.343 18.485 8.343 17.85 12 16 14a4 4 0 11-6 0c1.5-1.5 1.5-3.5 1.5-3.5"/></svg>',
+    href: "/poeles-a-bois",
+    cta: "Voir nos poêles à bois",
+    accent: false,
+    points: [
+      { label: "Coût d'usage", valeur: "5-7 ct €/kWh", detail: "le moins cher du marché" },
+      { label: "Confort", valeur: "Chargement manuel", detail: "rythme et plaisir du geste" },
+      { label: "Autonomie", valeur: "4 à 8 h", detail: "selon le modèle et le bois" },
+      { label: "Entretien", valeur: "Ramonage annuel", detail: "cendres à vider régulièrement" },
+      { label: "Esthétique", valeur: "Traditionnelle ou design", detail: "fonte massive Godin" },
+    ],
+  },
+  {
+    type: "granules",
+    titre: "Poêle à granulés",
+    sousTitre: "Le confort automatique",
+    icon: '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>',
+    href: "/poeles-a-granules",
+    cta: "Voir nos poêles à granulés",
+    accent: true,
+    points: [
+      { label: "Coût d'usage", valeur: "7-8 ct €/kWh", detail: "compétitif vs gaz/élec" },
+      { label: "Confort", valeur: "Programmation auto", detail: "allumage, modulation, télécommande" },
+      { label: "Autonomie", valeur: "24 à 48 h", detail: "sans toucher l'appareil" },
+      { label: "Entretien", valeur: "Vidange + ramonage", detail: "stockage granulés en sac/silo" },
+      { label: "Esthétique", valeur: "Contemporaine", detail: "compact, design épuré" },
+    ],
+  },
+  {
+    type: "insert",
+    titre: "Insert ou cheminée",
+    sousTitre: "Rénover l'existant",
+    icon: '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 21h18M5 21V7l7-4 7 4v14M9 9h1m4 0h1m-6 4h1m4 0h1m-6 4h1m4 0h1"/></svg>',
+    href: "/cheminees-inserts",
+    cta: "Voir nos inserts",
+    accent: false,
+    points: [
+      { label: "Coût d'usage", valeur: "Selon combustible", detail: "bois ou granulés au choix" },
+      { label: "Confort", valeur: "Variable", detail: "selon le type d'insert" },
+      { label: "Autonomie", valeur: "Selon combustible", detail: "idem poêle équivalent" },
+      { label: "Entretien", valeur: "Standard + tubage", detail: "vérification conduit annuelle" },
+      { label: "Esthétique", valeur: "Cheminée préservée", detail: "habillage existant ou refait" },
+    ],
+  },
+];
+---
+
+<section class="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-white to-warm-50 overflow-hidden">
+  <div class="absolute inset-0 opacity-[0.04] pointer-events-none" aria-hidden="true" style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M30 30l30-30H30zM0 30l30-30v60z' fill='%23f17b00'/%3E%3C/svg%3E&quot;);"></div>
+
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+      <p class="text-sm font-semibold text-brand-500 uppercase tracking-wider flex items-center justify-center gap-2">
+        <span class="inline-block w-8 h-px bg-brand-500"></span>
+        Bien choisir
+        <span class="inline-block w-8 h-px bg-brand-500"></span>
+      </p>
+      <h2 class="mt-3 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-ink-900 leading-tight">
+        Bois, granulés ou insert : <span class="text-brand-500">lequel pour vous ?</span>
+      </h2>
+      <p class="mt-4 text-base sm:text-lg text-ink-600 leading-relaxed">
+        Trois solutions, trois usages. Comparez l'essentiel en un coup d'œil — nos conseillers affinent ensuite avec vous selon votre logement et votre rythme de vie.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+      {colonnes.map((col) => (
+        <article class={`group relative flex flex-col rounded-2xl border-2 transition-all duration-300 ${col.accent ? "border-brand-300 bg-white shadow-lg shadow-brand-500/10" : "border-ink-100 bg-white hover:border-brand-300"} hover:shadow-xl hover:shadow-brand-500/10 hover:-translate-y-1`}>
+          {col.accent && (
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1 px-3 py-1 rounded-full bg-brand-500 text-white text-xs font-bold uppercase tracking-wider shadow-md">
+              ⭐ Aide max
+            </div>
+          )}
+
+          <div class="p-6 sm:p-7 pb-4 border-b border-warm-100">
+            <div class={`inline-flex items-center justify-center w-14 h-14 rounded-xl mb-4 ${col.accent ? "bg-brand-500 text-white" : "bg-warm-50 text-brand-600"} group-hover:scale-110 transition-transform`}>
+              <span set:html={col.icon} />
+            </div>
+            <h3 class="text-xl font-bold text-ink-900">{col.titre}</h3>
+            <p class="mt-1 text-sm text-brand-600 font-medium">{col.sousTitre}</p>
+          </div>
+
+          <dl class="flex-1 p-6 sm:p-7 space-y-4">
+            {col.points.map((p) => (
+              <div>
+                <dt class="text-xs uppercase tracking-wider text-ink-500 font-semibold">{p.label}</dt>
+                <dd class="mt-1">
+                  <span class="font-semibold text-ink-900">{p.valeur}</span>
+                  <span class="block text-xs text-ink-500 mt-0.5">{p.detail}</span>
+                </dd>
+              </div>
+            ))}
+          </dl>
+
+          <div class="p-6 sm:p-7 pt-0">
+            <a
+              href={col.href}
+              class={`group/btn inline-flex items-center justify-center gap-2 w-full px-5 py-3 rounded-md font-semibold text-sm transition ${col.accent ? "bg-brand-500 text-white hover:bg-brand-600 shadow-md hover:shadow-lg" : "bg-warm-50 text-ink-900 hover:bg-brand-50 border border-warm-200 hover:border-brand-300"}`}
+            >
+              {col.cta}
+              <svg class="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 5l7 7-7 7M5 12h15"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <p class="mt-8 text-center text-sm text-ink-500">
+      Vous hésitez encore ? Notre conseiller vient chez vous et tranche selon votre logement —
+      <a href="/contact" class="text-brand-600 hover:text-brand-700 font-semibold underline-offset-4 hover:underline">visite technique gratuite</a>.
+    </p>
+  </div>
+</section>

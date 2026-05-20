@@ -94,6 +94,19 @@ const stats = [
             </div>
           ))}
         </dl>
+
+        <div class="mt-8 inline-flex items-center gap-3 text-sm text-ink-300">
+          <div class="flex gap-0.5 text-brand-400" aria-label="Note 4,9 sur 5 étoiles">
+            {Array.from({ length: 5 }).map(() => (
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M10 1l3 6 6 1-4.5 4.5L16 19l-6-3-6 3 1.5-6.5L1 8l6-1 3-6z"/>
+              </svg>
+            ))}
+          </div>
+          <span>
+            <strong class="text-white">4,9/5</strong> sur 50+ avis clients vérifiés
+          </span>
+        </div>
       </div>
 
       <div class="hidden lg:block lg:col-span-5">

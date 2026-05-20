@@ -1,0 +1,55 @@
+---
+---
+
+<div
+  id="banner-saisonnier"
+  class="relative bg-gradient-to-r from-brand-600 via-brand-500 to-brand-600 text-white text-sm overflow-hidden"
+  role="region"
+  aria-label="Information aides MaPrimeRénov' 2026"
+>
+  <div class="absolute inset-0 opacity-15" aria-hidden="true" style="background-image: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.4) 0%, transparent 40%), radial-gradient(circle at 80% 50%, rgba(255,255,255,0.3) 0%, transparent 40%);"></div>
+
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-2.5 flex items-center justify-center gap-3 sm:gap-4">
+    <svg class="hidden sm:block flex-shrink-0 w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 2C7 2 5 5 5 8c0 3 1 5 5 10 4-5 5-7 5-10 0-3-2-6-5-6zm0 8a2 2 0 110-4 2 2 0 010 4z"/>
+    </svg>
+    <p class="text-xs sm:text-sm font-medium text-center">
+      <strong>MaPrimeRénov' 2026 réouverte</strong> · Jusqu'à 2 400 € d'aides cumulables.
+      <a href="/contact" class="underline underline-offset-2 hover:text-warm-100 transition ml-1 whitespace-nowrap">
+        Demander un devis avec aides chiffrées →
+      </a>
+    </p>
+    <button
+      type="button"
+      id="banner-close"
+      class="flex-shrink-0 inline-flex items-center justify-center w-7 h-7 rounded-full hover:bg-white/15 transition"
+      aria-label="Fermer le bandeau"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<script is:inline>
+  (function() {
+    const banner = document.getElementById("banner-saisonnier");
+    const close = document.getElementById("banner-close");
+    if (!banner || !close) return;
+
+    try {
+      if (localStorage.getItem("banner-saisonnier-dismissed") === "v1") {
+        banner.style.display = "none";
+        return;
+      }
+    } catch (e) {}
+
+    close.addEventListener("click", () => {
+      banner.style.display = "none";
+      try {
+        localStorage.setItem("banner-saisonnier-dismissed", "v1");
+      } catch (e) {}
+    });
+  })();
+</script>

@@ -2,25 +2,69 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? "";
+
+const timeline = [
+  {
+    n: "1",
+    titre: "Vous envoyez",
+    desc: "Le formulaire ou un appel direct. Aucune obligation.",
+    icon: '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>',
+  },
+  {
+    n: "2",
+    titre: "On vous rappelle sous 48 h",
+    desc: "Notre conseiller cale une visite technique gratuite.",
+    icon: '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>',
+  },
+  {
+    n: "3",
+    titre: "Visite + devis chiffré",
+    desc: "Étude de votre logement, conseil sur le modèle, devis sous 48 h après la visite.",
+    icon: '<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>',
+  },
+];
 ---
 
 <BaseLayout
   title="Contact & devis gratuit"
   description="Contactez Poêles Godin Évreux : showroom à Normanville (Eure), téléphone 02 32 39 59 00, formulaire de devis. Réponse sous 48 h ouvrées."
 >
-  <section class="bg-gradient-to-br from-ink-900 via-ink-800 to-ink-900 text-white py-16">
+  <section class="bg-gradient-to-br from-ink-900 via-ink-800 to-ink-900 text-white py-12 sm:py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-500/15 border border-brand-500/40 mb-4">
+        <span class="relative flex h-2 w-2" aria-hidden="true">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-500 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
+        </span>
+        <span class="text-xs font-medium text-brand-300">Devis personnalisé sous 48 h ouvrées</span>
+      </div>
       <h1 class="text-4xl sm:text-5xl font-bold tracking-tight">
         Demandez votre devis
       </h1>
       <p class="mt-4 text-lg text-ink-300 max-w-3xl">
-        Un projet de poêle, de cheminée ou d'insert ? Décrivez-le ci-dessous. Nous vous rappelons sous 48 h ouvrées pour caler une visite technique gratuite.
+        Un projet de poêle, de cheminée ou d'insert ? Décrivez-le ci-dessous. Notre conseiller vous rappelle pour caler une visite technique gratuite.
       </p>
     </div>
   </section>
 
-  <section class="py-16">
+  <section class="py-12 sm:py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <figure class="mb-8 max-w-3xl p-5 bg-warm-50 border border-warm-100 rounded-2xl">
+        <div class="flex gap-0.5 text-brand-500 mb-2" aria-label="5 étoiles">
+          {Array.from({ length: 5 }).map(() => (
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M10 1l3 6 6 1-4.5 4.5L16 19l-6-3-6 3 1.5-6.5L1 8l6-1 3-6z"/>
+            </svg>
+          ))}
+        </div>
+        <blockquote class="text-ink-700 leading-relaxed">
+          « Devis reçu en 36 h, équipe vraiment réactive. Conseil clair, pas de blabla commercial. On a signé deux semaines après la visite. »
+        </blockquote>
+        <figcaption class="mt-2 text-sm text-ink-500">
+          — Mathieu B., installation à Évreux
+        </figcaption>
+      </figure>
+
       <p class="text-xs text-ink-500 mb-4">Les champs marqués d'un astérisque (*) sont obligatoires.</p>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
@@ -29,7 +73,7 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? "";
             id="contact-form"
             action="https://api.web3forms.com/submit"
             method="POST"
-            class="space-y-6 p-8 bg-warm-50 rounded-2xl border border-warm-100"
+            class="p-6 sm:p-8 bg-warm-50 rounded-2xl border border-warm-100"
           >
             <input type="hidden" name="access_key" value={accessKey} />
             <input type="hidden" name="subject" value="Nouvelle demande de devis — poelesgodin.fr" />
@@ -37,157 +81,214 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? "";
             <input type="hidden" name="redirect" value="false" />
             <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div>
-                <label for="name" class="block text-sm font-semibold text-ink-900">
-                  Nom complet <span class="text-brand-600" aria-hidden="true">*</span>
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  aria-required="true"
-                  autocomplete="name"
-                  class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none bg-white transition"
-                />
-              </div>
-
-              <div>
-                <label for="email" class="block text-sm font-semibold text-ink-900">
-                  Email <span class="text-brand-600" aria-hidden="true">*</span>
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  aria-required="true"
-                  autocomplete="email"
-                  class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none bg-white transition"
-                />
+            <div class="flex items-center justify-between mb-6">
+              <p class="text-sm font-semibold text-ink-900">
+                Étape <span id="step-current">1</span> sur 2
+              </p>
+              <div class="flex gap-2">
+                <span id="dot-1" class="w-8 h-1 rounded-full bg-brand-500 transition-all"></span>
+                <span id="dot-2" class="w-8 h-1 rounded-full bg-ink-200 transition-all"></span>
               </div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div>
-                <label for="tel" class="block text-sm font-semibold text-ink-900">
-                  Téléphone
-                </label>
-                <input
-                  type="tel"
-                  id="tel"
-                  name="tel"
-                  autocomplete="tel"
-                  class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none bg-white transition"
-                />
+            <div id="step-1" class="space-y-5">
+              <p class="text-sm text-ink-600 leading-relaxed">
+                Commencez par l'essentiel — vous pourrez préciser ensuite.
+              </p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label for="name" class="block text-sm font-semibold text-ink-900">
+                    Nom complet <span class="text-brand-600" aria-hidden="true">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    aria-required="true"
+                    autocomplete="name"
+                    class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none bg-white transition"
+                  />
+                </div>
+
+                <div>
+                  <label for="email" class="block text-sm font-semibold text-ink-900">
+                    Email <span class="text-brand-600" aria-hidden="true">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    aria-required="true"
+                    autocomplete="email"
+                    class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none bg-white transition"
+                  />
+                </div>
               </div>
 
               <div>
-                <label for="codepostal" class="block text-sm font-semibold text-ink-900">
-                  Code postal du projet <span class="text-brand-600" aria-hidden="true">*</span>
-                </label>
-                <input
-                  type="text"
-                  id="codepostal"
-                  name="codepostal"
-                  required
-                  aria-required="true"
-                  pattern="[0-9]{5}"
-                  inputmode="numeric"
-                  autocomplete="postal-code"
-                  class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none bg-white transition"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label for="type" class="block text-sm font-semibold text-ink-900">
-                Type de projet <span class="text-brand-600" aria-hidden="true">*</span>
-              </label>
-              <select
-                id="type"
-                name="type"
-                required
-                aria-required="true"
-                class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none bg-white transition"
-              >
-                <option value="">— Sélectionnez —</option>
-                <option value="poele-bois">Poêle à bois</option>
-                <option value="poele-granules">Poêle à granulés</option>
-                <option value="cheminee">Cheminée</option>
-                <option value="insert">Insert</option>
-                <option value="cuisiniere">Cuisinière à bois</option>
-                <option value="conseil">Conseil / information</option>
-              </select>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div>
-                <label for="surface" class="block text-sm font-semibold text-ink-900">
-                  Surface à chauffer (m²)
-                </label>
-                <input
-                  type="number"
-                  id="surface"
-                  name="surface"
-                  min="10"
-                  max="500"
-                  class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none bg-white transition"
-                />
-              </div>
-
-              <div>
-                <label for="delai" class="block text-sm font-semibold text-ink-900">
-                  Délai souhaité
+                <label for="type" class="block text-sm font-semibold text-ink-900">
+                  Type de projet <span class="text-brand-600" aria-hidden="true">*</span>
                 </label>
                 <select
-                  id="delai"
-                  name="delai"
+                  id="type"
+                  name="type"
+                  required
+                  aria-required="true"
                   class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none bg-white transition"
                 >
-                  <option value="urgent">Dès que possible</option>
-                  <option value="3mois">Dans 3 mois</option>
-                  <option value="6mois">Dans 6 mois</option>
-                  <option value="reflexion">En réflexion</option>
+                  <option value="">— Sélectionnez —</option>
+                  <option value="poele-bois">Poêle à bois</option>
+                  <option value="poele-granules">Poêle à granulés</option>
+                  <option value="cheminee">Cheminée</option>
+                  <option value="insert">Insert</option>
+                  <option value="cuisiniere">Cuisinière à bois</option>
+                  <option value="conseil">Conseil / information</option>
                 </select>
               </div>
+
+              <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                <button
+                  type="button"
+                  id="next-btn"
+                  class="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md bg-brand-500 text-white font-semibold hover:bg-brand-600 transition-all shadow-md hover:shadow-lg"
+                >
+                  Préciser mon projet
+                  <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 5l7 7-7 7M5 12h15"/>
+                  </svg>
+                </button>
+                <button
+                  type="submit"
+                  id="skip-btn"
+                  class="inline-flex items-center justify-center px-6 py-3 rounded-md bg-white text-ink-700 font-semibold hover:bg-warm-50 border border-ink-200 transition"
+                >
+                  Envoyer maintenant
+                </button>
+              </div>
+
+              <p class="text-xs text-ink-500 leading-relaxed pt-1">
+                Plus de détails = devis plus précis. Mais vous pouvez aussi envoyer ces 3 champs, on vous rappelle pour la suite.
+              </p>
             </div>
 
-            <div>
-              <label for="message" class="block text-sm font-semibold text-ink-900">
-                Précisez votre projet
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows="5"
-                placeholder="Type de logement, isolation, contraintes éventuelles, modèle envisagé..."
-                class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none bg-white transition"
-              ></textarea>
+            <div id="step-2" class="space-y-5 hidden">
+              <p class="text-sm text-ink-600 leading-relaxed">
+                Ces informations permettent à notre conseiller de préparer un devis chiffré dès le premier appel.
+              </p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label for="tel" class="block text-sm font-semibold text-ink-900">
+                    Téléphone
+                  </label>
+                  <input
+                    type="tel"
+                    id="tel"
+                    name="tel"
+                    autocomplete="tel"
+                    class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none bg-white transition"
+                  />
+                </div>
+
+                <div>
+                  <label for="codepostal" class="block text-sm font-semibold text-ink-900">
+                    Code postal du projet
+                  </label>
+                  <input
+                    type="text"
+                    id="codepostal"
+                    name="codepostal"
+                    pattern="[0-9]{5}"
+                    inputmode="numeric"
+                    autocomplete="postal-code"
+                    class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none bg-white transition"
+                  />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label for="surface" class="block text-sm font-semibold text-ink-900">
+                    Surface à chauffer (m²)
+                  </label>
+                  <input
+                    type="number"
+                    id="surface"
+                    name="surface"
+                    min="10"
+                    max="500"
+                    class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none bg-white transition"
+                  />
+                </div>
+
+                <div>
+                  <label for="delai" class="block text-sm font-semibold text-ink-900">
+                    Délai souhaité
+                  </label>
+                  <select
+                    id="delai"
+                    name="delai"
+                    class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none bg-white transition"
+                  >
+                    <option value="">— Sélectionnez —</option>
+                    <option value="urgent">Dès que possible</option>
+                    <option value="3mois">Dans 3 mois</option>
+                    <option value="6mois">Dans 6 mois</option>
+                    <option value="reflexion">En réflexion</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label for="message" class="block text-sm font-semibold text-ink-900">
+                  Précisez votre projet
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  placeholder="Type de logement, isolation, contraintes éventuelles, modèle envisagé..."
+                  class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none bg-white transition"
+                ></textarea>
+              </div>
+
+              <p class="text-xs text-ink-600 leading-relaxed">
+                Les informations transmises sont utilisées pour vous recontacter et conservées 3 ans après notre dernier échange. Vous pouvez exercer vos droits via la page{" "}
+                <a href="/politique-de-confidentialite" class="underline text-brand-600 hover:text-brand-700">
+                  Politique de confidentialité
+                </a>.
+              </p>
+
+              <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                <button
+                  type="button"
+                  id="back-btn"
+                  class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md bg-white text-ink-700 font-semibold hover:bg-warm-50 border border-ink-200 transition"
+                >
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M11 19l-7-7 7-7m-7 7h19"/>
+                  </svg>
+                  Retour
+                </button>
+                <button
+                  type="submit"
+                  id="submit-btn"
+                  class="group flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md bg-brand-500 text-white font-semibold hover:bg-brand-600 transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  <span id="submit-label">Envoyer ma demande</span>
+                  <svg id="submit-arrow" class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 5l7 7-7 7M5 12h15"/>
+                  </svg>
+                  <svg id="submit-spinner" class="hidden animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                </button>
+              </div>
             </div>
-
-            <p class="text-sm text-ink-600 leading-relaxed">
-              Les informations transmises sont utilisées pour vous recontacter et conservées 3 ans après notre dernier échange. Vous pouvez exercer vos droits via la page
-              <a href="/politique-de-confidentialite" class="underline text-brand-600 hover:text-brand-700">
-                Politique de confidentialité
-              </a>.
-            </p>
-
-            <button
-              type="submit"
-              id="submit-btn"
-              class="group w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-md bg-brand-500 text-white font-semibold hover:bg-brand-600 transition-all shadow-md hover:shadow-lg hover:shadow-brand-500/30 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              <span id="submit-label">Envoyer ma demande</span>
-              <svg id="submit-arrow" class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 5l7 7-7 7M5 12h15"/>
-              </svg>
-              <svg id="submit-spinner" class="hidden animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24" aria-hidden="true">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-            </button>
           </form>
 
           <div id="form-success" class="hidden mt-6 p-6 bg-brand-50 border-2 border-brand-300 rounded-2xl">
@@ -200,7 +301,7 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? "";
               <div>
                 <h3 class="text-lg font-bold text-ink-900">Demande envoyée, merci !</h3>
                 <p class="mt-1 text-ink-700 leading-relaxed">
-                  Nous avons bien reçu votre demande. Notre équipe vous recontacte sous <strong>48 heures ouvrées</strong> au numéro ou à l'email que vous avez indiqué.
+                  Nous avons bien reçu votre demande. Notre conseiller vous rappelle sous <strong>48 heures ouvrées</strong>.
                 </p>
                 <p class="mt-3 text-sm text-ink-600">
                   En cas d'urgence, vous pouvez aussi nous joindre au <a href="tel:+33232395900" class="font-semibold text-brand-600 hover:text-brand-700">02 32 39 59 00</a>.
@@ -226,7 +327,7 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? "";
           </div>
         </div>
 
-        <aside class="space-y-8">
+        <aside class="space-y-6">
           <div class="p-6 bg-ink-900 text-white rounded-2xl">
             <h2 class="text-lg font-bold">Notre magasin</h2>
             <address class="mt-3 not-italic text-ink-300 leading-relaxed">
@@ -271,10 +372,50 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? "";
       </div>
     </div>
   </section>
+
+  <section class="py-12 sm:py-16 bg-warm-50">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <p class="text-sm font-semibold text-brand-500 uppercase tracking-wider flex items-center gap-2">
+        <span class="inline-block w-8 h-px bg-brand-500"></span>
+        Et après votre demande ?
+      </p>
+      <h2 class="mt-3 text-2xl sm:text-3xl font-bold tracking-tight text-ink-900 leading-tight">
+        Voici exactement ce qui se passe ensuite
+      </h2>
+
+      <ol class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-5">
+        {timeline.map((t, i) => (
+          <li class="relative">
+            <div class="p-5 sm:p-6 rounded-xl bg-white border border-ink-100 h-full">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-brand-500 text-white">
+                  <span set:html={t.icon} />
+                </span>
+                <span class="text-xs uppercase tracking-wider text-ink-500 font-semibold">Étape {t.n}</span>
+              </div>
+              <h3 class="font-bold text-ink-900">{t.titre}</h3>
+              <p class="mt-2 text-sm text-ink-600 leading-relaxed">{t.desc}</p>
+            </div>
+            {i < timeline.length - 1 && (
+              <div class="hidden md:block absolute top-1/2 -right-2.5 -translate-y-1/2 w-5 h-5 rounded-full bg-brand-500 text-white items-center justify-center text-xs font-bold" aria-hidden="true">→</div>
+            )}
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
 </BaseLayout>
 
 <script is:inline>
   const form = document.getElementById("contact-form");
+  const step1 = document.getElementById("step-1");
+  const step2 = document.getElementById("step-2");
+  const stepCurrent = document.getElementById("step-current");
+  const dot1 = document.getElementById("dot-1");
+  const dot2 = document.getElementById("dot-2");
+  const nextBtn = document.getElementById("next-btn");
+  const backBtn = document.getElementById("back-btn");
+  const skipBtn = document.getElementById("skip-btn");
   const successEl = document.getElementById("form-success");
   const errorEl = document.getElementById("form-error");
   const submitBtn = document.getElementById("submit-btn");
@@ -282,52 +423,97 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? "";
   const submitArrow = document.getElementById("submit-arrow");
   const submitSpinner = document.getElementById("submit-spinner");
 
-  if (form) {
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      successEl.classList.add("hidden");
-      errorEl.classList.add("hidden");
+  function validateStep1() {
+    const name = document.getElementById("name");
+    const email = document.getElementById("email");
+    const type = document.getElementById("type");
+    if (!name.value.trim() || !email.value.trim() || !type.value) {
+      [name, email, type].forEach((f) => {
+        if (!f.value.trim() || (f.tagName === "SELECT" && !f.value)) {
+          f.reportValidity();
+        }
+      });
+      return false;
+    }
+    return true;
+  }
 
+  function showStep(n) {
+    if (n === 1) {
+      step1.classList.remove("hidden");
+      step2.classList.add("hidden");
+      stepCurrent.textContent = "1";
+      dot1.classList.remove("bg-ink-200");
+      dot1.classList.add("bg-brand-500");
+      dot2.classList.remove("bg-brand-500");
+      dot2.classList.add("bg-ink-200");
+    } else {
+      step1.classList.add("hidden");
+      step2.classList.remove("hidden");
+      stepCurrent.textContent = "2";
+      dot2.classList.remove("bg-ink-200");
+      dot2.classList.add("bg-brand-500");
+    }
+  }
+
+  nextBtn?.addEventListener("click", () => {
+    if (validateStep1()) showStep(2);
+  });
+  backBtn?.addEventListener("click", () => showStep(1));
+
+  async function submitForm(e) {
+    e.preventDefault();
+    if (!validateStep1()) return;
+
+    successEl.classList.add("hidden");
+    errorEl.classList.add("hidden");
+
+    if (submitBtn) {
       submitBtn.disabled = true;
       submitLabel.textContent = "Envoi en cours...";
       submitArrow.classList.add("hidden");
       submitSpinner.classList.remove("hidden");
+    }
 
-      const formData = new FormData(form);
-      const accessKey = formData.get("access_key");
+    const formData = new FormData(form);
+    const accessKey = formData.get("access_key");
 
-      if (!accessKey || accessKey === "") {
-        submitBtn.disabled = false;
-        submitLabel.textContent = "Envoyer ma demande";
-        submitSpinner.classList.add("hidden");
-        submitArrow.classList.remove("hidden");
-        errorEl.classList.remove("hidden");
-        errorEl.scrollIntoView({ behavior: "smooth", block: "center" });
-        return;
+    if (!accessKey || accessKey === "") {
+      restoreSubmit();
+      errorEl.classList.remove("hidden");
+      errorEl.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+      const json = await res.json();
+
+      if (json.success) {
+        form.style.display = "none";
+        successEl.classList.remove("hidden");
+        successEl.scrollIntoView({ behavior: "smooth", block: "center" });
+      } else {
+        throw new Error(json.message || "Erreur inconnue");
       }
-
-      try {
-        const res = await fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          body: formData,
-        });
-        const json = await res.json();
-
-        if (json.success) {
-          form.style.display = "none";
-          successEl.classList.remove("hidden");
-          successEl.scrollIntoView({ behavior: "smooth", block: "center" });
-        } else {
-          throw new Error(json.message || "Erreur inconnue");
-        }
-      } catch (err) {
-        submitBtn.disabled = false;
-        submitLabel.textContent = "Envoyer ma demande";
-        submitSpinner.classList.add("hidden");
-        submitArrow.classList.remove("hidden");
-        errorEl.classList.remove("hidden");
-        errorEl.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
-    });
+    } catch (err) {
+      restoreSubmit();
+      errorEl.classList.remove("hidden");
+      errorEl.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
   }
+
+  function restoreSubmit() {
+    if (!submitBtn) return;
+    submitBtn.disabled = false;
+    submitLabel.textContent = "Envoyer ma demande";
+    submitSpinner.classList.add("hidden");
+    submitArrow.classList.remove("hidden");
+  }
+
+  form?.addEventListener("submit", submitForm);
+  skipBtn?.addEventListener("click", submitForm);
 </script>

@@ -2,14 +2,17 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CTA from "../components/CTA.astro";
 import PuissanceCalculator from "../components/PuissanceCalculator.astro";
+import MiniComparateur from "../components/MiniComparateur.astro";
+import Faq from "../components/Faq.astro";
 
 const modeles = [
   {
     nom: "Godin Petit Carvin",
     puissance: "5 kW",
     surface: "30-50 m²",
-    rendement: "78%",
+    rendement: "78 %",
     style: "Traditionnel fonte",
+    ideal: "Salon ou pièce à vivre compacte",
     image: "/images/installations/129.webp",
     desc: "Compact et performant, idéal en chauffage d'appoint ou pour petite pièce à vivre. Fabrication française, fonte massive.",
   },
@@ -17,8 +20,9 @@ const modeles = [
     nom: "Godin Brive",
     puissance: "7 kW",
     surface: "50-80 m²",
-    rendement: "80%",
+    rendement: "80 %",
     style: "Classique",
+    ideal: "Séjour de pavillon moyen",
     image: "/images/installations/123.webp",
     desc: "Polyvalent, design intemporel. Excellent rapport puissance/encombrement pour les pièces à vivre moyennes.",
   },
@@ -26,17 +30,20 @@ const modeles = [
     nom: "Godin Mielan",
     puissance: "8 kW",
     surface: "70-100 m²",
-    rendement: "80%",
+    rendement: "80 %",
     style: "Contemporain",
+    ideal: "Intérieurs design, pièces ouvertes",
     image: "/images/installations/130.webp",
     desc: "Lignes modernes, vitre panoramique généreuse. La référence pour les intérieurs design.",
+    best: true,
   },
   {
     nom: "Godin Grand Bois",
     puissance: "10 kW",
     surface: "90-140 m²",
-    rendement: "78%",
+    rendement: "78 %",
     style: "Traditionnel",
+    ideal: "Chauffage principal pavillon, maison ancienne",
     image: "/images/installations/137.webp",
     desc: "Forte capacité de chauffe, autonomie longue. Recommandé en chauffage principal pour pavillon ou maison ancienne.",
   },
@@ -44,8 +51,9 @@ const modeles = [
     nom: "Godin Grand Carvin",
     puissance: "13 kW",
     surface: "130-180 m²",
-    rendement: "78%",
+    rendement: "78 %",
     style: "Traditionnel",
+    ideal: "Très grands volumes, longère, pièces ouvertes",
     image: "/images/installations/145.webp",
     desc: "Très grandes surfaces ou pièces ouvertes, foyer profond pour bûches 50 cm. Combustion longue durée.",
   },
@@ -53,10 +61,65 @@ const modeles = [
     nom: "Godin Cube",
     puissance: "8 kW",
     surface: "70-100 m²",
-    rendement: "82%",
+    rendement: "82 %",
     style: "Design",
+    ideal: "Intérieurs minimalistes contemporains",
     image: "/images/installations/147.webp",
     desc: "Forme géométrique épurée, dessus chauffant. Pour intérieurs minimalistes exigeants.",
+  },
+];
+
+const trioComparateur = [
+  {
+    nom: "Godin Petit Carvin",
+    niveau: "Entrée de gamme",
+    puissance: "5 kW",
+    surface: "30-50 m²",
+    rendement: "78 %",
+    ideal: "Petite pièce ou chauffage d'appoint",
+    image: "/images/installations/129.webp",
+  },
+  {
+    nom: "Godin Mielan",
+    niveau: "Milieu de gamme",
+    puissance: "8 kW",
+    surface: "70-100 m²",
+    rendement: "80 %",
+    ideal: "Séjour de pavillon, intérieur contemporain",
+    image: "/images/installations/130.webp",
+    best: true,
+  },
+  {
+    nom: "Godin Grand Carvin",
+    niveau: "Haut de gamme",
+    puissance: "13 kW",
+    surface: "130-180 m²",
+    rendement: "78 %",
+    ideal: "Grand pavillon, longère, pièce ouverte",
+    image: "/images/installations/145.webp",
+  },
+];
+
+const faqBois = [
+  {
+    q: "Combien de bois je vais brûler par hiver ?",
+    a: "Comptez 3 à 6 stères de bois sec par hiver pour une maison de 100 m² bien isolée chauffée principalement au poêle, ou 1 à 2 stères pour un chauffage d'appoint. La qualité du bois (essence et humidité < 20 %) est déterminante pour le rendement et la propreté du conduit.",
+  },
+  {
+    q: "Quelle est la durée de vie d'un poêle Godin ?",
+    a: "Un poêle Godin en fonte est conçu pour durer 20 à 30 ans avec un entretien régulier. Certains modèles installés dans les années 90 fonctionnent encore. La fonte ne s'use pas comme l'acier, c'est l'un des arguments historiques de Godin depuis 1840.",
+  },
+  {
+    q: "Quel entretien annuel sur un poêle à bois ?",
+    a: "Un ramonage obligatoire chaque saison (par un professionnel agréé, ~80-100 €), vidange des cendres régulière, vérification des joints de porte et de la vitre. Une révision technique tous les 2-3 ans est recommandée pour les pièces d'usure (joints, déflecteurs).",
+  },
+  {
+    q: "Faut-il du bois sec impérativement ?",
+    a: "Oui — bois sec (humidité < 20 %, soit 18-24 mois de séchage à l'abri) est indispensable. Du bois humide divise le rendement par 2, encrasse le conduit et fait perdre la garantie. Nous vous orientons vers des fournisseurs locaux de confiance lors de l'installation.",
+  },
+  {
+    q: "Mon conduit de cheminée actuel est-il compatible ?",
+    a: "Pas toujours. Nous réalisons un diagnostic du conduit lors de la visite technique : étanchéité, section, hauteur, tirage. Si nécessaire, un tubage inox est posé (compté dans le devis). Pour une maison ancienne, c'est très souvent indispensable et conditionne la sécurité de l'installation.",
   },
 ];
 ---
@@ -65,9 +128,10 @@ const modeles = [
   title="Poêles à bois Godin — Évreux & Normandie"
   description="Découvrez notre gamme de poêles à bois Godin : 6 modèles fabriqués en France, de 5 à 13 kW. Installation par nos équipes, accompagnement MaPrimeRénov' 2026."
 >
-  <section class="bg-gradient-to-br from-ink-900 via-ink-800 to-ink-900 text-white py-20">
+  <section class="bg-gradient-to-br from-ink-900 via-ink-800 to-ink-900 text-white py-16 sm:py-20">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <p class="text-sm font-semibold text-brand-400 uppercase tracking-wider">
+      <p class="text-sm font-semibold text-brand-400 uppercase tracking-wider flex items-center gap-2">
+        <span class="inline-block w-8 h-px bg-brand-500"></span>
         Nos gammes
       </p>
       <h1 class="mt-3 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
@@ -79,15 +143,21 @@ const modeles = [
         équipes vous conseillent le modèle adapté à votre logement et à votre
         besoin de chauffe.
       </p>
+      <p class="mt-6 text-sm text-ink-400">
+        Vous hésitez encore entre bois, granulés ou insert ?{" "}
+        <a href="/#bois-vs-granules" class="text-brand-400 hover:text-brand-300 underline-offset-4 hover:underline font-semibold">
+          Voir le comparatif →
+        </a>
+      </p>
     </div>
   </section>
 
-  <section class="py-20">
+  <section class="py-16 sm:py-20">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {modeles.map((m) => (
           <article class="group rounded-2xl overflow-hidden bg-white border border-ink-100 hover:border-brand-300 hover:shadow-xl transition">
-            <div class="aspect-[4/3] overflow-hidden bg-warm-50">
+            <div class="aspect-[4/3] overflow-hidden bg-warm-50 relative">
               <img
                 src={m.image}
                 alt={`${m.nom} ${m.puissance}`}
@@ -96,6 +166,11 @@ const modeles = [
                 loading="lazy"
                 class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
               />
+              {m.best && (
+                <span class="absolute top-3 left-3 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-brand-500 text-white text-xs font-bold uppercase tracking-wider shadow-md">
+                  ⭐ Bestseller
+                </span>
+              )}
             </div>
             <div class="p-6">
               <div class="flex items-start justify-between gap-2">
@@ -104,21 +179,28 @@ const modeles = [
                   {m.puissance}
                 </span>
               </div>
-              <p class="mt-3 text-ink-600 leading-relaxed">{m.desc}</p>
-              <dl class="mt-5 pt-4 border-t border-ink-100 grid grid-cols-3 gap-2 text-xs">
+              <p class="mt-3 text-ink-600 leading-relaxed text-sm">{m.desc}</p>
+
+              <div class="mt-4 pt-4 border-t border-warm-100">
+                <p class="text-xs uppercase tracking-wider text-ink-500 font-semibold">Idéal pour</p>
+                <p class="mt-1 text-sm text-ink-700 font-medium">{m.ideal}</p>
+              </div>
+
+              <dl class="mt-4 pt-4 border-t border-warm-100 grid grid-cols-3 gap-2 text-xs">
                 <div>
                   <dt class="text-ink-500">Surface</dt>
                   <dd class="font-semibold text-ink-900">{m.surface}</dd>
                 </div>
                 <div>
-                  <dt class="text-ink-500">Rendement</dt>
-                  <dd class="font-semibold text-ink-900">{m.rendement}</dd>
+                  <dt class="text-ink-500 inline-flex items-center gap-0.5">Rendement <span class="text-brand-500" aria-hidden="true">⭐</span></dt>
+                  <dd class="font-semibold text-brand-700">{m.rendement}</dd>
                 </div>
                 <div>
                   <dt class="text-ink-500">Style</dt>
                   <dd class="font-semibold text-ink-900">{m.style}</dd>
                 </div>
               </dl>
+
               <a
                 href="/contact"
                 class="mt-5 inline-flex items-center text-sm font-semibold text-brand-600 hover:text-brand-700 transition"
@@ -132,7 +214,20 @@ const modeles = [
     </div>
   </section>
 
+  <MiniComparateur
+    eyebrow="Aide à la décision"
+    heading="Comparer entrée, milieu et haut de gamme"
+    description="Trois modèles emblématiques de notre catalogue, choisis pour couvrir 90 % des configurations. Hésitez-vous entre les trois ? Notre visite technique tranche selon votre logement."
+    modeles={trioComparateur}
+  />
+
   <PuissanceCalculator />
+
+  <Faq
+    eyebrow="Questions fréquentes — Bois"
+    heading="Ce que les gens nous demandent avant d'acheter un poêle à bois"
+    questions={faqBois}
+  />
 
   <CTA
     heading="Pas sûr du modèle qui vous convient ?"

@@ -2,12 +2,42 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
 import BandeauConfiance from "../components/BandeauConfiance.astro";
-import ServicesEnTroisEtapes from "../components/ServicesEnTroisEtapes.astro";
-import PuissanceCalculator from "../components/PuissanceCalculator.astro";
+import ComparatifBoisGranules from "../components/ComparatifBoisGranules.astro";
+import PourQui from "../components/PourQui.astro";
 import AidesEstimator from "../components/AidesEstimator.astro";
+import PuissanceCalculator from "../components/PuissanceCalculator.astro";
+import ServicesEnTroisEtapes from "../components/ServicesEnTroisEtapes.astro";
 import GalerieTeaser from "../components/GalerieTeaser.astro";
+import Faq from "../components/Faq.astro";
 import Temoignages from "../components/Temoignages.astro";
 import CTA from "../components/CTA.astro";
+
+const faqQuestions = [
+  {
+    q: "Combien de temps faut-il entre le devis et l'allumage ?",
+    a: "Comptez 4 à 8 semaines en moyenne entre la signature du devis et la mise en service, selon la disponibilité du modèle choisi, les éventuels travaux de fumisterie et la période (les délais s'allongent en septembre-octobre, juste avant la saison froide). Notre visite technique gratuite est calée sous 8 jours après votre demande.",
+  },
+  {
+    q: "Bois ou granulés : lequel choisir pour ma maison ?",
+    a: "Le bois est idéal si vous aimez le rituel du feu, avez de l'espace pour stocker des bûches, et cherchez le coût d'usage le plus bas (5-7 ct €/kWh). Les granulés conviennent mieux si vous voulez programmer le chauffage, partir en week-end sereinement, ou si votre logement est bien isolé. Notre conseiller affine selon votre logement lors de la visite technique.",
+  },
+  {
+    q: "Quel entretien prévoir chaque année ?",
+    a: "Pour un poêle à bois : ramonage annuel obligatoire (~80-100 € chez un fumiste agréé), vidange régulière des cendres. Pour un poêle à granulés : ramonage annuel + nettoyage du brûleur tous les 1-2 mois, vidange du bac à cendres environ une fois par mois. Nous formons à l'usage lors de la mise en service.",
+  },
+  {
+    q: "Comment savoir si je suis éligible à MaPrimeRénov' ?",
+    a: "L'éligibilité dépend de votre revenu fiscal de référence et de la composition de votre foyer. Utilisez notre estimateur d'aides ci-dessus pour avoir un montant indicatif en 30 secondes. Si vous nous confiez le chantier, nous montons le dossier complet à votre place — nous avons traité plus de 200 dossiers depuis 2020.",
+  },
+  {
+    q: "Vous intervenez dans quel rayon autour d'Évreux ?",
+    a: "Nos équipes interviennent dans l'Eure (27), la Seine-Maritime (76), l'Eure-et-Loir (28), l'Orne (61) et les Yvelines (78) — partout où nous pouvons assurer une visite technique, une installation propre et un SAV réactif. Si vous êtes proche d'une limite, appelez-nous au 02 32 39 59 00 pour confirmer la couverture.",
+  },
+  {
+    q: "Quelle garantie sur le poêle et l'installation ?",
+    a: "Garantie constructeur Godin sur les pièces (selon modèle, 2 à 5 ans). Notre équipe assure le SAV de l'installation à vie — c'est le bénéfice du modèle « un seul interlocuteur » : la personne qui a posé le poêle est joignable des années plus tard pour l'entretien ou un dépannage.",
+  },
+];
 ---
 
 <BaseLayout
@@ -16,13 +46,16 @@ import CTA from "../components/CTA.astro";
 >
   <Hero />
   <BandeauConfiance />
-  <ServicesEnTroisEtapes />
-  <PuissanceCalculator />
+  <ComparatifBoisGranules />
+  <PourQui />
   <AidesEstimator />
+  <PuissanceCalculator />
+  <ServicesEnTroisEtapes />
   <GalerieTeaser />
+  <Faq questions={faqQuestions} variant="warm" />
   <Temoignages />
   <CTA
-    heading="Votre poêle pour l'hiver prochain, ça se prépare maintenant."
+    heading="Parlons de votre projet."
     description="Visitez notre showroom à Normanville ou demandez un devis personnalisé en 48 h."
     ctaLabel="Demander mon devis"
     ctaHref="/contact"

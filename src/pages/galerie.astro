@@ -3,33 +3,33 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import CTA from "../components/CTA.astro";
 
 const allInstallations = [
-  { src: "/images/installations/123.webp", cat: "bois", desc: "Poêle à bois Godin dans salon contemporain" },
-  { src: "/images/installations/124.webp", cat: "bois", desc: "Installation pavillon Eure" },
-  { src: "/images/installations/125.webp", cat: "granules", desc: "Poêle à granulés blanc" },
-  { src: "/images/installations/126.webp", cat: "cheminee", desc: "Cheminée habillage pierre" },
-  { src: "/images/installations/128.webp", cat: "insert", desc: "Insert dans cheminée existante" },
-  { src: "/images/installations/129.webp", cat: "bois", desc: "Petit poêle à bois pièce à vivre" },
-  { src: "/images/installations/130.webp", cat: "granules", desc: "Poêle à granulés design" },
-  { src: "/images/installations/131.webp", cat: "bois", desc: "Poêle à bois traditionnel" },
-  { src: "/images/installations/137.webp", cat: "insert", desc: "Foyer fermé bois grande vitre" },
-  { src: "/images/installations/145.webp", cat: "bois", desc: "Grand poêle à bois maison ancienne" },
-  { src: "/images/installations/147.webp", cat: "bois", desc: "Poêle Godin Cube" },
-  { src: "/images/installations/148.webp", cat: "insert", desc: "Insert à granulés habillage sur mesure" },
-  { src: "/images/installations/149.webp", cat: "bois", desc: "Poêle bois pavillon" },
-  { src: "/images/installations/150.webp", cat: "granules", desc: "Poêle à granulés salon" },
-  { src: "/images/installations/155.webp", cat: "bois", desc: "Installation bois maison normande" },
-  { src: "/images/installations/164.webp", cat: "granules", desc: "Poêle à granulés Godin Amiel" },
-  { src: "/images/installations/165.webp", cat: "granules", desc: "Poêle granulés grande capacité" },
-  { src: "/images/installations/166.webp", cat: "granules", desc: "Poêle granulés Reggio" },
-  { src: "/images/installations/167.webp", cat: "cheminee", desc: "Cheminée pierre de taille" },
-  { src: "/images/installations/168.webp", cat: "bois", desc: "Poêle à bois pièce à vivre ouverte" },
-  { src: "/images/installations/169.webp", cat: "bois", desc: "Poêle bois rénovation" },
-  { src: "/images/installations/177.webp", cat: "insert", desc: "Insert salon contemporain" },
-  { src: "/images/installations/178.webp", cat: "bois", desc: "Poêle bois traditionnel" },
-  { src: "/images/installations/183.webp", cat: "insert", desc: "Insert design loft" },
-  { src: "/images/installations/196.webp", cat: "bois", desc: "Installation pavillon" },
-  { src: "/images/installations/200.webp", cat: "bois", desc: "Poêle Godin véranda" },
-  { src: "/images/installations/201.webp", cat: "bois", desc: "Poêle bois maison familiale" },
+  { src: "/images/installations/123.webp", cat: "bois", modele: "Godin Mielan", lieu: "Évreux", lien: "/poeles-a-bois" },
+  { src: "/images/installations/124.webp", cat: "bois", modele: "Poêle bois Godin", lieu: "Pavillon Eure", lien: "/poeles-a-bois" },
+  { src: "/images/installations/125.webp", cat: "granules", modele: "Poêle granulés", lieu: "Verneuil-sur-Avre", lien: "/poeles-a-granules" },
+  { src: "/images/installations/126.webp", cat: "cheminee", modele: "Cheminée habillage pierre", lieu: "Pont-Audemer", lien: "/cheminees-inserts" },
+  { src: "/images/installations/128.webp", cat: "insert", modele: "Insert dans cheminée existante", lieu: "Bernay", lien: "/cheminees-inserts" },
+  { src: "/images/installations/129.webp", cat: "bois", modele: "Godin Petit Carvin", lieu: "Petite pièce à vivre", lien: "/poeles-a-bois" },
+  { src: "/images/installations/130.webp", cat: "granules", modele: "Godin Soldano", lieu: "Maison contemporaine", lien: "/poeles-a-granules" },
+  { src: "/images/installations/131.webp", cat: "bois", modele: "Poêle bois traditionnel", lieu: "Maison normande", lien: "/poeles-a-bois" },
+  { src: "/images/installations/137.webp", cat: "insert", modele: "Foyer fermé grande vitre", lieu: "Pavillon Évreux", lien: "/cheminees-inserts" },
+  { src: "/images/installations/145.webp", cat: "bois", modele: "Godin Grand Carvin", lieu: "Longère normande", lien: "/poeles-a-bois" },
+  { src: "/images/installations/147.webp", cat: "bois", modele: "Godin Cube", lieu: "Intérieur design", lien: "/poeles-a-bois" },
+  { src: "/images/installations/148.webp", cat: "insert", modele: "Insert granulés habillage sur mesure", lieu: "Maison rénovée", lien: "/cheminees-inserts" },
+  { src: "/images/installations/149.webp", cat: "bois", modele: "Poêle bois pavillon", lieu: "Pavillon 90 m²", lien: "/poeles-a-bois" },
+  { src: "/images/installations/150.webp", cat: "granules", modele: "Poêle granulés salon", lieu: "Séjour 80 m²", lien: "/poeles-a-granules" },
+  { src: "/images/installations/155.webp", cat: "bois", modele: "Installation bois", lieu: "Maison normande", lien: "/poeles-a-bois" },
+  { src: "/images/installations/164.webp", cat: "granules", modele: "Godin Amiel", lieu: "Pavillon récent", lien: "/poeles-a-granules" },
+  { src: "/images/installations/165.webp", cat: "granules", modele: "Godin Soldano", lieu: "Grand pavillon", lien: "/poeles-a-granules" },
+  { src: "/images/installations/166.webp", cat: "granules", modele: "Godin Reggio", lieu: "Maison familiale", lien: "/poeles-a-granules" },
+  { src: "/images/installations/167.webp", cat: "cheminee", modele: "Cheminée pierre de taille", lieu: "Maison ancienne", lien: "/cheminees-inserts" },
+  { src: "/images/installations/168.webp", cat: "bois", modele: "Poêle bois pièce ouverte", lieu: "Séjour traversant", lien: "/poeles-a-bois" },
+  { src: "/images/installations/169.webp", cat: "bois", modele: "Poêle bois rénovation", lieu: "Maison rénovée", lien: "/poeles-a-bois" },
+  { src: "/images/installations/177.webp", cat: "insert", modele: "Insert salon contemporain", lieu: "Pavillon moderne", lien: "/cheminees-inserts" },
+  { src: "/images/installations/178.webp", cat: "bois", modele: "Poêle bois traditionnel", lieu: "Cottage normand", lien: "/poeles-a-bois" },
+  { src: "/images/installations/183.webp", cat: "insert", modele: "Insert design loft", lieu: "Loft réhabilité", lien: "/cheminees-inserts" },
+  { src: "/images/installations/196.webp", cat: "bois", modele: "Installation pavillon", lieu: "Pavillon Eure", lien: "/poeles-a-bois" },
+  { src: "/images/installations/200.webp", cat: "bois", modele: "Godin véranda", lieu: "Véranda chauffée", lien: "/poeles-a-bois" },
+  { src: "/images/installations/201.webp", cat: "bois", modele: "Poêle bois maison familiale", lieu: "Maison familiale", lien: "/poeles-a-bois" },
 ];
 ---
 
@@ -37,27 +37,26 @@ const allInstallations = [
   title="Galerie de nos installations en Normandie"
   description="Découvrez plus de 27 installations réalisées par nos équipes : poêles à bois, granulés, cheminées et inserts dans l'Eure et la Normandie."
 >
-  <section class="bg-gradient-to-br from-ink-900 via-ink-800 to-ink-900 text-white py-16">
+  <section class="bg-gradient-to-br from-ink-900 via-ink-800 to-ink-900 text-white py-12 sm:py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h1 class="text-4xl sm:text-5xl font-bold tracking-tight">
+      <p class="text-sm font-semibold text-brand-400 uppercase tracking-wider flex items-center gap-2">
+        <span class="inline-block w-8 h-px bg-brand-500"></span>
+        Nos réalisations
+      </p>
+      <h1 class="mt-3 text-4xl sm:text-5xl font-bold tracking-tight">
         Galerie de nos installations
       </h1>
       <p class="mt-4 text-lg text-ink-300 max-w-3xl">
-        Voici un aperçu des installations réalisées ces dernières années chez nos clients en Normandie. Chaque projet est unique — le nôtre est de l'adapter au vôtre.
+        Plus de 27 installations réalisées par nos équipes ces dernières années en Eure, Seine-Maritime et alentours. Cliquez sur une image pour voir la gamme du modèle utilisé.
       </p>
     </div>
   </section>
 
-  <section class="py-12">
+  <section class="py-10 sm:py-12">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-wrap gap-3 mb-8" role="tablist" aria-label="Filtres">
-        <button
-          type="button"
-          data-filter="all"
-          class="filter-btn px-4 py-2 rounded-full bg-brand-500 text-white text-sm font-semibold transition"
-          aria-pressed="true"
-        >
-          Tout
+      <div class="flex flex-wrap gap-3 mb-8" role="group" aria-label="Filtres par type de produit">
+        <button type="button" data-filter="all" class="filter-btn px-4 py-2 rounded-full bg-brand-500 text-white text-sm font-semibold transition" aria-pressed="true">
+          Tout (27)
         </button>
         <button type="button" data-filter="bois" class="filter-btn px-4 py-2 rounded-full bg-ink-100 text-ink-700 text-sm font-semibold hover:bg-ink-200 transition" aria-pressed="false">
           Poêles à bois
@@ -76,22 +75,53 @@ const allInstallations = [
       <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {
           allInstallations.map((p, i) => (
-            <figure
-              class="gallery-item overflow-hidden rounded-xl bg-white border border-ink-100"
+            <a
+              href={p.lien}
+              class="gallery-item group block overflow-hidden rounded-xl bg-white border border-ink-100 hover:border-brand-300 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               data-cat={p.cat}
+              data-index={i}
             >
-              <img
-                src={p.src}
-                alt={p.desc}
-                width="600"
-                height="450"
-                loading={i < 6 ? "eager" : "lazy"}
-                class="w-full aspect-[4/3] object-cover"
-              />
-              <figcaption class="p-3 text-sm text-ink-600">{p.desc}</figcaption>
-            </figure>
+              <div class="relative aspect-[4/3] overflow-hidden bg-warm-50">
+                <img
+                  src={p.src}
+                  alt={`${p.modele} — ${p.lieu}`}
+                  width="600"
+                  height="450"
+                  loading={i < 6 ? "eager" : "lazy"}
+                  class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-ink-900/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+                <div class="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur text-xs font-semibold text-ink-900 shadow-md">
+                    Voir la gamme →
+                  </span>
+                </div>
+              </div>
+              <div class="p-4">
+                <p class="font-semibold text-ink-900 text-sm">{p.modele}</p>
+                <p class="mt-1 text-xs text-ink-500 inline-flex items-center gap-1">
+                  <svg class="w-3 h-3 text-brand-500" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <path d="M10 2C7 2 5 5 5 8c0 3 1 5 5 10 4-5 5-7 5-10 0-3-2-6-5-6zm0 8a2 2 0 110-4 2 2 0 010 4z"/>
+                  </svg>
+                  {p.lieu}
+                </p>
+              </div>
+            </a>
           ))
         }
+      </div>
+
+      <div id="gallery-load-more" class="mt-10 text-center hidden">
+        <button
+          type="button"
+          id="load-more-btn"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-brand-500 text-white font-semibold hover:bg-brand-600 transition shadow-md"
+        >
+          Voir 12 réalisations de plus
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+          </svg>
+        </button>
       </div>
     </div>
   </section>
@@ -103,13 +133,37 @@ const allInstallations = [
 </BaseLayout>
 
 <script>
-  const buttons = document.querySelectorAll(".filter-btn");
-  const items = document.querySelectorAll(".gallery-item");
+  const PAGE_SIZE = 12;
+  const items = Array.from(document.querySelectorAll<HTMLElement>(".gallery-item"));
+  const buttons = document.querySelectorAll<HTMLButtonElement>(".filter-btn");
+  const loadMoreWrap = document.getElementById("gallery-load-more");
+  const loadMoreBtn = document.getElementById("load-more-btn");
+  let currentFilter = "all";
+  let visibleCount = PAGE_SIZE;
+
+  function applyDisplay() {
+    const matches = items.filter(
+      (item) => currentFilter === "all" || item.dataset.cat === currentFilter,
+    );
+    let shown = 0;
+    items.forEach((item) => {
+      const matched = currentFilter === "all" || item.dataset.cat === currentFilter;
+      if (matched && shown < visibleCount) {
+        item.style.display = "";
+        shown++;
+      } else {
+        item.style.display = "none";
+      }
+    });
+    if (loadMoreWrap) {
+      loadMoreWrap.classList.toggle("hidden", matches.length <= visibleCount);
+    }
+  }
 
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
-      const filter = btn.getAttribute("data-filter");
-
+      currentFilter = btn.dataset.filter ?? "all";
+      visibleCount = PAGE_SIZE;
       buttons.forEach((b) => {
         b.setAttribute("aria-pressed", "false");
         b.classList.remove("bg-brand-500", "text-white");
@@ -118,15 +172,14 @@ const allInstallations = [
       btn.setAttribute("aria-pressed", "true");
       btn.classList.remove("bg-ink-100", "text-ink-700");
       btn.classList.add("bg-brand-500", "text-white");
-
-      items.forEach((item) => {
-        const cat = item.getAttribute("data-cat");
-        if (filter === "all" || cat === filter) {
-          (item as HTMLElement).style.display = "";
-        } else {
-          (item as HTMLElement).style.display = "none";
-        }
-      });
+      applyDisplay();
     });
   });
+
+  loadMoreBtn?.addEventListener("click", () => {
+    visibleCount += PAGE_SIZE;
+    applyDisplay();
+  });
+
+  applyDisplay();
 </script>
