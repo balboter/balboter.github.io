@@ -15,9 +15,10 @@ interface Props {
   heading: string;
   description?: string;
   modeles: Modele[];
+  productType?: string;
 }
 
-const { eyebrow = "Comparer", heading, description, modeles } = Astro.props;
+const { eyebrow = "Comparer", heading, description, modeles, productType = "poele-bois" } = Astro.props;
 ---
 
 <section class="relative py-16 sm:py-20 lg:py-24 bg-warm-50 overflow-hidden">
@@ -82,7 +83,7 @@ const { eyebrow = "Comparer", heading, description, modeles } = Astro.props;
             </dl>
 
             <a
-              href="/contact"
+              href={`/contact?modele=${encodeURIComponent(m.nom)}&type=${productType}`}
               class="mt-5 inline-flex items-center justify-center text-sm font-semibold text-brand-600 hover:text-brand-700 transition"
             >
               Demander un devis sur ce modèle →

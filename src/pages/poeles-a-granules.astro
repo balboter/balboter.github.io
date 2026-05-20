@@ -156,7 +156,7 @@ const faqGranules = [
               </dl>
 
               <a
-                href="/contact"
+                href={`/contact?modele=${encodeURIComponent(m.nom)}&type=poele-granules`}
                 class="mt-5 inline-flex items-center text-sm font-semibold text-brand-600 hover:text-brand-700 transition"
               >
                 Demander un devis sur ce modèle →

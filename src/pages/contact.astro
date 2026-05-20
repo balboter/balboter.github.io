@@ -85,6 +85,21 @@ const timeline = [
         </li>
       </ul>
 
+      <div id="prefill-banner" class="hidden mb-6 max-w-3xl p-4 sm:p-5 bg-brand-50 border-2 border-brand-300 rounded-xl">
+        <div class="flex items-start gap-3">
+          <div class="flex-shrink-0 inline-flex items-center justify-center w-9 h-9 rounded-full bg-brand-500 text-white">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+            </svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm text-ink-700">Vous demandez un devis pour :</p>
+            <p id="prefill-model" class="mt-0.5 text-base sm:text-lg font-bold text-ink-900"></p>
+            <p class="mt-2 text-xs text-ink-600">Vos coordonnées suffisent — nous incluons déjà la référence dans votre demande. <a href="/contact" class="underline hover:text-brand-700">Changer de modèle</a></p>
+          </div>
+        </div>
+      </div>
+
       <p class="text-xs text-ink-500 mb-4">Les champs marqués d'un astérisque (*) sont obligatoires.</p>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
@@ -442,6 +457,55 @@ const timeline = [
   const submitLabel = document.getElementById("submit-label");
   const submitArrow = document.getElementById("submit-arrow");
   const submitSpinner = document.getElementById("submit-spinner");
+  const prefillBanner = document.getElementById("prefill-banner");
+  const prefillModel = document.getElementById("prefill-model");
+
+  // --- Préremplissage depuis URL query string (ex: /contact?modele=Godin+Mielan&type=poele-bois&kw=8) ---
+  (function () {
+    const params = new URLSearchParams(window.location.search);
+    const modele = params.get("modele");
+    const type = params.get("type");
+    const kw = params.get("kw");
+
+    if (modele) {
+      // Bannière visuelle
+      if (prefillBanner && prefillModel) {
+        prefillModel.textContent = modele;
+        prefillBanner.classList.remove("hidden");
+      }
+
+      // Pré-remplir le textarea message + champ caché "modele"
+      const messageEl = document.getElementById("message");
+      if (messageEl) {
+        const kwTxt = kw ? ` (puissance estimée : ${kw} kW)` : "";
+        messageEl.value = `Bonjour, je souhaite un devis pour le modèle ${modele}${kwTxt}. Merci de me recontacter pour préciser les détails.`;
+      }
+
+      // Ajoute le modèle comme champ caché pour qu'il arrive dans le mail
+      const hidden = document.createElement("input");
+      hidden.type = "hidden";
+      hidden.name = "modele_demande";
+      hidden.value = modele + (kw ? ` (~${kw} kW)` : "");
+      form?.appendChild(hidden);
+
+      // Modifie le subject du mail Web3Forms pour qu'il soit identifiable
+      const subjectEl = form?.querySelector('input[name="subject"]');
+      if (subjectEl) {
+        subjectEl.value = `Devis demandé : ${modele} — poelesgodin.fr`;
+      }
+    }
+
+    // Pré-remplir le select type si query param présent
+    if (type) {
+      const typeEl = document.getElementById("type");
+      if (typeEl) {
+        const validTypes = ["poele-bois", "poele-granules", "cheminee", "insert", "cuisiniere", "conseil"];
+        if (validTypes.includes(type)) {
+          typeEl.value = type;
+        }
+      }
+    }
+  })();
 
   function validateStep1() {
     const name = document.getElementById("name");
