@@ -9,20 +9,22 @@ const navLinks = [
 ];
 ---
 
-<header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-ink-100">
+<header class="sticky top-0 z-40 bg-ink-950/95 backdrop-blur border-b border-ink-800">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-20 items-center justify-between gap-4">
-      <a href="/" class="flex items-center gap-3 group">
+      <a href="/" class="flex items-center gap-3 group" aria-label="Accueil — Godin Exclusif Évreux">
         <img
-          src="/images/branding/logo.png"
-          alt="Poêles Godin Évreux"
-          width="48"
-          height="48"
-          class="h-12 w-auto"
+          src="/images/branding/godin-exclusif-sm.webp"
+          alt="Godin Exclusif"
+          width="220"
+          height="147"
+          class="h-14 w-auto"
+          loading="eager"
+          fetchpriority="high"
         />
-        <div class="hidden sm:block leading-tight">
-          <p class="text-lg font-bold text-ink-900">Poêles Godin</p>
-          <p class="text-xs text-ink-500 uppercase tracking-wider">Évreux · depuis 1986</p>
+        <div class="hidden sm:block leading-tight pl-2 border-l border-ink-700">
+          <p class="text-sm font-semibold text-white">Évreux</p>
+          <p class="text-xs text-ink-400 uppercase tracking-wider">depuis 1986</p>
         </div>
       </a>
 
@@ -32,7 +34,7 @@ const navLinks = [
             <li>
               <a
                 href={link.href}
-                class="text-sm font-medium text-ink-700 hover:text-brand-500 transition"
+                class="text-sm font-medium text-ink-200 hover:text-brand-400 transition"
               >
                 {link.label}
               </a>
@@ -44,7 +46,7 @@ const navLinks = [
       <div class="hidden md:flex items-center gap-3">
         <a
           href="tel:+33232395900"
-          class="text-sm font-semibold text-ink-700 hover:text-brand-500 transition"
+          class="text-sm font-semibold text-white hover:text-brand-400 transition"
         >
           02 32 39 59 00
         </a>
@@ -58,7 +60,7 @@ const navLinks = [
 
       <button
         type="button"
-        class="lg:hidden p-2 -mr-2"
+        class="lg:hidden p-2 -mr-2 text-white"
         aria-label="Ouvrir le menu"
         id="mobile-menu-toggle"
       >
@@ -78,16 +80,16 @@ const navLinks = [
           <li>
             <a
               href={link.href}
-              class="block py-2.5 px-2 text-base font-medium text-ink-700 hover:text-brand-500 hover:bg-warm-50 rounded"
+              class="block py-2.5 px-2 text-base font-medium text-ink-200 hover:text-brand-400 hover:bg-ink-800 rounded"
             >
               {link.label}
             </a>
           </li>
         ))}
-        <li class="mt-3 pt-3 border-t border-ink-100">
+        <li class="mt-3 pt-3 border-t border-ink-800">
           <a
             href="tel:+33232395900"
-            class="block py-2.5 px-2 text-base font-semibold text-ink-700"
+            class="block py-2.5 px-2 text-base font-semibold text-white"
           >
             02 32 39 59 00
           </a>
