@@ -1,0 +1,65 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PourQui from "../components/PourQui.astro";
+import ComparatifBoisGranules from "../components/ComparatifBoisGranules.astro";
+import Faq from "../components/Faq.astro";
+import CTA from "../components/CTA.astro";
+
+const faqChoix = [
+  {
+    q: "Bois ou granulés : lequel est le plus économique à l'usage ?",
+    a: "Le bois reste le moins cher en €/kWh (5-7 cts) à condition d'acheter du bois sec et bien stocké. Les granulés sont à 7-8 cts/kWh mais avec une autonomie et un confort largement supérieurs. Sur 10 ans d'usage, la différence économique est faible — le choix se fait surtout sur le confort souhaité.",
+  },
+  {
+    q: "Mon habitation peut-elle accueillir un poêle ?",
+    a: "Quasiment toutes les maisons individuelles peuvent recevoir un poêle, à condition de disposer d'un conduit de fumée (existant ou à créer en tubage inox). Pour un appartement, il faut vérifier le règlement de copropriété et le conduit de cheminée disponible. Notre visite technique gratuite tranche en 30 min.",
+  },
+  {
+    q: "Quelle puissance choisir pour ma surface ?",
+    a: "Règle simple : ~1 kW pour 10 m² en maison bien isolée (RT 2012+), ~1 kW pour 7 m² en isolation moyenne, ~1 kW pour 5 m² en maison ancienne mal isolée. Pour 100 m² bien isolés, comptez 8-10 kW. Nos pages produits ont un calculateur précis.",
+  },
+  {
+    q: "Insert ou poêle indépendant : comment choisir ?",
+    a: "Insert si vous avez déjà une cheminée maçonnée à valoriser (préserve le caractère ancien, intégration discrète). Poêle indépendant si vous partez de zéro, voulez la puissance maximale, ou préférez l'esthétique fonte traditionnelle. Notre conseiller tranche selon votre logement lors de la visite.",
+  },
+  {
+    q: "Combien coûte une installation complète ?",
+    a: "Tout dépend du modèle, de la complexité du conduit et de l'éventuel habillage. Comptez généralement entre 2 500 € et 6 000 € installation incluse, avant déduction des aides MaPrimeRénov' et CEE qui peuvent couvrir 40 à 50 % du montant. Devis chiffré sous 48 h après visite technique gratuite.",
+  },
+];
+---
+
+<BaseLayout
+  title="Quel poêle choisir pour ma maison ? — Guide complet"
+  description="Bois, granulés ou insert : comparatif clair, auto-guide selon votre situation, FAQ détaillée. Trouvez la bonne solution de chauffage pour votre logement en Normandie."
+>
+  <section class="bg-gradient-to-br from-ink-900 via-ink-800 to-ink-900 text-white py-16 sm:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <p class="text-sm font-semibold text-brand-400 uppercase tracking-wider flex items-center gap-2">
+        <span class="inline-block w-8 h-px bg-brand-500"></span>
+        Guide complet
+      </p>
+      <h1 class="mt-3 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+        Quel poêle pour ma maison ?
+      </h1>
+      <p class="mt-6 text-lg sm:text-xl text-ink-300 max-w-3xl leading-relaxed">
+        Trois familles de produits, des usages bien différents. Ce guide vous aide à vous positionner en 5 minutes — sans jargon, sans pression commerciale.
+      </p>
+    </div>
+  </section>
+
+  <PourQui />
+  <ComparatifBoisGranules />
+  <Faq
+    eyebrow="Questions fréquentes"
+    heading="Les bonnes questions avant de choisir"
+    questions={faqChoix}
+    variant="warm"
+  />
+
+  <CTA
+    heading="Un projet précis en tête ?"
+    description="Notre conseiller vient chez vous pour étudier votre logement et vous orienter vers la bonne solution. Visite technique gratuite, sans engagement."
+    ctaLabel="Demander une visite"
+  />
+</BaseLayout>
