@@ -1,0 +1,74 @@
+---
+const stats = [
+  { value: "39 ans", label: "d'expertise locale" },
+  { value: "500+", label: "installations réalisées" },
+  { value: "48 h", label: "pour votre devis" },
+];
+---
+
+<section class="relative isolate overflow-hidden bg-gradient-to-br from-ink-900 via-ink-800 to-ink-900">
+  <div
+    class="absolute inset-0 opacity-20"
+    style="background-image: radial-gradient(circle at 20% 50%, rgba(241,123,0,0.4) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(241,123,0,0.2) 0%, transparent 50%);"
+  >
+  </div>
+
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="lg:col-span-7">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-500/15 border border-brand-500/30 mb-6">
+          <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+          <span class="text-sm font-medium text-brand-400">Revendeur officiel Godin depuis 1986</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.1]">
+          Le seul interlocuteur, <br class="hidden sm:inline" />
+          <span class="text-brand-400">du conseil à l'allumage.</span>
+        </h1>
+
+        <p class="mt-6 text-lg sm:text-xl text-ink-300 leading-relaxed max-w-2xl">
+          Vente, installation et SAV de poêles à bois, à granulés, cheminées et inserts. Nos équipes interviennent dans l'Eure et en Normandie, avec accompagnement MaPrimeRénov' 2026 inclus.
+        </p>
+
+        <div class="mt-10 flex flex-col sm:flex-row gap-4">
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center px-8 py-4 rounded-md bg-brand-500 text-white font-semibold hover:bg-brand-600 transition shadow-lg shadow-brand-500/30"
+          >
+            Demander un devis gratuit
+          </a>
+          <a
+            href="#simulateur-puissance"
+            class="inline-flex items-center justify-center px-8 py-4 rounded-md bg-white/10 text-white font-semibold hover:bg-white/15 transition border border-white/20"
+          >
+            Calculer ma puissance
+          </a>
+        </div>
+
+        <dl class="mt-12 grid grid-cols-3 gap-6 max-w-lg">
+          {stats.map((stat) => (
+            <div>
+              <dt class="text-xs text-ink-400 uppercase tracking-wider">{stat.label}</dt>
+              <dd class="mt-1 text-2xl sm:text-3xl font-bold text-white">{stat.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <div class="lg:col-span-5">
+        <div class="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/10">
+          <img
+            src="/images/installations/200.webp"
+            alt="Poêle Godin installé dans un salon contemporain en Normandie"
+            width="800"
+            height="1000"
+            class="w-full h-full object-cover"
+            loading="eager"
+            fetchpriority="high"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-ink-900/50 via-transparent to-transparent"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

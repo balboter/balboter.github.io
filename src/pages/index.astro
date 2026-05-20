@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import BandeauConfiance from "../components/BandeauConfiance.astro";
+import ServicesEnTroisEtapes from "../components/ServicesEnTroisEtapes.astro";
+import PuissanceCalculator from "../components/PuissanceCalculator.astro";
+import AidesEstimator from "../components/AidesEstimator.astro";
+import GalerieTeaser from "../components/GalerieTeaser.astro";
+import Temoignages from "../components/Temoignages.astro";
+import CTA from "../components/CTA.astro";
+---
+
+<BaseLayout
+  title="Poêles Godin Évreux"
+  description="Revendeur officiel Godin depuis 1986. Vente et installation de poêles à bois, à granulés, cheminées et inserts dans l'Eure et en Normandie. Devis gratuit en 48h, accompagnement MaPrimeRénov' 2026 inclus."
+>
+  <Hero />
+  <BandeauConfiance />
+  <ServicesEnTroisEtapes />
+  <PuissanceCalculator />
+  <AidesEstimator />
+  <GalerieTeaser />
+  <Temoignages />
+  <CTA
+    heading="Prêt à choisir votre poêle ?"
+    description="Visitez notre showroom à Normanville ou demandez un devis personnalisé en 48 h."
+    ctaLabel="Demander mon devis"
+    ctaHref="/contact"
+  />
+</BaseLayout>

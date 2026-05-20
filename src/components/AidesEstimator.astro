@@ -1,0 +1,205 @@
+---
+/*
+  Barèmes MaPrimeRénov' 2026 — à vérifier sur france-renov.gouv.fr le jour du déploiement.
+  Valeurs ci-dessous basées sur la grille publique 2026 (janvier 2026).
+  Zones :
+    - Bleu : Île-de-France (revenus très modestes : ≤ 23 768 € / modestes : ≤ 28 933 € / intermédiaires : ≤ 40 404 €)
+    - Jaune/Violet/Rose : autres régions (≤ 17 173 / ≤ 22 015 / ≤ 30 844 €)
+*/
+---
+
+<section class="py-20 lg:py-24 bg-gradient-to-b from-white to-warm-50">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl">
+      <p class="text-sm font-semibold text-brand-500 uppercase tracking-wider">
+        MaPrimeRénov' 2026 + CEE
+      </p>
+      <h2 class="mt-2 text-3xl sm:text-4xl font-bold tracking-tight text-ink-900">
+        Quelles aides pour mon projet ?
+      </h2>
+      <p class="mt-4 text-lg text-ink-600 leading-relaxed">
+        Estimez le montant des aides publiques mobilisables sur votre installation. Nous nous occupons ensuite du dossier administratif.
+      </p>
+    </div>
+
+    <div class="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <form id="aides-form" class="space-y-6 p-8 bg-white rounded-2xl shadow-lg border border-ink-100">
+        <div>
+          <label for="composition" class="block text-sm font-semibold text-ink-900">
+            Composition du foyer
+          </label>
+          <select
+            id="composition"
+            name="composition"
+            class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500 outline-none bg-white"
+          >
+            <option value="1">1 personne</option>
+            <option value="2">2 personnes</option>
+            <option value="3" selected>3 personnes</option>
+            <option value="4">4 personnes</option>
+            <option value="5">5 personnes et plus</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="revenu" class="block text-sm font-semibold text-ink-900">
+            Revenu fiscal de référence annuel (€)
+          </label>
+          <input
+            type="number"
+            id="revenu"
+            name="revenu"
+            min="0"
+            step="500"
+            value="28000"
+            required
+            class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500 outline-none"
+          />
+          <p class="mt-1 text-xs text-ink-500">
+            Indiqué sur votre dernier avis d'imposition.
+          </p>
+        </div>
+
+        <div>
+          <label for="appareil" class="block text-sm font-semibold text-ink-900">
+            Type d'appareil envisagé
+          </label>
+          <select
+            id="appareil"
+            name="appareil"
+            class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500 outline-none bg-white"
+          >
+            <option value="bois" selected>Poêle à bois</option>
+            <option value="granules">Poêle à granulés</option>
+            <option value="insert-bois">Insert ou foyer fermé bois</option>
+            <option value="insert-granules">Insert à granulés</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="zone" class="block text-sm font-semibold text-ink-900">
+            Localisation
+          </label>
+          <select
+            id="zone"
+            name="zone"
+            class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500 outline-none bg-white"
+          >
+            <option value="autre" selected>Eure / Normandie / hors Île-de-France</option>
+            <option value="idf">Île-de-France</option>
+          </select>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full inline-flex items-center justify-center px-6 py-4 rounded-md bg-brand-500 text-white font-semibold hover:bg-brand-600 transition shadow-md"
+        >
+          Estimer mes aides
+        </button>
+      </form>
+
+      <div id="aides-result" class="hidden">
+        <div class="p-8 rounded-2xl bg-gradient-to-br from-brand-500 to-brand-700 text-white">
+          <p class="text-sm text-brand-100 uppercase tracking-wider font-semibold">
+            Aides estimées totales
+          </p>
+          <p class="mt-2 text-5xl font-bold">
+            ~ <span id="aides-total">2 100</span> €
+          </p>
+          <p class="mt-3 text-brand-100 text-sm">
+            Soit environ <span id="aides-pourcentage">38</span> % du budget moyen d'installation.
+          </p>
+        </div>
+
+        <ul class="mt-6 space-y-3">
+          <li class="flex justify-between p-4 bg-white rounded-lg border border-ink-100">
+            <div>
+              <p class="font-semibold text-ink-900">MaPrimeRénov' 2026</p>
+              <p class="text-xs text-ink-500">Tranche <span id="aides-tranche">Modeste</span></p>
+            </div>
+            <p class="font-bold text-brand-600">
+              ~ <span id="aides-mpr">1 500</span> €
+            </p>
+          </li>
+          <li class="flex justify-between p-4 bg-white rounded-lg border border-ink-100">
+            <div>
+              <p class="font-semibold text-ink-900">CEE (Coup de pouce chauffage)</p>
+              <p class="text-xs text-ink-500">Cumulable avec MaPrimeRénov'</p>
+            </div>
+            <p class="font-bold text-brand-600">
+              ~ <span id="aides-cee">600</span> €
+            </p>
+          </li>
+        </ul>
+
+        <p class="mt-4 text-xs text-ink-500 leading-relaxed">
+          Cette estimation est indicative. Le montant définitif dépend de votre situation exacte et des barèmes en vigueur au moment de la demande. Nous vous accompagnons gratuitement dans le montage du dossier.
+        </p>
+
+        <a
+          href="/contact"
+          class="mt-6 inline-flex items-center justify-center w-full px-6 py-3 rounded-md bg-ink-900 text-white font-semibold hover:bg-ink-800 transition"
+        >
+          Demander un devis avec aides chiffrées
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  const aidesForm = document.getElementById("aides-form");
+
+  function getTranche(revenu, composition, zone) {
+    const tranches = zone === "idf"
+      ? { tresModeste: [23768, 34884, 41893, 48914, 55961], modeste: [28933, 42463, 50970, 59480, 68003], intermediaire: [40404, 59394, 71060, 83637, 95758] }
+      : { tresModeste: [17173, 25115, 30206, 35285, 40388], modeste: [22015, 32197, 38719, 45234, 51775], intermediaire: [30844, 45340, 54592, 63844, 73098] };
+
+    const idx = Math.min(composition - 1, 4);
+    if (revenu <= tranches.tresModeste[idx]) return "tresModeste";
+    if (revenu <= tranches.modeste[idx]) return "modeste";
+    if (revenu <= tranches.intermediaire[idx]) return "intermediaire";
+    return "superieur";
+  }
+
+  const baremes = {
+    bois: { tresModeste: 1250, modeste: 1000, intermediaire: 500, superieur: 0 },
+    granules: { tresModeste: 1500, modeste: 1200, intermediaire: 800, superieur: 0 },
+    "insert-bois": { tresModeste: 1250, modeste: 1000, intermediaire: 500, superieur: 0 },
+    "insert-granules": { tresModeste: 1500, modeste: 1200, intermediaire: 800, superieur: 0 },
+  };
+
+  const trancheLabels = {
+    tresModeste: "Très modeste",
+    modeste: "Modeste",
+    intermediaire: "Intermédiaire",
+    superieur: "Supérieur",
+  };
+
+  if (aidesForm) {
+    aidesForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const revenu = parseFloat(document.getElementById("revenu").value);
+      const composition = parseInt(document.getElementById("composition").value);
+      const appareil = document.getElementById("appareil").value;
+      const zone = document.getElementById("zone").value;
+
+      const tranche = getTranche(revenu, composition, zone);
+      const mpr = baremes[appareil][tranche];
+      const cee = tranche === "superieur" ? 400 : tranche === "intermediaire" ? 500 : 800;
+      const total = mpr + cee;
+      const budgetMoyen = 5500;
+      const pourcentage = Math.round((total / budgetMoyen) * 100);
+
+      document.getElementById("aides-total").textContent = total.toLocaleString("fr-FR");
+      document.getElementById("aides-mpr").textContent = mpr.toLocaleString("fr-FR");
+      document.getElementById("aides-cee").textContent = cee.toLocaleString("fr-FR");
+      document.getElementById("aides-tranche").textContent = trancheLabels[tranche];
+      document.getElementById("aides-pourcentage").textContent = pourcentage;
+
+      const result = document.getElementById("aides-result");
+      result.classList.remove("hidden");
+      result.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+  }
+</script>

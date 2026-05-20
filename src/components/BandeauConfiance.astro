@@ -1,0 +1,23 @@
+---
+const certifications = [
+  { label: "Capital 2020-2021", sub: "Meilleure enseigne poêles à bois" },
+  { label: "Flamme Verte", sub: "Label environnemental" },
+  { label: "AFNOR", sub: "Certification qualité" },
+  { label: "Revendeur officiel", sub: "Godin · depuis 1986" },
+];
+---
+
+<section class="bg-warm-50 border-y border-ink-100">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+    <ul class="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8">
+      {
+        certifications.map((c) => (
+          <li class="text-center">
+            <p class="text-sm sm:text-base font-bold text-ink-900">{c.label}</p>
+            <p class="mt-1 text-xs text-ink-500">{c.sub}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

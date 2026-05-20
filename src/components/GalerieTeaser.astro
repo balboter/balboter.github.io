@@ -1,0 +1,54 @@
+---
+const photos = [
+  { src: "/images/installations/123.webp", alt: "Poêle Godin installé dans un salon contemporain" },
+  { src: "/images/installations/126.webp", alt: "Cheminée moderne avec habillage pierre" },
+  { src: "/images/installations/130.webp", alt: "Poêle à granulés blanc dans pièce à vivre" },
+  { src: "/images/installations/137.webp", alt: "Insert intégré dans rénovation traditionnelle" },
+  { src: "/images/installations/164.webp", alt: "Poêle à bois dans maison normande" },
+  { src: "/images/installations/200.webp", alt: "Installation Godin dans véranda" },
+];
+---
+
+<section class="py-20 lg:py-24 bg-ink-50">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
+      <div>
+        <p class="text-sm font-semibold text-brand-500 uppercase tracking-wider">
+          Nos réalisations
+        </p>
+        <h2 class="mt-2 text-3xl sm:text-4xl font-bold tracking-tight text-ink-900">
+          Plus de 500 installations en Normandie
+        </h2>
+        <p class="mt-4 text-lg text-ink-600 max-w-2xl">
+          Chaque projet est unique. Voici quelques installations réalisées par nos équipes ces dernières années.
+        </p>
+      </div>
+      <a
+        href="/galerie"
+        class="inline-flex items-center font-semibold text-brand-600 hover:text-brand-700 transition whitespace-nowrap"
+      >
+        Voir toute la galerie →
+      </a>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+      {
+        photos.map((p, i) => (
+          <a
+            href="/galerie"
+            class="group relative aspect-square overflow-hidden rounded-xl bg-white"
+          >
+            <img
+              src={p.src}
+              alt={p.alt}
+              width="500"
+              height="500"
+              loading={i < 3 ? "eager" : "lazy"}
+              class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+            />
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,52 @@
+---
+const steps = [
+  {
+    num: "01",
+    title: "Visite technique gratuite",
+    description:
+      "Nous nous déplaçons chez vous pour étudier votre logement, votre conduit, votre besoin de chauffe. Sans engagement, sans frais.",
+  },
+  {
+    num: "02",
+    title: "Devis personnalisé sous 48 h",
+    description:
+      "Vous recevez un devis détaillé : modèle, puissance, installation, fumisterie, accompagnement MaPrimeRénov' chiffré.",
+  },
+  {
+    num: "03",
+    title: "Installation par nos équipes",
+    description:
+      "Nos installateurs salariés interviennent, raccordent, mettent en service et vous forment. SAV interne à vie.",
+  },
+];
+---
+
+<section class="py-20 lg:py-24 bg-white">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl">
+      <p class="text-sm font-semibold text-brand-500 uppercase tracking-wider">
+        Comment on travaille
+      </p>
+      <h2 class="mt-2 text-3xl sm:text-4xl font-bold tracking-tight text-ink-900">
+        Un seul interlocuteur, du premier appel jusqu'au SAV
+      </h2>
+      <p class="mt-4 text-lg text-ink-600 leading-relaxed">
+        Pas d'intermédiaire, pas de sous-traitance. Nos équipes prennent en charge l'intégralité du projet — c'est ce qui fait la différence depuis 1986.
+      </p>
+    </div>
+
+    <ol class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+      {
+        steps.map((step) => (
+          <li class="relative p-8 rounded-2xl bg-warm-50 border border-warm-100">
+            <div class="absolute -top-4 -left-2 px-4 py-1 rounded bg-brand-500 text-white text-sm font-bold">
+              {step.num}
+            </div>
+            <h3 class="mt-2 text-xl font-bold text-ink-900">{step.title}</h3>
+            <p class="mt-3 text-ink-600 leading-relaxed">{step.description}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

@@ -1,0 +1,132 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CTA from "../components/CTA.astro";
+
+const allInstallations = [
+  { src: "/images/installations/123.webp", cat: "bois", desc: "Poêle à bois Godin dans salon contemporain" },
+  { src: "/images/installations/124.webp", cat: "bois", desc: "Installation pavillon Eure" },
+  { src: "/images/installations/125.webp", cat: "granules", desc: "Poêle à granulés blanc" },
+  { src: "/images/installations/126.webp", cat: "cheminee", desc: "Cheminée habillage pierre" },
+  { src: "/images/installations/128.webp", cat: "insert", desc: "Insert dans cheminée existante" },
+  { src: "/images/installations/129.webp", cat: "bois", desc: "Petit poêle à bois pièce à vivre" },
+  { src: "/images/installations/130.webp", cat: "granules", desc: "Poêle à granulés design" },
+  { src: "/images/installations/131.webp", cat: "bois", desc: "Poêle à bois traditionnel" },
+  { src: "/images/installations/137.webp", cat: "insert", desc: "Foyer fermé bois grande vitre" },
+  { src: "/images/installations/145.webp", cat: "bois", desc: "Grand poêle à bois maison ancienne" },
+  { src: "/images/installations/147.webp", cat: "bois", desc: "Poêle Godin Cube" },
+  { src: "/images/installations/148.webp", cat: "insert", desc: "Insert à granulés habillage sur mesure" },
+  { src: "/images/installations/149.webp", cat: "bois", desc: "Poêle bois pavillon" },
+  { src: "/images/installations/150.webp", cat: "granules", desc: "Poêle à granulés salon" },
+  { src: "/images/installations/155.webp", cat: "bois", desc: "Installation bois maison normande" },
+  { src: "/images/installations/164.webp", cat: "granules", desc: "Poêle à granulés Godin Amiel" },
+  { src: "/images/installations/165.webp", cat: "granules", desc: "Poêle granulés grande capacité" },
+  { src: "/images/installations/166.webp", cat: "granules", desc: "Poêle granulés Reggio" },
+  { src: "/images/installations/167.webp", cat: "cheminee", desc: "Cheminée pierre de taille" },
+  { src: "/images/installations/168.webp", cat: "bois", desc: "Poêle à bois pièce à vivre ouverte" },
+  { src: "/images/installations/169.webp", cat: "bois", desc: "Poêle bois rénovation" },
+  { src: "/images/installations/177.webp", cat: "insert", desc: "Insert salon contemporain" },
+  { src: "/images/installations/178.webp", cat: "bois", desc: "Poêle bois traditionnel" },
+  { src: "/images/installations/183.webp", cat: "insert", desc: "Insert design loft" },
+  { src: "/images/installations/196.webp", cat: "bois", desc: "Installation pavillon" },
+  { src: "/images/installations/200.webp", cat: "bois", desc: "Poêle Godin véranda" },
+  { src: "/images/installations/201.webp", cat: "bois", desc: "Poêle bois maison familiale" },
+];
+---
+
+<BaseLayout
+  title="Galerie de nos installations en Normandie"
+  description="Découvrez plus de 27 installations réalisées par nos équipes : poêles à bois, granulés, cheminées et inserts dans l'Eure et la Normandie."
+>
+  <section class="bg-gradient-to-br from-ink-900 via-ink-800 to-ink-900 text-white py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h1 class="text-4xl sm:text-5xl font-bold tracking-tight">
+        Galerie de nos installations
+      </h1>
+      <p class="mt-4 text-lg text-ink-300 max-w-3xl">
+        Voici un aperçu des installations réalisées ces dernières années chez nos clients en Normandie. Chaque projet est unique — le nôtre est de l'adapter au vôtre.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-12">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap gap-3 mb-8" role="tablist" aria-label="Filtres">
+        <button
+          type="button"
+          data-filter="all"
+          class="filter-btn px-4 py-2 rounded-full bg-brand-500 text-white text-sm font-semibold transition"
+          aria-pressed="true"
+        >
+          Tout
+        </button>
+        <button type="button" data-filter="bois" class="filter-btn px-4 py-2 rounded-full bg-ink-100 text-ink-700 text-sm font-semibold hover:bg-ink-200 transition" aria-pressed="false">
+          Poêles à bois
+        </button>
+        <button type="button" data-filter="granules" class="filter-btn px-4 py-2 rounded-full bg-ink-100 text-ink-700 text-sm font-semibold hover:bg-ink-200 transition" aria-pressed="false">
+          Poêles à granulés
+        </button>
+        <button type="button" data-filter="insert" class="filter-btn px-4 py-2 rounded-full bg-ink-100 text-ink-700 text-sm font-semibold hover:bg-ink-200 transition" aria-pressed="false">
+          Inserts
+        </button>
+        <button type="button" data-filter="cheminee" class="filter-btn px-4 py-2 rounded-full bg-ink-100 text-ink-700 text-sm font-semibold hover:bg-ink-200 transition" aria-pressed="false">
+          Cheminées
+        </button>
+      </div>
+
+      <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {
+          allInstallations.map((p, i) => (
+            <figure
+              class="gallery-item overflow-hidden rounded-xl bg-white border border-ink-100"
+              data-cat={p.cat}
+            >
+              <img
+                src={p.src}
+                alt={p.desc}
+                width="600"
+                height="450"
+                loading={i < 6 ? "eager" : "lazy"}
+                class="w-full aspect-[4/3] object-cover"
+              />
+              <figcaption class="p-3 text-sm text-ink-600">{p.desc}</figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <CTA
+    heading="Envie d'une installation comme celles-ci ?"
+    description="Nous nous déplaçons gratuitement pour étudier votre projet. Devis personnalisé sous 48 h."
+  />
+</BaseLayout>
+
+<script>
+  const buttons = document.querySelectorAll(".filter-btn");
+  const items = document.querySelectorAll(".gallery-item");
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const filter = btn.getAttribute("data-filter");
+
+      buttons.forEach((b) => {
+        b.setAttribute("aria-pressed", "false");
+        b.classList.remove("bg-brand-500", "text-white");
+        b.classList.add("bg-ink-100", "text-ink-700");
+      });
+      btn.setAttribute("aria-pressed", "true");
+      btn.classList.remove("bg-ink-100", "text-ink-700");
+      btn.classList.add("bg-brand-500", "text-white");
+
+      items.forEach((item) => {
+        const cat = item.getAttribute("data-cat");
+        if (filter === "all" || cat === filter) {
+          (item as HTMLElement).style.display = "";
+        } else {
+          (item as HTMLElement).style.display = "none";
+        }
+      });
+    });
+  });
+</script>

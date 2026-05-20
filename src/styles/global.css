@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+/* THEME A — Identité actuelle modernisée (orange feu + bronze + crème + noir) */
+
+@theme {
+  --color-brand-50: #fefaed;
+  --color-brand-100: #fdf3d5;
+  --color-brand-200: #fad2a8;
+  --color-brand-300: #f5b67e;
+  --color-brand-400: #f39653;
+  --color-brand-500: #f17b00;
+  --color-brand-600: #d56a00;
+  --color-brand-700: #b25700;
+  --color-brand-800: #8a4500;
+  --color-brand-900: #5a2d00;
+  --color-brand-950: #2e1700;
+
+  --color-ink-50: #fafafa;
+  --color-ink-100: #f4f4f4;
+  --color-ink-200: #e4e4e4;
+  --color-ink-300: #bfbfbf;
+  --color-ink-400: #8a8a8a;
+  --color-ink-500: #545454;
+  --color-ink-600: #3d3d3d;
+  --color-ink-700: #282828;
+  --color-ink-800: #1a1a1a;
+  --color-ink-900: #111111;
+  --color-ink-950: #000000;
+
+  --color-warm-50: #fefaed;
+  --color-warm-100: #fdf3d5;
+
+  --color-bronze: #bea571;
+
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Inter", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-ink-800);
+    background-color: white;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-500);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  img,
+  picture,
+  svg,
+  video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}

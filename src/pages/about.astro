@@ -1,0 +1,95 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CTA from "../components/CTA.astro";
+import Temoignages from "../components/Temoignages.astro";
+
+const milestones = [
+  { year: "1986", event: "Création de Loisirs Habitat Diffusion à Normanville (27)." },
+  { year: "1992", event: "Premier référencement comme revendeur officiel Godin." },
+  { year: "2008", event: "Extension du showroom et constitution de l'équipe d'installateurs salariés." },
+  { year: "2020", event: "Distinction « Meilleure enseigne poêles à bois » par le magazine Capital (palmarès 2020-2021)." },
+  { year: "2026", event: "Plus de 500 installations à notre actif en Normandie." },
+];
+---
+
+<BaseLayout
+  title="Notre histoire — 39 ans d'expertise Godin"
+  description="Loisirs Habitat Diffusion : revendeur officiel Godin depuis 1986. Magasin à Normanville (Eure), équipe d'installateurs salariés, accompagnement complet du conseil au SAV."
+>
+  <section class="bg-gradient-to-br from-ink-900 via-ink-800 to-ink-900 text-white py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <p class="text-sm font-semibold text-brand-400 uppercase tracking-wider">
+        Notre maison
+      </p>
+      <h1 class="mt-3 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+        39 ans d'expertise<br />au service du feu.
+      </h1>
+      <p class="mt-6 text-lg sm:text-xl text-ink-300 max-w-3xl leading-relaxed">
+        Loisirs Habitat Diffusion, c'est une histoire de famille démarrée en 1986
+        à Normanville, dans l'Eure. Revendeur officiel Godin depuis nos débuts,
+        nous avons accompagné des centaines de foyers normands dans le choix,
+        l'installation et l'entretien de leur poêle ou cheminée.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-20">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 prose prose-lg">
+      <h2>Pourquoi Godin ?</h2>
+      <p>
+        Fondée en 1840 par Jean-Baptiste André Godin à Guise dans l'Aisne, Godin
+        est la <strong>seule entreprise française à produire sa propre fonte</strong>
+        sur ses deux sites de Guise et Liévin. Près de 200 ans d'expertise, une
+        intégration verticale unique, et un savoir-faire qui se transmet de
+        génération en génération : c'est ce qui nous a convaincus dès 1986
+        d'être leur ambassadeur en Normandie.
+      </p>
+
+      <h2>Notre différence : un seul interlocuteur, du début à la fin</h2>
+      <p>
+        Nous ne sous-traitons rien. Nos conseillers, nos installateurs et notre
+        SAV sont salariés de l'entreprise. Quand vous nous confiez votre projet,
+        vous parlez à la même équipe pendant toute la durée du chantier — et
+        après, pour l'entretien.
+      </p>
+      <p>
+        Cette continuité, c'est l'engagement qualité que nos clients
+        reconnaissent. Et c'est aussi ce qui a valu à notre enseigne la
+        distinction <strong>« Meilleure enseigne poêles à bois » par le magazine
+        Capital</strong> au palmarès 2020-2021.
+      </p>
+
+      <h2>Notre zone d'intervention</h2>
+      <p>
+        Magasin et showroom à <strong>Normanville</strong>, à 10 minutes
+        d'Évreux. Nous intervenons dans l'Eure (27), la Seine-Maritime (76),
+        l'Eure-et-Loir (28), l'Orne (61), et les Yvelines (78) — partout où il
+        nous est possible d'assurer une visite technique, une installation
+        propre et un SAV réactif.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-20 bg-warm-50">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink-900">
+        Quelques dates
+      </h2>
+      <ol class="mt-10 space-y-6">
+        {milestones.map((m) => (
+          <li class="flex gap-6 items-start">
+            <span class="flex-shrink-0 w-20 text-2xl font-bold text-brand-500">{m.year}</span>
+            <p class="text-lg text-ink-700 leading-relaxed">{m.event}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <Temoignages />
+
+  <CTA
+    heading="Venez nous rencontrer"
+    description="Notre showroom à Normanville expose une vingtaine de modèles en fonctionnement. Pas besoin de rendez-vous, mais on conseille d'appeler avant pour s'assurer qu'un conseiller soit disponible."
+  />
+</BaseLayout>

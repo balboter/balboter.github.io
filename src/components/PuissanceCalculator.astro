@@ -1,0 +1,160 @@
+---
+const modelesGodin = [
+  { kw: 5, nom: "Godin Petit Carvin", desc: "Compact et performant pour pièce à vivre", surface: "30-50 m²", image: "/images/installations/129.webp" },
+  { kw: 7, nom: "Godin Brive", desc: "Polyvalent, esthétique fonte traditionnelle", surface: "50-80 m²", image: "/images/installations/123.webp" },
+  { kw: 8, nom: "Godin Mielan", desc: "Design contemporain, rendement 80%", surface: "70-100 m²", image: "/images/installations/130.webp" },
+  { kw: 10, nom: "Godin Grand Bois", desc: "Haute puissance, chauffage principal", surface: "90-140 m²", image: "/images/installations/137.webp" },
+  { kw: 13, nom: "Godin Grand Carvin", desc: "Très grands volumes, longues flambées", surface: "130-180 m²", image: "/images/installations/145.webp" },
+];
+---
+
+<section id="simulateur-puissance" class="py-20 lg:py-24 bg-gradient-to-b from-warm-50 to-white">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl">
+      <p class="text-sm font-semibold text-brand-500 uppercase tracking-wider">
+        Outil gratuit
+      </p>
+      <h2 class="mt-2 text-3xl sm:text-4xl font-bold tracking-tight text-ink-900">
+        Quel poêle pour ma maison ?
+      </h2>
+      <p class="mt-4 text-lg text-ink-600 leading-relaxed">
+        Renseignez votre surface, la hauteur sous plafond et le niveau d'isolation. Nous vous indiquons la puissance optimale et 3 modèles Godin adaptés.
+      </p>
+    </div>
+
+    <div class="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <form id="puissance-form" class="space-y-6 p-8 bg-white rounded-2xl shadow-lg border border-ink-100">
+        <div>
+          <label for="surface" class="block text-sm font-semibold text-ink-900">
+            Surface à chauffer (m²)
+          </label>
+          <input
+            type="number"
+            id="surface"
+            name="surface"
+            min="10"
+            max="500"
+            value="80"
+            required
+            class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500 outline-none"
+          />
+        </div>
+
+        <div>
+          <label for="hauteur" class="block text-sm font-semibold text-ink-900">
+            Hauteur sous plafond (m)
+          </label>
+          <select
+            id="hauteur"
+            name="hauteur"
+            class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500 outline-none bg-white"
+          >
+            <option value="2.4">2,40 m (standard moderne)</option>
+            <option value="2.5" selected>2,50 m (standard)</option>
+            <option value="2.7">2,70 m</option>
+            <option value="3">3 m (ancien)</option>
+            <option value="3.5">3,50 m et plus</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="isolation" class="block text-sm font-semibold text-ink-900">
+            Niveau d'isolation
+          </label>
+          <select
+            id="isolation"
+            name="isolation"
+            class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500 outline-none bg-white"
+          >
+            <option value="0.6">Excellente (RT2012 ou rénovation récente)</option>
+            <option value="1" selected>Moyenne (RT2005, après 1990)</option>
+            <option value="1.5">Faible (maison ancienne, avant 1980)</option>
+            <option value="2">Très faible (passoire thermique)</option>
+          </select>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full inline-flex items-center justify-center px-6 py-4 rounded-md bg-brand-500 text-white font-semibold hover:bg-brand-600 transition shadow-md"
+        >
+          Calculer la puissance recommandée
+        </button>
+      </form>
+
+      <div id="puissance-result" class="hidden">
+        <div class="p-8 rounded-2xl bg-ink-900 text-white">
+          <p class="text-sm text-brand-400 uppercase tracking-wider font-semibold">
+            Puissance recommandée
+          </p>
+          <p class="mt-2 text-5xl font-bold">
+            <span id="kw-result">8</span> kW
+          </p>
+          <p class="mt-3 text-ink-300 text-sm">
+            Soit un poêle de <span id="kw-min">7</span> à <span id="kw-max">10</span> kW selon le modèle et le rendement.
+          </p>
+        </div>
+
+        <p class="mt-6 text-sm font-semibold text-ink-700 uppercase tracking-wider">
+          Nos 3 modèles Godin recommandés
+        </p>
+        <div id="models-list" class="mt-3 space-y-3"></div>
+
+        <a
+          href="/contact"
+          class="mt-6 inline-flex items-center justify-center w-full px-6 py-3 rounded-md bg-brand-500 text-white font-semibold hover:bg-brand-600 transition"
+        >
+          Demander un devis sur ces modèles
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline define:vars={{ modelesGodin }}>
+  const form = document.getElementById("puissance-form");
+  const result = document.getElementById("puissance-result");
+  const kwResult = document.getElementById("kw-result");
+  const kwMin = document.getElementById("kw-min");
+  const kwMax = document.getElementById("kw-max");
+  const modelsList = document.getElementById("models-list");
+
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const surface = parseFloat(document.getElementById("surface").value);
+      const hauteur = parseFloat(document.getElementById("hauteur").value);
+      const coefIso = parseFloat(document.getElementById("isolation").value);
+
+      const volume = surface * hauteur;
+      const kw = (volume * coefIso) / 22;
+      const rounded = Math.round(kw * 10) / 10;
+
+      kwResult.textContent = rounded;
+      kwMin.textContent = Math.round(kw - 1);
+      kwMax.textContent = Math.round(kw + 2);
+
+      const matches = modelesGodin
+        .map((m) => ({ ...m, diff: Math.abs(m.kw - kw) }))
+        .sort((a, b) => a.diff - b.diff)
+        .slice(0, 3);
+
+      modelsList.innerHTML = matches
+        .map(
+          (m) => `
+        <div class="flex gap-4 p-4 bg-white rounded-lg border border-ink-100 hover:border-brand-300 transition">
+          <img src="${m.image}" alt="${m.nom}" width="80" height="80" loading="lazy" class="w-20 h-20 rounded object-cover flex-shrink-0" />
+          <div class="flex-1 min-w-0">
+            <p class="font-bold text-ink-900">${m.nom}</p>
+            <p class="text-sm text-ink-600 mt-0.5">${m.desc}</p>
+            <p class="text-xs text-brand-600 font-semibold mt-1">${m.kw} kW · ${m.surface}</p>
+          </div>
+        </div>
+      `,
+        )
+        .join("");
+
+      result.classList.remove("hidden");
+      result.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+  }
+</script>

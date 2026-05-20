@@ -1,0 +1,106 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  canonicalURL?: string;
+  schema?: object;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  image = "/og-default.jpg",
+  canonicalURL = Astro.url.href,
+  schema,
+  noindex = false,
+} = Astro.props;
+
+const siteName = "Poêles Godin Évreux";
+const fullTitle = title === siteName ? title : `${title} | ${siteName}`;
+
+const defaultSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.poelesgodin.fr/#organization",
+  name: "Loisirs Habitat Diffusion — Poêles Godin",
+  alternateName: "Poêles Godin Évreux",
+  url: "https://www.poelesgodin.fr",
+  logo: "https://www.poelesgodin.fr/images/branding/logo.png",
+  telephone: "+33 2 32 39 59 00",
+  email: "contact@poelesgodin.fr",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Centre commercial Caer",
+    addressLocality: "Normanville",
+    postalCode: "27930",
+    addressRegion: "Normandie",
+    addressCountry: "FR",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: "49.0345",
+    longitude: "1.1845",
+  },
+  founder: "Julien Verger",
+  foundingDate: "1986",
+  description:
+    "Revendeur officiel Godin depuis 1986. Vente et installation de poêles à bois, à granulés, cheminées, inserts et cuisinières dans l'Eure et en Normandie.",
+  areaServed: ["27", "76", "28", "61", "78"],
+};
+---
+
+<!doctype html>
+<html lang="fr-FR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="/images/branding/logo.png" />
+    <meta name="generator" content={Astro.generator} />
+    {noindex && <meta name="robots" content="noindex,nofollow" />}
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.url).toString()} />
+    <meta property="og:url" content={canonicalURL} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, Astro.url).toString()} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(schema ?? defaultSchema)} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-white focus:px-4 focus:py-2 focus:rounded focus:shadow-lg"
+    >
+      Aller au contenu principal
+    </a>
+    <Header />
+    <main id="main" class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
