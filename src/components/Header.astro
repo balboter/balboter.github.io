@@ -11,7 +11,7 @@ const navLinks = [
 
 <header class="sticky top-0 z-40 bg-ink-950/95 backdrop-blur border-b border-ink-800">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="flex h-24 items-center justify-between gap-4">
+    <div class="relative flex h-24 items-center justify-center md:justify-between gap-4">
       <a href="/" class="flex items-center gap-3 group" aria-label="Accueil — Godin Exclusif Évreux">
         <img
           src="/images/branding/godin-exclusif-sm.png"
@@ -57,7 +57,7 @@ const navLinks = [
 
       <button
         type="button"
-        class="lg:hidden flex items-center justify-center w-12 h-12 -mr-1 text-white rounded hover:bg-ink-800 transition"
+        class="absolute right-0 top-1/2 -translate-y-1/2 md:static md:translate-y-0 lg:hidden flex items-center justify-center w-12 h-12 text-white rounded hover:bg-ink-800 transition"
         aria-label="Ouvrir le menu"
         aria-expanded="false"
         aria-controls="mobile-menu"
