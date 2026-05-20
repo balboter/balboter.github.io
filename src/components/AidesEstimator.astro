@@ -1,29 +1,84 @@
 ---
 /*
   Barèmes MaPrimeRénov' 2026 — à vérifier sur france-renov.gouv.fr le jour du déploiement.
-  Valeurs ci-dessous basées sur la grille publique 2026 (janvier 2026).
-  Zones :
-    - Bleu : Île-de-France (revenus très modestes : ≤ 23 768 € / modestes : ≤ 28 933 € / intermédiaires : ≤ 40 404 €)
-    - Jaune/Violet/Rose : autres régions (≤ 17 173 / ≤ 22 015 / ≤ 30 844 €)
 */
 ---
 
-<section class="py-20 lg:py-24 bg-gradient-to-b from-white to-warm-50">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<section class="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-white to-warm-50 overflow-hidden">
+  <div class="absolute right-0 top-0 w-1/3 h-full opacity-[0.05] pointer-events-none" aria-hidden="true" style="background-image: radial-gradient(circle at right center, #f17b00 0%, transparent 60%);"></div>
+
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="max-w-3xl">
-      <p class="text-sm font-semibold text-brand-500 uppercase tracking-wider">
+      <p class="text-sm font-semibold text-brand-500 uppercase tracking-wider flex items-center gap-2">
+        <span class="inline-block w-8 h-px bg-brand-500"></span>
         MaPrimeRénov' 2026 + CEE
       </p>
-      <h2 class="mt-2 text-3xl sm:text-4xl font-bold tracking-tight text-ink-900">
-        Combien l'État paie sur votre poêle ?
+      <h2 class="mt-3 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-ink-900 leading-tight">
+        Combien <span class="text-brand-500">l'État paie</span> sur votre poêle ?
       </h2>
-      <p class="mt-4 text-lg text-ink-600 leading-relaxed">
+      <p class="mt-4 text-base sm:text-lg text-ink-600 leading-relaxed">
         Estimez les aides publiques mobilisables sur votre installation. Si vous nous confiez le chantier, le dossier administratif, nous le montons pour vous.
       </p>
     </div>
 
-    <div class="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-10">
-      <form id="aides-form" class="space-y-6 p-8 bg-white rounded-2xl shadow-lg border border-ink-100">
+    <div class="mt-10 sm:mt-12 grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-10">
+      <div class="lg:col-span-2 order-2 lg:order-1">
+        <div class="relative h-full min-h-[400px] rounded-2xl overflow-hidden bg-gradient-to-br from-brand-500 via-brand-600 to-brand-800 text-white shadow-xl shadow-brand-500/20">
+          <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 30% 30%, white 0%, transparent 50%);"></div>
+          <div class="relative h-full flex flex-col justify-between p-6 sm:p-8">
+            <div>
+              <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur border border-white/25 mb-4">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span class="text-xs font-semibold">Aides 2026 réouvertes</span>
+              </div>
+              <p class="text-sm font-semibold uppercase tracking-wider text-white/80">Jusqu'à</p>
+              <p class="mt-1 text-5xl sm:text-6xl font-bold leading-none">
+                2 400 €
+              </p>
+              <p class="mt-3 text-white/90 text-sm leading-relaxed">
+                cumulables sur l'installation d'un poêle à granulés en foyer modeste, hors Île-de-France.
+              </p>
+            </div>
+
+            <div class="mt-6 space-y-3">
+              <div class="flex items-center justify-between p-3 rounded-lg bg-white/10 backdrop-blur border border-white/15">
+                <div>
+                  <p class="text-xs uppercase tracking-wider text-white/70">MaPrimeRénov'</p>
+                  <p class="text-lg font-bold">jusqu'à 1 500 €</p>
+                </div>
+                <svg class="w-6 h-6 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                </svg>
+              </div>
+              <div class="flex items-center justify-between p-3 rounded-lg bg-white/10 backdrop-blur border border-white/15">
+                <div>
+                  <p class="text-xs uppercase tracking-wider text-white/70">CEE chauffage</p>
+                  <p class="text-lg font-bold">jusqu'à 800 €</p>
+                </div>
+                <svg class="w-6 h-6 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form id="aides-form" class="lg:col-span-3 order-1 lg:order-2 space-y-5 p-6 sm:p-8 bg-white rounded-2xl shadow-xl shadow-ink-900/5 border border-warm-100">
+        <div class="flex items-center gap-3 pb-4 border-b border-warm-100">
+          <div class="flex-shrink-0 inline-flex items-center justify-center w-10 h-10 rounded-lg bg-brand-500 text-white">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-ink-900">Votre situation</p>
+            <p class="text-xs text-ink-500">4 champs · estimation instantanée</p>
+          </div>
+        </div>
+
         <div>
           <label for="composition" class="block text-sm font-semibold text-ink-900">
             Composition du foyer
@@ -31,7 +86,7 @@
           <select
             id="composition"
             name="composition"
-            class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500 outline-none bg-white"
+            class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none bg-white transition"
           >
             <option value="1">1 personne</option>
             <option value="2">2 personnes</option>
@@ -53,7 +108,7 @@
             step="500"
             value="28000"
             required
-            class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500 outline-none"
+            class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none transition"
           />
           <p class="mt-1 text-xs text-ink-500">
             Indiqué sur votre dernier avis d'imposition.
@@ -67,7 +122,7 @@
           <select
             id="appareil"
             name="appareil"
-            class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500 outline-none bg-white"
+            class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none bg-white transition"
           >
             <option value="bois" selected>Poêle à bois</option>
             <option value="granules">Poêle à granulés</option>
@@ -83,7 +138,7 @@
           <select
             id="zone"
             name="zone"
-            class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500 outline-none bg-white"
+            class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none bg-white transition"
           >
             <option value="autre" selected>Eure / Normandie / hors Île-de-France</option>
             <option value="idf">Île-de-France</option>
@@ -92,53 +147,65 @@
 
         <button
           type="submit"
-          class="w-full inline-flex items-center justify-center px-6 py-4 rounded-md bg-brand-500 text-white font-semibold hover:bg-brand-600 transition shadow-md"
+          class="group w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-md bg-brand-500 text-white font-semibold hover:bg-brand-600 transition-all shadow-md hover:shadow-lg hover:shadow-brand-500/30"
         >
           Estimer mes aides
+          <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 5l7 7-7 7M5 12h15"/>
+          </svg>
         </button>
       </form>
+    </div>
 
-      <div id="aides-result" class="hidden">
-        <div class="p-8 rounded-2xl bg-gradient-to-br from-brand-500 to-brand-700 text-white">
+    <div id="aides-result" class="hidden mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="lg:col-span-1 p-8 rounded-2xl bg-gradient-to-br from-brand-500 to-brand-700 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at top right, white 0%, transparent 50%);"></div>
+        <div class="relative">
           <p class="text-sm text-brand-100 uppercase tracking-wider font-semibold">
-            Aides estimées totales
+            Vos aides estimées
           </p>
-          <p class="mt-2 text-5xl font-bold">
-            ~ <span id="aides-total">2 100</span> €
+          <p class="mt-2 text-5xl sm:text-6xl font-bold">
+            ~ <span id="aides-total">2 100</span> <span class="text-3xl">€</span>
           </p>
           <p class="mt-3 text-brand-100 text-sm">
-            Soit environ <span id="aides-pourcentage">38</span> % du budget moyen d'installation.
+            Soit environ <span id="aides-pourcentage" class="font-bold text-white">38</span> % du budget moyen d'installation.
           </p>
         </div>
+      </div>
 
-        <ul class="mt-6 space-y-3">
-          <li class="flex justify-between p-4 bg-white rounded-lg border border-ink-100">
+      <div class="lg:col-span-2 space-y-3">
+        <div class="flex items-center justify-between p-5 bg-white rounded-lg border border-ink-100 shadow-sm">
+          <div class="flex items-center gap-4">
+            <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-brand-100 text-brand-600 flex items-center justify-center font-bold">M</div>
             <div>
               <p class="font-semibold text-ink-900">MaPrimeRénov' 2026</p>
               <p class="text-xs text-ink-500">Tranche <span id="aides-tranche">Modeste</span></p>
             </div>
-            <p class="font-bold text-brand-600">
-              ~ <span id="aides-mpr">1 500</span> €
-            </p>
-          </li>
-          <li class="flex justify-between p-4 bg-white rounded-lg border border-ink-100">
+          </div>
+          <p class="font-bold text-brand-600 text-lg">
+            ~ <span id="aides-mpr">1 500</span> €
+          </p>
+        </div>
+        <div class="flex items-center justify-between p-5 bg-white rounded-lg border border-ink-100 shadow-sm">
+          <div class="flex items-center gap-4">
+            <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-brand-100 text-brand-600 flex items-center justify-center font-bold">C</div>
             <div>
-              <p class="font-semibold text-ink-900">CEE (Coup de pouce chauffage)</p>
+              <p class="font-semibold text-ink-900">CEE chauffage</p>
               <p class="text-xs text-ink-500">Cumulable avec MaPrimeRénov'</p>
             </div>
-            <p class="font-bold text-brand-600">
-              ~ <span id="aides-cee">600</span> €
-            </p>
-          </li>
-        </ul>
+          </div>
+          <p class="font-bold text-brand-600 text-lg">
+            ~ <span id="aides-cee">600</span> €
+          </p>
+        </div>
 
-        <p class="mt-4 text-xs text-ink-500 leading-relaxed">
-          Cette estimation est indicative. Le montant définitif dépend de votre situation exacte et des barèmes en vigueur au moment de la demande. Nous vous accompagnons gratuitement dans le montage du dossier.
+        <p class="pt-2 text-xs text-ink-500 leading-relaxed">
+          Cette estimation est indicative. Le montant définitif dépend de votre situation exacte et des barèmes en vigueur au moment de la demande.
         </p>
 
         <a
           href="/contact"
-          class="mt-6 inline-flex items-center justify-center w-full px-6 py-3 rounded-md bg-ink-900 text-white font-semibold hover:bg-ink-800 transition"
+          class="mt-2 inline-flex items-center justify-center w-full px-6 py-3 rounded-md bg-ink-900 text-white font-semibold hover:bg-ink-800 transition shadow-md"
         >
           Demander un devis avec aides chiffrées
         </a>

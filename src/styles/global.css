@@ -38,8 +38,13 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
 
   body {
@@ -69,5 +74,41 @@
   h1, h2, h3, h4 {
     font-family: var(--font-display);
     letter-spacing: -0.02em;
+  }
+
+  /* Padding bottom mobile pour ne pas masquer le contenu sous la sticky CTA bar */
+  @media (max-width: 1023px) {
+    main {
+      padding-bottom: 0;
+    }
+    footer {
+      padding-bottom: 5rem;
+    }
+  }
+}
+
+/* Reveal-on-scroll : animation subtile pour les sections */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 0.7s ease-out,
+      transform 0.7s ease-out;
+  }
+
+  .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation badge "Revendeur officiel" — glow subtil */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(241, 123, 0, 0);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(241, 123, 0, 0.15);
   }
 }

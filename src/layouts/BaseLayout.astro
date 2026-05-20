@@ -6,6 +6,7 @@ import "@fontsource/inter/700.css";
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import StickyMobileCTA from "../components/StickyMobileCTA.astro";
 
 interface Props {
   title: string;
@@ -123,5 +124,6 @@ const defaultSchema = {
       <slot />
     </main>
     <Footer />
+    <StickyMobileCTA />
   </body>
 </html>

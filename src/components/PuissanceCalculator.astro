@@ -8,22 +8,37 @@ const modelesGodin = [
 ];
 ---
 
-<section id="simulateur-puissance" class="py-20 lg:py-24 bg-gradient-to-b from-warm-50 to-white">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<section id="simulateur-puissance" class="relative py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-warm-50 to-white overflow-hidden">
+  <div class="absolute left-0 top-0 w-1/3 h-full opacity-[0.05] pointer-events-none" aria-hidden="true" style="background-image: radial-gradient(circle at left center, #f17b00 0%, transparent 60%);"></div>
+
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="max-w-3xl">
-      <p class="text-sm font-semibold text-brand-500 uppercase tracking-wider">
+      <p class="text-sm font-semibold text-brand-500 uppercase tracking-wider flex items-center gap-2">
+        <span class="inline-block w-8 h-px bg-brand-500"></span>
         Outil gratuit
       </p>
-      <h2 class="mt-2 text-3xl sm:text-4xl font-bold tracking-tight text-ink-900">
-        Quel poêle pour ma maison ?
+      <h2 class="mt-3 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-ink-900 leading-tight">
+        Quel poêle <span class="text-brand-500">pour ma maison ?</span>
       </h2>
-      <p class="mt-4 text-lg text-ink-600 leading-relaxed">
+      <p class="mt-4 text-base sm:text-lg text-ink-600 leading-relaxed">
         Renseignez votre surface, la hauteur sous plafond et le niveau d'isolation. Nous vous indiquons la puissance optimale et 3 modèles Godin adaptés.
       </p>
     </div>
 
-    <div class="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-10">
-      <form id="puissance-form" class="space-y-6 p-8 bg-white rounded-2xl shadow-lg border border-ink-100">
+    <div class="mt-10 sm:mt-12 grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-10">
+      <form id="puissance-form" class="lg:col-span-3 space-y-5 p-6 sm:p-8 bg-white rounded-2xl shadow-xl shadow-ink-900/5 border border-warm-100">
+        <div class="flex items-center gap-3 pb-4 border-b border-warm-100">
+          <div class="flex-shrink-0 inline-flex items-center justify-center w-10 h-10 rounded-lg bg-brand-500 text-white">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-sm font-semibold text-ink-900">Vos paramètres</p>
+            <p class="text-xs text-ink-500">3 champs · résultat instantané</p>
+          </div>
+        </div>
+
         <div>
           <label for="surface" class="block text-sm font-semibold text-ink-900">
             Surface à chauffer (m²)
@@ -36,7 +51,7 @@ const modelesGodin = [
             max="500"
             value="80"
             required
-            class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500 outline-none"
+            class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none transition"
           />
         </div>
 
@@ -47,7 +62,7 @@ const modelesGodin = [
           <select
             id="hauteur"
             name="hauteur"
-            class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500 outline-none bg-white"
+            class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none bg-white transition"
           >
             <option value="2.4">2,40 m (standard moderne)</option>
             <option value="2.5" selected>2,50 m (standard)</option>
@@ -64,7 +79,7 @@ const modelesGodin = [
           <select
             id="isolation"
             name="isolation"
-            class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500 outline-none bg-white"
+            class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none bg-white transition"
           >
             <option value="0.6">Excellente (RT2012 ou rénovation récente)</option>
             <option value="1" selected>Moyenne (RT2005, après 1990)</option>
@@ -75,33 +90,83 @@ const modelesGodin = [
 
         <button
           type="submit"
-          class="w-full inline-flex items-center justify-center px-6 py-4 rounded-md bg-brand-500 text-white font-semibold hover:bg-brand-600 transition shadow-md"
+          class="group w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-md bg-brand-500 text-white font-semibold hover:bg-brand-600 transition-all shadow-md hover:shadow-lg hover:shadow-brand-500/30"
         >
           Calculer ma puissance
+          <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 5l7 7-7 7M5 12h15"/>
+          </svg>
         </button>
       </form>
 
-      <div id="puissance-result" class="hidden">
-        <div class="p-8 rounded-2xl bg-ink-900 text-white">
+      <div class="lg:col-span-2">
+        <div id="puissance-placeholder" class="relative h-full min-h-[400px] rounded-2xl overflow-hidden bg-ink-900">
+          <img
+            src="/images/installations/137.webp"
+            alt=""
+            class="absolute inset-0 w-full h-full object-cover opacity-40"
+            loading="lazy"
+            aria-hidden="true"
+          />
+          <div class="absolute inset-0 bg-gradient-to-br from-ink-900/80 via-ink-900/60 to-ink-900/90"></div>
+          <div class="relative h-full flex flex-col justify-between p-6 sm:p-8 text-white">
+            <div>
+              <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-500/20 border border-brand-500/40 mb-4">
+                <svg class="w-3.5 h-3.5 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                </svg>
+                <span class="text-xs font-medium text-brand-300">Résultat en 5 secondes</span>
+              </div>
+              <h3 class="text-2xl sm:text-3xl font-bold leading-tight">
+                Recevez 3 modèles<br />Godin <span class="text-brand-400">adaptés à votre logement.</span>
+              </h3>
+              <p class="mt-4 text-ink-300 text-sm leading-relaxed">
+                Notre calculateur croise votre surface, hauteur sous plafond et niveau d'isolation pour estimer la puissance idéale, puis sélectionne les modèles correspondants dans notre catalogue.
+              </p>
+            </div>
+            <div class="mt-6 grid grid-cols-3 gap-3">
+              <div class="text-center">
+                <p class="text-2xl font-bold text-brand-400">5</p>
+                <p class="text-xs text-ink-400 mt-0.5">modèles<br />référencés</p>
+              </div>
+              <div class="text-center border-x border-white/10">
+                <p class="text-2xl font-bold text-brand-400">3</p>
+                <p class="text-xs text-ink-400 mt-0.5">suggestions<br />par calcul</p>
+              </div>
+              <div class="text-center">
+                <p class="text-2xl font-bold text-brand-400">0 €</p>
+                <p class="text-xs text-ink-400 mt-0.5">aucun<br />engagement</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="puissance-result" class="hidden mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="lg:col-span-1 p-8 rounded-2xl bg-gradient-to-br from-ink-900 via-ink-800 to-ink-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-30" style="background-image: radial-gradient(circle at top right, rgba(241,123,0,0.6) 0%, transparent 60%);"></div>
+        <div class="relative">
           <p class="text-sm text-brand-400 uppercase tracking-wider font-semibold">
             Puissance recommandée
           </p>
-          <p class="mt-2 text-5xl font-bold">
-            <span id="kw-result">8</span> kW
+          <p class="mt-2 text-5xl sm:text-6xl font-bold">
+            <span id="kw-result">8</span> <span class="text-3xl text-ink-400">kW</span>
           </p>
           <p class="mt-3 text-ink-300 text-sm">
-            Soit un poêle de <span id="kw-min">7</span> à <span id="kw-max">10</span> kW selon le modèle et le rendement.
+            Soit un poêle de <span id="kw-min" class="font-semibold text-white">7</span> à <span id="kw-max" class="font-semibold text-white">10</span> kW selon le modèle et le rendement.
           </p>
         </div>
+      </div>
 
-        <p class="mt-6 text-sm font-semibold text-ink-700 uppercase tracking-wider">
+      <div class="lg:col-span-2">
+        <p class="text-sm font-semibold text-ink-700 uppercase tracking-wider mb-3">
           Nos 3 modèles Godin recommandés
         </p>
-        <div id="models-list" class="mt-3 space-y-3"></div>
-
+        <div id="models-list" class="space-y-3"></div>
         <a
           href="/contact"
-          class="mt-6 inline-flex items-center justify-center w-full px-6 py-3 rounded-md bg-brand-500 text-white font-semibold hover:bg-brand-600 transition"
+          class="mt-5 inline-flex items-center justify-center w-full px-6 py-3 rounded-md bg-brand-500 text-white font-semibold hover:bg-brand-600 transition shadow-md"
         >
           Demander un devis sur ces modèles
         </a>
@@ -112,6 +177,7 @@ const modelesGodin = [
 
 <script is:inline define:vars={{ modelesGodin }}>
   const form = document.getElementById("puissance-form");
+  const placeholder = document.getElementById("puissance-placeholder");
   const result = document.getElementById("puissance-result");
   const kwResult = document.getElementById("kw-result");
   const kwMin = document.getElementById("kw-min");
@@ -141,7 +207,7 @@ const modelesGodin = [
       modelsList.innerHTML = matches
         .map(
           (m) => `
-        <div class="flex gap-4 p-4 bg-white rounded-lg border border-ink-100 hover:border-brand-300 transition">
+        <div class="flex gap-4 p-4 bg-white rounded-lg border border-ink-100 hover:border-brand-300 hover:shadow-md transition-all">
           <img src="${m.image}" alt="${m.nom}" width="80" height="80" loading="lazy" class="w-20 h-20 rounded object-cover flex-shrink-0" />
           <div class="flex-1 min-w-0">
             <p class="font-bold text-ink-900">${m.nom}</p>

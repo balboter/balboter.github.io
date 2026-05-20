@@ -1,0 +1,63 @@
+---
+---
+
+<div
+  id="sticky-mobile-cta"
+  class="lg:hidden fixed bottom-0 left-0 right-0 z-30 px-3 pb-3 pt-2 bg-gradient-to-t from-ink-950/95 via-ink-900/90 to-transparent backdrop-blur-sm transition-transform duration-300 translate-y-full"
+  aria-hidden="true"
+>
+  <div class="grid grid-cols-2 gap-2 max-w-md mx-auto">
+    <a
+      href="tel:+33232395900"
+      class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-md bg-white text-ink-900 font-semibold text-sm shadow-lg"
+    >
+      <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+      </svg>
+      Appeler
+    </a>
+    <a
+      href="/contact"
+      class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-md bg-brand-500 text-white font-semibold text-sm shadow-lg shadow-brand-500/30"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+      </svg>
+      Demander un devis
+    </a>
+  </div>
+</div>
+
+<script is:inline>
+  const cta = document.getElementById("sticky-mobile-cta");
+  if (cta) {
+    let lastY = window.scrollY;
+    let ticking = false;
+
+    function onScroll() {
+      const y = window.scrollY;
+      const showThreshold = 500;
+      const footer = document.querySelector("footer");
+      const footerTop = footer ? footer.getBoundingClientRect().top + window.scrollY : Infinity;
+      const nearFooter = y + window.innerHeight > footerTop - 50;
+
+      if (y > showThreshold && !nearFooter) {
+        cta.classList.remove("translate-y-full");
+        cta.setAttribute("aria-hidden", "false");
+      } else {
+        cta.classList.add("translate-y-full");
+        cta.setAttribute("aria-hidden", "true");
+      }
+
+      lastY = y;
+      ticking = false;
+    }
+
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        window.requestAnimationFrame(onScroll);
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+</script>
