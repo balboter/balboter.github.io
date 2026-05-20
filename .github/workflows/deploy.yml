@@ -37,7 +37,6 @@ jobs:
 
       - name: Build
         env:
-          PUBLIC_USE_BASE_PATH: "1"
           PUBLIC_WEB3FORMS_KEY: ${{ secrets.PUBLIC_WEB3FORMS_KEY }}
         run: pnpm build
 

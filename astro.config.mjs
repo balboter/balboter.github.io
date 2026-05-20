@@ -3,16 +3,10 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
-// PREVIEW : sur GitHub Pages, le site est servi sous /poelesgodin-refonte
-// Quand on bascule sur le vrai domaine (poelesgodin.fr), il suffira d'unsetter "base"
-// et de remettre "site: 'https://www.poelesgodin.fr'"
-const isPreviewOnGitHubPages = process.env.PUBLIC_USE_BASE_PATH === '1';
-
+// Preview phase : sert à la racine de https://balboter.github.io/
+// Quand on bascule sur poelesgodin.fr (mise en prod), changer "site" et c'est tout.
 export default defineConfig({
-  site: isPreviewOnGitHubPages
-    ? 'https://balboter.github.io'
-    : 'https://www.poelesgodin.fr',
-  base: isPreviewOnGitHubPages ? '/poelesgodin-refonte' : undefined,
+  site: 'https://balboter.github.io',
   vite: {
     plugins: [tailwindcss()],
   },
