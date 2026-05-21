@@ -27,3 +27,10 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Documents internes — NE JAMAIS publier sur le repo public
+# (argumentaire commercial, pricing, rétrospective, audits)
+RETROSPECTIVE.md
+email-pour-julien.md
+dossier-strategique.md
+audits/
