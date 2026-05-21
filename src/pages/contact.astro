@@ -95,7 +95,7 @@ const timeline = [
           <div class="flex-1 min-w-0">
             <p class="text-sm text-ink-700">Vous demandez un devis pour :</p>
             <p id="prefill-model" class="mt-0.5 text-base sm:text-lg font-bold text-ink-900"></p>
-            <p class="mt-2 text-xs text-ink-600">Vos coordonnées suffisent — la référence est déjà incluse dans votre demande. Vous pouvez ajouter vos précisions dans le message à l'étape suivante.</p>
+            <p class="mt-2 text-xs text-ink-600">Vos coordonnées suffisent — la référence est déjà incluse dans votre demande. Vous pouvez ajouter vos précisions dans le champ message ci-dessous.</p>
           </div>
         </div>
       </div>
@@ -108,7 +108,7 @@ const timeline = [
             id="contact-form"
             action="https://api.web3forms.com/submit"
             method="POST"
-            class="p-6 sm:p-8 bg-warm-50 rounded-2xl border border-warm-100"
+            class="p-6 sm:p-8 bg-warm-50 rounded-2xl border border-warm-100 space-y-5"
           >
             <input type="hidden" name="access_key" value={accessKey} />
             <input type="hidden" name="subject" value="Nouvelle demande de devis — poelesgodin.fr" />
@@ -116,214 +116,129 @@ const timeline = [
             <input type="hidden" name="redirect" value="false" />
             <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
 
-            <div class="flex items-center justify-between mb-6">
-              <p class="text-sm font-semibold text-ink-900">
-                Étape <span id="step-current">1</span> sur 2
-              </p>
-              <div class="flex gap-2">
-                <span id="dot-1" class="w-8 h-1 rounded-full bg-brand-500 transition-all"></span>
-                <span id="dot-2" class="w-8 h-1 rounded-full bg-ink-200 transition-all"></span>
-              </div>
-            </div>
-
-            <div id="step-1" class="space-y-5">
-              <p class="text-sm text-ink-600 leading-relaxed">
-                Commencez par l'essentiel — vous pourrez préciser ensuite.
-              </p>
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div>
-                  <label for="name" class="block text-sm font-semibold text-ink-900">
-                    Nom complet <span class="text-brand-600" aria-hidden="true">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    aria-required="true"
-                    autocomplete="name"
-                    class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none bg-white transition"
-                  />
-                </div>
-
-                <div>
-                  <label for="email" class="block text-sm font-semibold text-ink-900">
-                    Email <span class="text-brand-600" aria-hidden="true">*</span>
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    aria-required="true"
-                    autocomplete="email"
-                    class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none bg-white transition"
-                  />
-                </div>
-              </div>
-
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
-                <label for="type" class="block text-sm font-semibold text-ink-900">
-                  Type de projet <span class="text-brand-600" aria-hidden="true">*</span>
+                <label for="name" class="block text-sm font-semibold text-ink-900">
+                  Nom complet <span class="text-brand-600" aria-hidden="true">*</span>
                 </label>
-                <select
-                  id="type"
-                  name="type"
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
                   required
                   aria-required="true"
+                  autocomplete="name"
                   class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none bg-white transition"
-                >
-                  <option value="">— Sélectionnez —</option>
-                  <option value="poele-bois">Poêle à bois</option>
-                  <option value="poele-granules">Poêle à granulés</option>
-                  <option value="cheminee">Cheminée</option>
-                  <option value="insert">Insert</option>
-                  <option value="cuisiniere">Cuisinière à bois</option>
-                  <option value="conseil">Conseil / information</option>
-                </select>
-              </div>
-
-              <div class="flex flex-col sm:flex-row gap-3 pt-2">
-                <button
-                  type="button"
-                  id="next-btn"
-                  class="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md bg-brand-500 text-white font-semibold hover:bg-brand-600 transition-all shadow-md hover:shadow-lg"
-                >
-                  Préciser mon projet
-                  <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 5l7 7-7 7M5 12h15"/>
-                  </svg>
-                </button>
-                <button
-                  type="submit"
-                  id="skip-btn"
-                  class="inline-flex items-center justify-center px-6 py-3 rounded-md bg-white text-ink-700 font-semibold hover:bg-warm-50 border border-ink-200 transition"
-                >
-                  Envoyer maintenant
-                </button>
-              </div>
-
-              <p class="text-xs text-ink-500 leading-relaxed pt-1">
-                Plus de détails = devis plus précis. Mais vous pouvez aussi envoyer ces 3 champs, on vous rappelle pour la suite.
-              </p>
-            </div>
-
-            <div id="step-2" class="space-y-5 hidden">
-              <p class="text-sm text-ink-600 leading-relaxed">
-                Ces informations permettent à notre conseiller de préparer un devis chiffré dès le premier appel.
-              </p>
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div>
-                  <label for="tel" class="block text-sm font-semibold text-ink-900">
-                    Téléphone
-                  </label>
-                  <input
-                    type="tel"
-                    id="tel"
-                    name="tel"
-                    autocomplete="tel"
-                    class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none bg-white transition"
-                  />
-                </div>
-
-                <div>
-                  <label for="codepostal" class="block text-sm font-semibold text-ink-900">
-                    Code postal du projet
-                  </label>
-                  <input
-                    type="text"
-                    id="codepostal"
-                    name="codepostal"
-                    pattern="[0-9]{5}"
-                    inputmode="numeric"
-                    autocomplete="postal-code"
-                    class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none bg-white transition"
-                  />
-                </div>
-              </div>
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div>
-                  <label for="surface" class="block text-sm font-semibold text-ink-900">
-                    Surface à chauffer (m²)
-                  </label>
-                  <input
-                    type="number"
-                    id="surface"
-                    name="surface"
-                    min="10"
-                    max="500"
-                    class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none bg-white transition"
-                  />
-                </div>
-
-                <div>
-                  <label for="delai" class="block text-sm font-semibold text-ink-900">
-                    Délai souhaité
-                  </label>
-                  <select
-                    id="delai"
-                    name="delai"
-                    class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none bg-white transition"
-                  >
-                    <option value="">— Sélectionnez —</option>
-                    <option value="urgent">Dès que possible</option>
-                    <option value="3mois">Dans 3 mois</option>
-                    <option value="6mois">Dans 6 mois</option>
-                    <option value="reflexion">En réflexion</option>
-                  </select>
-                </div>
+                />
               </div>
 
               <div>
-                <label for="message" class="block text-sm font-semibold text-ink-900">
-                  Précisez votre projet
+                <label for="email" class="block text-sm font-semibold text-ink-900">
+                  Email <span class="text-brand-600" aria-hidden="true">*</span>
                 </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="4"
-                  placeholder="Type de logement, isolation, contraintes éventuelles, modèle envisagé..."
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  aria-required="true"
+                  autocomplete="email"
                   class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none bg-white transition"
-                ></textarea>
-              </div>
-
-              <p class="text-xs text-ink-600 leading-relaxed">
-                Les informations transmises sont utilisées pour vous recontacter et conservées 3 ans après notre dernier échange. Vous pouvez exercer vos droits via la page{" "}
-                <a href="/politique-de-confidentialite" class="underline text-brand-600 hover:text-brand-700">
-                  Politique de confidentialité
-                </a>.
-              </p>
-
-              <div class="flex flex-col sm:flex-row gap-3 pt-2">
-                <button
-                  type="button"
-                  id="back-btn"
-                  class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md bg-white text-ink-700 font-semibold hover:bg-warm-50 border border-ink-200 transition"
-                >
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M11 19l-7-7 7-7m-7 7h19"/>
-                  </svg>
-                  Retour
-                </button>
-                <button
-                  type="submit"
-                  id="submit-btn"
-                  class="group flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md bg-brand-500 text-white font-semibold hover:bg-brand-600 transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  <span id="submit-label">Envoyer ma demande</span>
-                  <svg id="submit-arrow" class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 5l7 7-7 7M5 12h15"/>
-                  </svg>
-                  <svg id="submit-spinner" class="hidden animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24" aria-hidden="true">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                </button>
+                />
               </div>
             </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label for="tel" class="block text-sm font-semibold text-ink-900">
+                  Téléphone <span class="text-brand-600" aria-hidden="true">*</span>
+                </label>
+                <input
+                  type="tel"
+                  id="tel"
+                  name="tel"
+                  required
+                  aria-required="true"
+                  autocomplete="tel"
+                  class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none bg-white transition"
+                />
+              </div>
+
+              <div>
+                <label for="codepostal" class="block text-sm font-semibold text-ink-900">
+                  Code postal
+                </label>
+                <input
+                  type="text"
+                  id="codepostal"
+                  name="codepostal"
+                  pattern="[0-9]{5}"
+                  inputmode="numeric"
+                  autocomplete="postal-code"
+                  class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none bg-white transition"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label for="type" class="block text-sm font-semibold text-ink-900">
+                Type de projet <span class="text-brand-600" aria-hidden="true">*</span>
+              </label>
+              <select
+                id="type"
+                name="type"
+                required
+                aria-required="true"
+                class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none bg-white transition"
+              >
+                <option value="">— Sélectionnez —</option>
+                <option value="poele-bois">Poêle à bois</option>
+                <option value="poele-granules">Poêle à granulés</option>
+                <option value="cheminee">Cheminée</option>
+                <option value="insert">Insert</option>
+                <option value="cuisiniere">Cuisinière à bois</option>
+                <option value="conseil">Conseil / information</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="message" class="block text-sm font-semibold text-ink-900">
+                Votre message <span class="text-ink-400 font-normal">(facultatif)</span>
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                placeholder="Surface à chauffer, type de logement, délai souhaité, modèle envisagé... Tout détail nous aide à préparer un devis précis."
+                class="mt-2 w-full px-4 py-3 rounded-md border border-ink-200 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 outline-none bg-white transition"
+              ></textarea>
+            </div>
+
+            <p class="text-xs text-ink-600 leading-relaxed">
+              Les informations transmises sont utilisées pour vous recontacter et conservées 3 ans après notre dernier échange. Vous pouvez exercer vos droits via la page{" "}
+              <a href="/politique-de-confidentialite" class="underline text-brand-600 hover:text-brand-700">
+                Politique de confidentialité
+              </a>.
+            </p>
+
+            <button
+              type="submit"
+              id="submit-btn"
+              class="group w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-md bg-brand-500 text-white text-lg font-semibold hover:bg-brand-600 transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <span id="submit-label">Envoyer ma demande</span>
+              <svg id="submit-arrow" class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 5l7 7-7 7M5 12h15"/>
+              </svg>
+              <svg id="submit-spinner" class="hidden animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+            </button>
+
+            <p class="text-center text-sm text-ink-500">
+              Réponse sous 48 h ouvrées · Devis et visite technique gratuits
+            </p>
           </form>
 
           <div id="form-success" class="hidden mt-6 p-6 bg-brand-50 border-2 border-brand-300 rounded-2xl">
@@ -443,14 +358,6 @@ const timeline = [
 
 <script is:inline>
   const form = document.getElementById("contact-form");
-  const step1 = document.getElementById("step-1");
-  const step2 = document.getElementById("step-2");
-  const stepCurrent = document.getElementById("step-current");
-  const dot1 = document.getElementById("dot-1");
-  const dot2 = document.getElementById("dot-2");
-  const nextBtn = document.getElementById("next-btn");
-  const backBtn = document.getElementById("back-btn");
-  const skipBtn = document.getElementById("skip-btn");
   const successEl = document.getElementById("form-success");
   const errorEl = document.getElementById("form-error");
   const submitBtn = document.getElementById("submit-btn");
@@ -468,34 +375,29 @@ const timeline = [
     const kw = params.get("kw");
 
     if (modele) {
-      // Bannière visuelle
       if (prefillBanner && prefillModel) {
         prefillModel.textContent = modele;
         prefillBanner.classList.remove("hidden");
       }
 
-      // Pré-remplir le textarea message + champ caché "modele"
       const messageEl = document.getElementById("message");
       if (messageEl) {
         const kwTxt = kw ? ` (puissance estimée : ${kw} kW)` : "";
         messageEl.value = `Bonjour, je souhaite un devis pour le modèle ${modele}${kwTxt}. Merci de me recontacter pour préciser les détails.`;
       }
 
-      // Ajoute le modèle comme champ caché pour qu'il arrive dans le mail
       const hidden = document.createElement("input");
       hidden.type = "hidden";
       hidden.name = "modele_demande";
       hidden.value = modele + (kw ? ` (~${kw} kW)` : "");
       form?.appendChild(hidden);
 
-      // Modifie le subject du mail Web3Forms pour qu'il soit identifiable
       const subjectEl = form?.querySelector('input[name="subject"]');
       if (subjectEl) {
         subjectEl.value = `Devis demandé : ${modele} — poelesgodin.fr`;
       }
     }
 
-    // Pré-remplir le select type si query param présent
     if (type) {
       const typeEl = document.getElementById("type");
       if (typeEl) {
@@ -507,47 +409,22 @@ const timeline = [
     }
   })();
 
-  function validateStep1() {
-    const name = document.getElementById("name");
-    const email = document.getElementById("email");
-    const type = document.getElementById("type");
-    if (!name.value.trim() || !email.value.trim() || !type.value) {
-      [name, email, type].forEach((f) => {
-        if (!f.value.trim() || (f.tagName === "SELECT" && !f.value)) {
-          f.reportValidity();
-        }
-      });
-      return false;
-    }
-    return true;
+  function restoreSubmit() {
+    if (!submitBtn) return;
+    submitBtn.disabled = false;
+    submitLabel.textContent = "Envoyer ma demande";
+    submitSpinner.classList.add("hidden");
+    submitArrow.classList.remove("hidden");
   }
-
-  function showStep(n) {
-    if (n === 1) {
-      step1.classList.remove("hidden");
-      step2.classList.add("hidden");
-      stepCurrent.textContent = "1";
-      dot1.classList.remove("bg-ink-200");
-      dot1.classList.add("bg-brand-500");
-      dot2.classList.remove("bg-brand-500");
-      dot2.classList.add("bg-ink-200");
-    } else {
-      step1.classList.add("hidden");
-      step2.classList.remove("hidden");
-      stepCurrent.textContent = "2";
-      dot2.classList.remove("bg-ink-200");
-      dot2.classList.add("bg-brand-500");
-    }
-  }
-
-  nextBtn?.addEventListener("click", () => {
-    if (validateStep1()) showStep(2);
-  });
-  backBtn?.addEventListener("click", () => showStep(1));
 
   async function submitForm(e) {
     e.preventDefault();
-    if (!validateStep1()) return;
+
+    // Validation native HTML5 (required sur name, email, tel, type)
+    if (form && !form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
 
     successEl.classList.add("hidden");
     errorEl.classList.add("hidden");
@@ -590,14 +467,5 @@ const timeline = [
     }
   }
 
-  function restoreSubmit() {
-    if (!submitBtn) return;
-    submitBtn.disabled = false;
-    submitLabel.textContent = "Envoyer ma demande";
-    submitSpinner.classList.add("hidden");
-    submitArrow.classList.remove("hidden");
-  }
-
   form?.addEventListener("submit", submitForm);
-  skipBtn?.addEventListener("click", submitForm);
 </script>
