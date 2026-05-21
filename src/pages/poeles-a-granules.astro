@@ -6,36 +6,43 @@ import Faq from "../components/Faq.astro";
 
 const modeles = [
   {
-    nom: "Godin Amiel",
+    nom: "Godin Cassine",
     puissance: "8 kW",
     surface: "70-100 m²",
     rendement: "90 %",
     autonomie: "30 h",
     ideal: "Pavillon récent bien isolé, chauffage principal",
     image: "/images/installations/164.webp",
-    desc: "Programmation hebdomadaire, allumage automatique. Idéal en chauffage principal d'un appartement ou pavillon récent.",
+    desc: "Programmation hebdomadaire et allumage automatique. Idéal en chauffage principal d'un appartement ou pavillon récent.",
   },
   {
-    nom: "Godin Soldano",
+    nom: "Godin Cherville",
     puissance: "10 kW",
     surface: "90-130 m²",
     rendement: "91 %",
     autonomie: "40 h",
-    ideal: "Grand pavillon, télécommande Wi-Fi pour partir l'esprit léger",
+    ideal: "Grand pavillon, pilotage à distance pour partir l'esprit léger",
     image: "/images/installations/165.webp",
-    desc: "Réservoir grande capacité, télécommande Wi-Fi. Confort maximal pour grands volumes.",
+    desc: "Réservoir grande capacité et pilotage Wi-Fi par application. Confort maximal pour grands volumes.",
     best: true,
   },
   {
-    nom: "Godin Reggio",
+    nom: "Godin Iroko",
     puissance: "12 kW",
     surface: "110-160 m²",
     rendement: "92 %",
     autonomie: "48 h",
     ideal: "Maison individuelle 4-5 pièces très bien isolée",
-    image: "/images/installations/166.webp",
-    desc: "Très haut rendement, silence de fonctionnement. Pour maisons individuelles bien isolées.",
+    image: "/images/installations/150.webp",
+    desc: "Très haut rendement et silence de fonctionnement renforcé. Pour maisons individuelles bien isolées.",
   },
+];
+
+const realisations = [
+  { src: "/images/installations/130.webp", lieu: "Séjour · Verneuil-sur-Avre" },
+  { src: "/images/installations/177.webp", lieu: "Pavillon moderne · Évreux" },
+  { src: "/images/installations/126.webp", lieu: "Pièce à vivre · Pont-Audemer" },
+  { src: "/images/installations/201.webp", lieu: "Maison familiale · Eure" },
 ];
 
 const faqGranules = [
@@ -98,16 +105,62 @@ const faqGranules = [
         </div>
       </dl>
       <p class="mt-8 text-sm text-ink-400">
-        Vous avez une cheminée existante ?{" "}
-        <a href="/cheminees-inserts" class="text-brand-400 hover:text-brand-300 underline-offset-4 hover:underline font-semibold">
-          Voir nos inserts à granulés →
+        Vous hésitez entre bois et granulés ?{" "}
+        <a href="/guide-choix" class="text-brand-400 hover:text-brand-300 underline-offset-4 hover:underline font-semibold">
+          Voir le guide de choix →
         </a>
       </p>
     </div>
   </section>
 
-  <section class="py-16 sm:py-20">
+  <section class="py-16 sm:py-20 bg-white">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold text-brand-500 uppercase tracking-wider flex items-center gap-2">
+          <span class="inline-block w-8 h-px bg-brand-500"></span>
+          Pourquoi les granulés
+        </p>
+        <h2 class="mt-3 text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 leading-tight">
+          Le feu du bois, <span class="text-brand-500">en mode automatique</span>
+        </h2>
+      </div>
+      <div class="mt-8 sm:mt-10 grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+        <article class="p-6 rounded-2xl bg-steel-50 border border-steel-100">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-brand-500 text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="mt-4 text-lg font-bold text-ink-900">Jusqu'à 48 h d'autonomie</h3>
+          <p class="mt-2 text-sm text-ink-600 leading-relaxed">On remplit le réservoir, on programme, l'appareil gère seul l'allumage et la modulation. Un week-end entier sans y toucher.</p>
+        </article>
+        <article class="p-6 rounded-2xl bg-steel-50 border border-steel-100">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-brand-500 text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="mt-4 text-lg font-bold text-ink-900">Jusqu'à 92 % de rendement</h3>
+          <p class="mt-2 text-sm text-ink-600 leading-relaxed">Les granulés brûlent presque sans perte. C'est le mode de chauffage au feu le plus efficace, 2 à 3 fois moins cher que le gaz au m² chauffé.</p>
+        </article>
+        <article class="p-6 rounded-2xl bg-steel-50 border border-steel-100">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-brand-500 text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <h3 class="mt-4 text-lg font-bold text-ink-900">L'aide MaPrimeRénov' maximale</h3>
+          <p class="mt-2 text-sm text-ink-600 leading-relaxed">Le poêle à granulés ouvre droit au barème d'aides le plus élevé : jusqu'à 2 400 € cumulables MaPrimeRénov' + CEE.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20 bg-warm-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-10">
+        <p class="text-sm font-semibold text-brand-500 uppercase tracking-wider flex items-center gap-2">
+          <span class="inline-block w-8 h-px bg-brand-500"></span>
+          La gamme granulés Godin
+        </p>
+        <h2 class="mt-3 text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 leading-tight">
+          Trois modèles, de 8 à 12 kW
+        </h2>
+      </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {modeles.map((m) => (
           <article class="group rounded-2xl overflow-hidden bg-white border border-ink-100 hover:border-brand-300 hover:shadow-xl transition">
@@ -169,6 +222,43 @@ const faqGranules = [
   </section>
 
   <AidesEstimator />
+
+  <section class="py-16 sm:py-20 bg-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-10">
+        <p class="text-sm font-semibold text-brand-500 uppercase tracking-wider flex items-center gap-2">
+          <span class="inline-block w-8 h-px bg-brand-500"></span>
+          Nos réalisations
+        </p>
+        <h2 class="mt-3 text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 leading-tight">
+          Des poêles à granulés Godin installés en Normandie
+        </h2>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        {realisations.map((r) => (
+          <a href="/galerie" class="group relative aspect-square overflow-hidden rounded-xl bg-warm-50 shadow-md hover:shadow-xl transition">
+            <img
+              src={r.src}
+              alt={`Installation de poêle à granulés Godin — ${r.lieu}`}
+              width="500"
+              height="500"
+              loading="lazy"
+              class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+            />
+            <span class="absolute bottom-3 left-3 right-3 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur text-xs font-medium text-ink-900 opacity-0 group-hover:opacity-100 transition">{r.lieu}</span>
+          </a>
+        ))}
+      </div>
+      <div class="mt-8">
+        <a href="/galerie" class="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-steel-50 text-ink-900 font-semibold border border-steel-200 hover:border-brand-400 hover:text-brand-600 transition">
+          Voir toute la galerie
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 5l7 7-7 7M5 12h15"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
 
   <Faq
     eyebrow="Questions fréquentes — Granulés"

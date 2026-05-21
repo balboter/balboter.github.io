@@ -1,0 +1,222 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CTA from "../components/CTA.astro";
+import BandeauAides from "../components/BandeauAides.astro";
+import Faq from "../components/Faq.astro";
+
+const modeles = [
+  {
+    nom: "Godin Souveraine",
+    puissance: "9 kW",
+    surface: "70-90 m²",
+    style: "Fonte émaillée traditionnelle",
+    ideal: "Cuisine de famille, cœur de maison",
+    image: "/images/installations/124.webp",
+    desc: "La cuisinière fonte emblématique de Godin : four spacieux, plaque de cuisson en fonte et chauffe de la pièce. L'objet patrimonial autant que l'appareil de chauffage.",
+    best: true,
+  },
+  {
+    nom: "Godin Le Petit Godin Cuisinière",
+    puissance: "6 kW",
+    surface: "40-60 m²",
+    style: "Compacte rétro",
+    ideal: "Petite cuisine, maison de campagne, appoint",
+    image: "/images/installations/201.webp",
+    desc: "La version cuisinière du poêle iconique : encombrement réduit, plaque chauffante et petit four. Parfaite pour une résidence secondaire ou une cuisine compacte.",
+  },
+  {
+    nom: "Godin Châtelaine",
+    puissance: "11 kW",
+    surface: "90-120 m²",
+    style: "Grand format moderne",
+    ideal: "Grande cuisine ouverte, chauffage principal de la pièce de vie",
+    image: "/images/installations/155.webp",
+    desc: "Grand four, large plaque de cuisson et forte puissance de chauffe. Pour une cuisine ouverte qui sert aussi de pièce à vivre principale.",
+  },
+];
+
+const atouts = [
+  {
+    titre: "Un seul appareil, deux usages",
+    desc: "La cuisinière à bois Godin chauffe la pièce et cuit vos plats avec la même flambée. Un investissement, deux fonctions — et le bois reste le combustible le moins cher.",
+    icon: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 21h18M5 21V7l7-4 7 4v14M9 9h6M9 13h6M9 17h6"/></svg>',
+  },
+  {
+    titre: "Une cuisson au goût du feu",
+    desc: "Mijotés longs, pain, plats du dimanche : la cuisson au bois donne un résultat que ni le gaz ni l'induction ne reproduisent. La plaque en fonte garde une chaleur stable des heures.",
+    icon: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.24 17 6.343 18.485 8.343 17.85 12 16 14a4 4 0 11-6 0c1.5-1.5 1.5-3.5 1.5-3.5"/></svg>',
+  },
+  {
+    titre: "L'autonomie en cas de coupure",
+    desc: "Pas d'électricité ? La cuisinière à bois fonctionne quand même : vous gardez de quoi chauffer et cuisiner. Un argument de sécurité que peu d'appareils offrent.",
+    icon: '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>',
+  },
+];
+
+const faqCuisinieres = [
+  {
+    q: "Peut-on cuisiner et chauffer en même temps ?",
+    a: "Oui, c'est tout l'intérêt de la cuisinière à bois. La même flambée alimente le four, la plaque de cuisson et la chauffe de la pièce. Vous réglez l'intensité du feu selon que vous privilégiez la cuisson ou le chauffage.",
+  },
+  {
+    q: "Une cuisinière à bois suffit-elle à chauffer ma maison ?",
+    a: "Elle chauffe efficacement la cuisine et les pièces attenantes (40 à 120 m² selon le modèle). Pour une maison entière, on l'envisage en chauffage principal d'une pièce de vie ouverte, ou en complément d'un poêle dans le reste du logement. Notre visite technique précise la configuration.",
+  },
+  {
+    q: "L'installation est-elle plus complexe qu'un poêle ?",
+    a: "Le principe est le même : un conduit de fumée aux normes, un raccordement soigné. La cuisinière demande surtout une réflexion sur son emplacement dans la cuisine (accès au four, plan de travail à proximité). Nos équipes étudient tout cela lors de la visite technique gratuite.",
+  },
+  {
+    q: "Une cuisinière à bois donne-t-elle droit aux aides ?",
+    a: "Les cuisinières à bois fonctionnant en appareil de chauffage et répondant aux critères de performance peuvent être éligibles à MaPrimeRénov' et au CEE. Nous vérifions l'éligibilité du modèle choisi et montons le dossier si le chantier nous est confié.",
+  },
+];
+---
+
+<BaseLayout
+  title="Cuisinières à bois Godin — Chauffer et cuisiner en Normandie"
+  description="Cuisinières à bois Godin en fonte : chauffer la pièce et cuisiner avec le même appareil. Vente, installation et SAV par nos équipes dans l'Eure et en Normandie."
+>
+  <section class="bg-gradient-to-br from-ink-900 via-ink-800 to-ink-900 text-white py-16 sm:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <p class="text-sm font-semibold text-brand-400 uppercase tracking-wider flex items-center gap-2">
+        <span class="inline-block w-8 h-px bg-brand-500"></span>
+        L'atout Godin
+      </p>
+      <h1 class="mt-3 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+        Cuisinières à bois Godin
+      </h1>
+      <p class="mt-6 text-lg sm:text-xl text-ink-300 max-w-3xl leading-relaxed">
+        Chauffer la pièce et cuisiner avec la même flambée. La cuisinière à bois
+        en fonte est une signature historique de Godin — un appareil que peu de
+        marques savent encore fabriquer, et que nous installons chez vous.
+      </p>
+      <dl class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-2xl">
+        <div>
+          <dt class="text-xs text-ink-400 uppercase tracking-wider">Fonctions</dt>
+          <dd class="mt-1 text-2xl sm:text-3xl font-bold text-brand-400">2 en 1</dd>
+          <p class="text-xs text-ink-500 mt-1">chauffer + cuisiner</p>
+        </div>
+        <div class="sm:pl-8 sm:border-l sm:border-white/15">
+          <dt class="text-xs text-ink-400 uppercase tracking-wider">Combustible</dt>
+          <dd class="mt-1 text-2xl sm:text-3xl font-bold text-brand-400">Bois</dd>
+          <p class="text-xs text-ink-500 mt-1">le moins cher du marché</p>
+        </div>
+        <div class="sm:pl-8 sm:border-l sm:border-white/15">
+          <dt class="text-xs text-ink-400 uppercase tracking-wider">Fabrication</dt>
+          <dd class="mt-1 text-2xl sm:text-3xl font-bold text-brand-400">Fonte FR</dd>
+          <p class="text-xs text-ink-500 mt-1">savoir-faire Godin depuis 1840</p>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20 bg-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold text-brand-500 uppercase tracking-wider flex items-center gap-2">
+          <span class="inline-block w-8 h-px bg-brand-500"></span>
+          L'intérêt d'une cuisinière
+        </p>
+        <h2 class="mt-3 text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 leading-tight">
+          Pourquoi choisir une <span class="text-brand-500">cuisinière à bois</span>
+        </h2>
+        <p class="mt-4 text-base sm:text-lg text-ink-600 leading-relaxed">
+          Là où un poêle se contente de chauffer, la cuisinière fait les deux. C'est l'appareil de ceux qui veulent un cœur de maison qui réchauffe autant qu'il nourrit.
+        </p>
+      </div>
+      <div class="mt-8 sm:mt-10 grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+        {atouts.map((a) => (
+          <article class="p-6 rounded-2xl bg-steel-50 border border-steel-100">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-brand-500 text-white">
+              <span set:html={a.icon} />
+            </div>
+            <h3 class="mt-4 text-lg font-bold text-ink-900">{a.titre}</h3>
+            <p class="mt-2 text-sm text-ink-600 leading-relaxed">{a.desc}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20 bg-warm-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-10">
+        <p class="text-sm font-semibold text-brand-500 uppercase tracking-wider flex items-center gap-2">
+          <span class="inline-block w-8 h-px bg-brand-500"></span>
+          La gamme cuisinières Godin
+        </p>
+        <h2 class="mt-3 text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 leading-tight">
+          Trois modèles, de la cuisine compacte au cœur de maison
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {modeles.map((m) => (
+          <article class="group rounded-2xl overflow-hidden bg-white border border-ink-100 hover:border-brand-300 hover:shadow-xl transition">
+            <div class="aspect-[4/3] overflow-hidden bg-warm-50 relative">
+              <img
+                src={m.image}
+                alt={`Cuisinière à bois ${m.nom}`}
+                width="600"
+                height="450"
+                loading="lazy"
+                class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+              />
+              {m.best && (
+                <span class="absolute top-3 left-3 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-brand-500 text-white text-xs font-bold uppercase tracking-wider shadow-md">
+                  ⭐ L'iconique
+                </span>
+              )}
+            </div>
+            <div class="p-6">
+              <div class="flex items-start justify-between gap-2">
+                <h3 class="text-xl font-bold text-ink-900">{m.nom}</h3>
+                <span class="px-2.5 py-1 text-xs font-semibold text-brand-700 bg-brand-50 rounded whitespace-nowrap">
+                  {m.puissance}
+                </span>
+              </div>
+              <p class="mt-3 text-ink-600 leading-relaxed text-sm">{m.desc}</p>
+
+              <div class="mt-4 pt-4 border-t border-warm-100">
+                <p class="text-xs uppercase tracking-wider text-ink-500 font-semibold">Idéal pour</p>
+                <p class="mt-1 text-sm text-ink-700 font-medium">{m.ideal}</p>
+              </div>
+
+              <dl class="mt-4 pt-4 border-t border-warm-100 grid grid-cols-2 gap-2 text-xs">
+                <div>
+                  <dt class="text-ink-500">Surface chauffée</dt>
+                  <dd class="font-semibold text-ink-900">{m.surface}</dd>
+                </div>
+                <div>
+                  <dt class="text-ink-500">Style</dt>
+                  <dd class="font-semibold text-ink-900">{m.style}</dd>
+                </div>
+              </dl>
+
+              <a
+                href={`/contact?modele=${encodeURIComponent(m.nom)}&type=cuisiniere`}
+                class="mt-5 inline-flex items-center text-sm font-semibold text-brand-600 hover:text-brand-700 transition"
+              >
+                Demander un devis sur ce modèle →
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <BandeauAides heading="Une cuisinière à bois peut ouvrir droit aux aides" />
+
+  <Faq
+    eyebrow="Questions fréquentes — Cuisinières"
+    heading="Ce qu'on nous demande sur les cuisinières à bois"
+    questions={faqCuisinieres}
+  />
+
+  <CTA
+    heading="Envie d'une cuisinière au cœur de votre maison ?"
+    description="Nos conseillers étudient votre cuisine et vous orientent vers le modèle Godin adapté. Visite technique gratuite, devis sous 48 h."
+    ctaLabel="Demander un devis"
+  />
+</BaseLayout>

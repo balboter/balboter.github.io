@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
-/* THEME A — Identité actuelle modernisée (orange feu + bronze + crème + noir) */
+/* IDENTITÉ GODIN — tunnel de conversion : orange feu + gris acier + Inter.
+   Orange = action / chaleur. Acier = registre technique / performance. */
 
 @theme {
   --color-brand-50: #fefaed;
@@ -30,7 +31,17 @@
   --color-warm-50: #fefaed;
   --color-warm-100: #fdf3d5;
 
-  --color-bronze: #bea571;
+  /* Gris acier froid — registre technique / performance / chiffres */
+  --color-steel-50: #f4f6f7;
+  --color-steel-100: #e6e9eb;
+  --color-steel-200: #cdd3d7;
+  --color-steel-300: #a8b2b8;
+  --color-steel-400: #7e8c94;
+  --color-steel-500: #5b6770;
+  --color-steel-600: #49535b;
+  --color-steel-700: #3c444a;
+  --color-steel-800: #333a3f;
+  --color-steel-900: #21262a;
 
   --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-display: "Inter", system-ui, sans-serif;

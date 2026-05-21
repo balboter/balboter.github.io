@@ -3,49 +3,57 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import CTA from "../components/CTA.astro";
 import PuissanceCalculator from "../components/PuissanceCalculator.astro";
 import MiniComparateur from "../components/MiniComparateur.astro";
+import BandeauAides from "../components/BandeauAides.astro";
 import Faq from "../components/Faq.astro";
+
+const realisations = [
+  { src: "/images/installations/124.webp", lieu: "Pavillon · Eure" },
+  { src: "/images/installations/155.webp", lieu: "Maison normande · Bernay" },
+  { src: "/images/installations/169.webp", lieu: "Rénovation · Évreux" },
+  { src: "/images/installations/200.webp", lieu: "Véranda · Le Neubourg" },
+];
 
 const modeles = [
   {
-    nom: "Godin Petit Carvin",
+    nom: "Godin Le Petit Godin",
     puissance: "5 kW",
     surface: "30-50 m²",
     rendement: "78 %",
     style: "Traditionnel fonte",
     ideal: "Salon ou pièce à vivre compacte",
     image: "/images/installations/129.webp",
-    desc: "Compact et performant, idéal en chauffage d'appoint ou pour petite pièce à vivre. Fabrication française, fonte massive.",
+    desc: "Le poêle fonte iconique de la marque, compact et performant. Idéal en chauffage d'appoint ou pour petite pièce à vivre. Fabrication française, fonte massive.",
   },
   {
-    nom: "Godin Brive",
+    nom: "Godin Carvin",
     puissance: "7 kW",
     surface: "50-80 m²",
     rendement: "80 %",
     style: "Classique",
     ideal: "Séjour de pavillon moyen",
     image: "/images/installations/123.webp",
-    desc: "Polyvalent, design intemporel. Excellent rapport puissance/encombrement pour les pièces à vivre moyennes.",
+    desc: "Polyvalent, design intemporel en fonte émaillée. Excellent rapport puissance/encombrement pour les pièces à vivre moyennes.",
   },
   {
-    nom: "Godin Mielan",
+    nom: "Godin Colombe",
     puissance: "8 kW",
     surface: "70-100 m²",
     rendement: "80 %",
     style: "Contemporain",
     ideal: "Intérieurs design, pièces ouvertes",
     image: "/images/installations/130.webp",
-    desc: "Lignes modernes, vitre panoramique généreuse. La référence pour les intérieurs design.",
+    desc: "Lignes modernes et vitre panoramique généreuse. La référence Godin pour les intérieurs design.",
     best: true,
   },
   {
-    nom: "Godin Grand Bois",
+    nom: "Godin Régate",
     puissance: "10 kW",
     surface: "90-140 m²",
     rendement: "78 %",
     style: "Traditionnel",
     ideal: "Chauffage principal pavillon, maison ancienne",
-    image: "/images/installations/137.webp",
-    desc: "Forte capacité de chauffe, autonomie longue. Recommandé en chauffage principal pour pavillon ou maison ancienne.",
+    image: "/images/installations/168.webp",
+    desc: "Forte capacité de chauffe et autonomie longue. Recommandé en chauffage principal pour pavillon ou maison ancienne.",
   },
   {
     nom: "Godin Grand Carvin",
@@ -55,23 +63,23 @@ const modeles = [
     style: "Traditionnel",
     ideal: "Très grands volumes, longère, pièces ouvertes",
     image: "/images/installations/145.webp",
-    desc: "Très grandes surfaces ou pièces ouvertes, foyer profond pour bûches 50 cm. Combustion longue durée.",
+    desc: "Très grandes surfaces ou pièces ouvertes, foyer profond pour bûches de 50 cm. Combustion longue durée.",
   },
   {
-    nom: "Godin Cube",
+    nom: "Godin Théo",
     puissance: "8 kW",
     surface: "70-100 m²",
     rendement: "82 %",
     style: "Design",
     ideal: "Intérieurs minimalistes contemporains",
     image: "/images/installations/147.webp",
-    desc: "Forme géométrique épurée, dessus chauffant. Pour intérieurs minimalistes exigeants.",
+    desc: "Silhouette verticale épurée, foyer haut pour une belle vue sur les flammes. Pour intérieurs contemporains exigeants.",
   },
 ];
 
 const trioComparateur = [
   {
-    nom: "Godin Petit Carvin",
+    nom: "Godin Le Petit Godin",
     niveau: "Entrée de gamme",
     puissance: "5 kW",
     surface: "30-50 m²",
@@ -80,7 +88,7 @@ const trioComparateur = [
     image: "/images/installations/129.webp",
   },
   {
-    nom: "Godin Mielan",
+    nom: "Godin Colombe",
     niveau: "Milieu de gamme",
     puissance: "8 kW",
     surface: "70-100 m²",
@@ -143,17 +151,80 @@ const faqBois = [
         équipes vous conseillent le modèle adapté à votre logement et à votre
         besoin de chauffe.
       </p>
-      <p class="mt-6 text-sm text-ink-400">
-        Vous hésitez encore entre bois, granulés ou insert ?{" "}
+      <dl class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-2xl">
+        <div>
+          <dt class="text-xs text-ink-400 uppercase tracking-wider">Coût d'usage</dt>
+          <dd class="mt-1 text-2xl sm:text-3xl font-bold text-brand-400">5-7 ct/kWh</dd>
+          <dd class="text-xs text-ink-500 mt-1">le combustible le moins cher</dd>
+        </div>
+        <div class="sm:pl-8 sm:border-l sm:border-white/15">
+          <dt class="text-xs text-ink-400 uppercase tracking-wider">Fonte Godin</dt>
+          <dd class="mt-1 text-2xl sm:text-3xl font-bold text-brand-400">20-30 ans</dd>
+          <dd class="text-xs text-ink-500 mt-1">durée de vie d'un poêle fonte</dd>
+        </div>
+        <div class="sm:pl-8 sm:border-l sm:border-white/15">
+          <dt class="text-xs text-ink-400 uppercase tracking-wider">Rendement</dt>
+          <dd class="mt-1 text-2xl sm:text-3xl font-bold text-brand-400">jusqu'à 82 %</dd>
+          <dd class="text-xs text-ink-500 mt-1">label Flamme Verte</dd>
+        </div>
+      </dl>
+      <p class="mt-8 text-sm text-ink-400">
+        Vous hésitez entre bois et granulés ?{" "}
         <a href="/guide-choix" class="text-brand-400 hover:text-brand-300 underline-offset-4 hover:underline font-semibold">
-          Voir le comparatif →
+          Voir le guide de choix →
         </a>
       </p>
     </div>
   </section>
 
+  <section class="py-16 sm:py-20 bg-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <p class="text-sm font-semibold text-brand-700 uppercase tracking-wider flex items-center gap-2">
+          <span class="inline-block w-8 h-px bg-brand-700"></span>
+          Pourquoi le bois
+        </p>
+        <h2 class="mt-3 text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 leading-tight">
+          Le chauffage au feu le plus <span class="text-brand-700">économique</span>
+        </h2>
+      </div>
+      <div class="mt-8 sm:mt-10 grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+        <article class="p-6 rounded-2xl bg-steel-50 border border-steel-100">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-brand-700 text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="mt-4 text-lg font-bold text-ink-900">Le combustible le moins cher</h3>
+          <p class="mt-2 text-sm text-ink-600 leading-relaxed">À 5-7 centimes le kWh, la bûche reste imbattable face au gaz, au fioul et à l'électricité — surtout avec du bois local et bien sec.</p>
+        </article>
+        <article class="p-6 rounded-2xl bg-steel-50 border border-steel-100">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-brand-700 text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.24 17 6.343 18.485 8.343 17.85 12 16 14a4 4 0 11-6 0c1.5-1.5 1.5-3.5 1.5-3.5"/></svg>
+          </div>
+          <h3 class="mt-4 text-lg font-bold text-ink-900">La fonte qui dure</h3>
+          <p class="mt-2 text-sm text-ink-600 leading-relaxed">Godin coule sa propre fonte en France depuis 1840. Un poêle fonte restitue la chaleur longtemps après l'extinction et tient 20 à 30 ans.</p>
+        </article>
+        <article class="p-6 rounded-2xl bg-steel-50 border border-steel-100">
+          <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-brand-700 text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L23 12l-5.714 2.143L15 21l-2.286-6.857L7 12l5.714-2.143L15 3z"/></svg>
+          </div>
+          <h3 class="mt-4 text-lg font-bold text-ink-900">Le plaisir du vrai feu</h3>
+          <p class="mt-2 text-sm text-ink-600 leading-relaxed">Charger une bûche, regarder la flambée prendre : le poêle à bois reste le seul appareil qui offre l'ambiance d'un vrai feu, sans concession sur la performance.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section class="py-16 sm:py-20">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-10">
+        <p class="text-sm font-semibold text-brand-700 uppercase tracking-wider flex items-center gap-2">
+          <span class="inline-block w-8 h-px bg-brand-700"></span>
+          La gamme bois Godin
+        </p>
+        <h2 class="mt-3 text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 leading-tight">
+          Six modèles fonte, de 5 à 13 kW
+        </h2>
+      </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {modeles.map((m) => (
           <article class="group rounded-2xl overflow-hidden bg-white border border-ink-100 hover:border-brand-300 hover:shadow-xl transition">
@@ -167,7 +238,7 @@ const faqBois = [
                 class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
               />
               {m.best && (
-                <span class="absolute top-3 left-3 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-brand-500 text-white text-xs font-bold uppercase tracking-wider shadow-md">
+                <span class="absolute top-3 left-3 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-brand-700 text-white text-xs font-bold uppercase tracking-wider shadow-md">
                   ⭐ Bestseller
                 </span>
               )}
@@ -203,7 +274,7 @@ const faqBois = [
 
               <a
                 href={`/contact?modele=${encodeURIComponent(m.nom)}&type=poele-bois`}
-                class="mt-5 inline-flex items-center text-sm font-semibold text-brand-600 hover:text-brand-700 transition"
+                class="mt-5 inline-flex items-center text-sm font-semibold text-brand-700 hover:text-brand-800 transition"
               >
                 Demander un devis sur ce modèle →
               </a>
@@ -222,6 +293,45 @@ const faqBois = [
   />
 
   <PuissanceCalculator />
+
+  <BandeauAides heading="Jusqu'à 1 250 € d'aides sur votre poêle à bois" />
+
+  <section class="py-16 sm:py-20 bg-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-10">
+        <p class="text-sm font-semibold text-brand-700 uppercase tracking-wider flex items-center gap-2">
+          <span class="inline-block w-8 h-px bg-brand-700"></span>
+          Nos réalisations
+        </p>
+        <h2 class="mt-3 text-3xl sm:text-4xl font-bold tracking-tight text-ink-900 leading-tight">
+          Des poêles à bois Godin posés près de chez vous
+        </h2>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        {realisations.map((r) => (
+          <a href="/galerie" class="group relative aspect-square overflow-hidden rounded-xl bg-warm-50 shadow-md hover:shadow-xl transition">
+            <img
+              src={r.src}
+              alt={`Installation de poêle à bois Godin — ${r.lieu}`}
+              width="500"
+              height="500"
+              loading="lazy"
+              class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+            />
+            <span class="absolute bottom-3 left-3 right-3 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur text-xs font-medium text-ink-900 opacity-0 group-hover:opacity-100 transition">{r.lieu}</span>
+          </a>
+        ))}
+      </div>
+      <div class="mt-8">
+        <a href="/galerie" class="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-steel-50 text-ink-900 font-semibold border border-steel-200 hover:border-brand-400 hover:text-brand-600 transition">
+          Voir toute la galerie
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 5l7 7-7 7M5 12h15"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
 
   <Faq
     eyebrow="Questions fréquentes — Bois"

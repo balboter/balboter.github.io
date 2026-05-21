@@ -1,6 +1,12 @@
-User-agent: *
-Allow: /
-Disallow: /mentions-legales
-Disallow: /politique-de-confidentialite
+# PHASE PREVIEW (GitHub Pages) — site non destiné à l'indexation.
+# Le preview ne doit pas être indexé avant la bascule sur le domaine final.
+#
+# À LA BASCULE SUR poelesgodin.fr, remplacer ce fichier par :
+#   User-agent: *
+#   Allow: /
+#   Disallow: /mentions-legales
+#   Disallow: /politique-de-confidentialite
+#   Sitemap: https://www.poelesgodin.fr/sitemap-index.xml
 
-Sitemap: https://www.poelesgodin.fr/sitemap-index.xml
+User-agent: *
+Disallow: /

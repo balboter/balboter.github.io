@@ -3,39 +3,31 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import CTA from "../components/CTA.astro";
 
 const allInstallations = [
-  { src: "/images/installations/123.webp", cat: "bois", modele: "Godin Mielan", lieu: "Évreux", lien: "/poeles-a-bois" },
-  { src: "/images/installations/124.webp", cat: "bois", modele: "Poêle bois Godin", lieu: "Pavillon Eure", lien: "/poeles-a-bois" },
-  { src: "/images/installations/125.webp", cat: "granules", modele: "Poêle granulés", lieu: "Verneuil-sur-Avre", lien: "/poeles-a-granules" },
-  { src: "/images/installations/126.webp", cat: "cheminee", modele: "Cheminée habillage pierre", lieu: "Pont-Audemer", lien: "/cheminees-inserts" },
-  { src: "/images/installations/128.webp", cat: "insert", modele: "Insert dans cheminée existante", lieu: "Bernay", lien: "/cheminees-inserts" },
-  { src: "/images/installations/129.webp", cat: "bois", modele: "Godin Petit Carvin", lieu: "Petite pièce à vivre", lien: "/poeles-a-bois" },
-  { src: "/images/installations/130.webp", cat: "granules", modele: "Godin Soldano", lieu: "Maison contemporaine", lien: "/poeles-a-granules" },
-  { src: "/images/installations/131.webp", cat: "bois", modele: "Poêle bois traditionnel", lieu: "Maison normande", lien: "/poeles-a-bois" },
-  { src: "/images/installations/137.webp", cat: "insert", modele: "Foyer fermé grande vitre", lieu: "Pavillon Évreux", lien: "/cheminees-inserts" },
+  { src: "/images/installations/123.webp", cat: "bois", modele: "Godin Colombe", lieu: "Évreux", lien: "/poeles-a-bois" },
+  { src: "/images/installations/124.webp", cat: "cuisiniere", modele: "Godin Souveraine", lieu: "Cuisine de pavillon · Eure", lien: "/cuisinieres" },
+  { src: "/images/installations/126.webp", cat: "granules", modele: "Poêle à granulés Godin", lieu: "Pont-Audemer", lien: "/poeles-a-granules" },
+  { src: "/images/installations/129.webp", cat: "bois", modele: "Godin Le Petit Godin", lieu: "Petite pièce à vivre", lien: "/poeles-a-bois" },
+  { src: "/images/installations/130.webp", cat: "granules", modele: "Godin Cherville", lieu: "Maison contemporaine", lien: "/poeles-a-granules" },
   { src: "/images/installations/145.webp", cat: "bois", modele: "Godin Grand Carvin", lieu: "Longère normande", lien: "/poeles-a-bois" },
-  { src: "/images/installations/147.webp", cat: "bois", modele: "Godin Cube", lieu: "Intérieur design", lien: "/poeles-a-bois" },
-  { src: "/images/installations/148.webp", cat: "insert", modele: "Insert granulés habillage sur mesure", lieu: "Maison rénovée", lien: "/cheminees-inserts" },
-  { src: "/images/installations/149.webp", cat: "bois", modele: "Poêle bois pavillon", lieu: "Pavillon 90 m²", lien: "/poeles-a-bois" },
-  { src: "/images/installations/150.webp", cat: "granules", modele: "Poêle granulés salon", lieu: "Séjour 80 m²", lien: "/poeles-a-granules" },
-  { src: "/images/installations/155.webp", cat: "bois", modele: "Installation bois", lieu: "Maison normande", lien: "/poeles-a-bois" },
-  { src: "/images/installations/164.webp", cat: "granules", modele: "Godin Amiel", lieu: "Pavillon récent", lien: "/poeles-a-granules" },
-  { src: "/images/installations/165.webp", cat: "granules", modele: "Godin Soldano", lieu: "Grand pavillon", lien: "/poeles-a-granules" },
-  { src: "/images/installations/166.webp", cat: "granules", modele: "Godin Reggio", lieu: "Maison familiale", lien: "/poeles-a-granules" },
-  { src: "/images/installations/167.webp", cat: "cheminee", modele: "Cheminée pierre de taille", lieu: "Maison ancienne", lien: "/cheminees-inserts" },
-  { src: "/images/installations/168.webp", cat: "bois", modele: "Poêle bois pièce ouverte", lieu: "Séjour traversant", lien: "/poeles-a-bois" },
-  { src: "/images/installations/169.webp", cat: "bois", modele: "Poêle bois rénovation", lieu: "Maison rénovée", lien: "/poeles-a-bois" },
-  { src: "/images/installations/177.webp", cat: "insert", modele: "Insert salon contemporain", lieu: "Pavillon moderne", lien: "/cheminees-inserts" },
-  { src: "/images/installations/178.webp", cat: "bois", modele: "Poêle bois traditionnel", lieu: "Cottage normand", lien: "/poeles-a-bois" },
-  { src: "/images/installations/183.webp", cat: "insert", modele: "Insert design loft", lieu: "Loft réhabilité", lien: "/cheminees-inserts" },
-  { src: "/images/installations/196.webp", cat: "bois", modele: "Installation pavillon", lieu: "Pavillon Eure", lien: "/poeles-a-bois" },
-  { src: "/images/installations/200.webp", cat: "bois", modele: "Godin véranda", lieu: "Véranda chauffée", lien: "/poeles-a-bois" },
-  { src: "/images/installations/201.webp", cat: "bois", modele: "Poêle bois maison familiale", lieu: "Maison familiale", lien: "/poeles-a-bois" },
+  { src: "/images/installations/147.webp", cat: "bois", modele: "Godin Théo", lieu: "Intérieur design", lien: "/poeles-a-bois" },
+  { src: "/images/installations/150.webp", cat: "granules", modele: "Godin Iroko", lieu: "Séjour 80 m²", lien: "/poeles-a-granules" },
+  { src: "/images/installations/155.webp", cat: "cuisiniere", modele: "Godin Châtelaine", lieu: "Grande cuisine ouverte", lien: "/cuisinieres" },
+  { src: "/images/installations/164.webp", cat: "granules", modele: "Godin Cassine", lieu: "Pavillon récent", lien: "/poeles-a-granules" },
+  { src: "/images/installations/165.webp", cat: "granules", modele: "Godin Cherville", lieu: "Grand pavillon", lien: "/poeles-a-granules" },
+  { src: "/images/installations/168.webp", cat: "bois", modele: "Godin Régate", lieu: "Séjour traversant", lien: "/poeles-a-bois" },
+  { src: "/images/installations/169.webp", cat: "bois", modele: "Poêle à bois Godin", lieu: "Maison rénovée", lien: "/poeles-a-bois" },
+  { src: "/images/installations/177.webp", cat: "bois", modele: "Godin Carvin", lieu: "Pavillon moderne", lien: "/poeles-a-bois" },
+  { src: "/images/installations/200.webp", cat: "bois", modele: "Poêle à bois Godin", lieu: "Véranda chauffée", lien: "/poeles-a-bois" },
+  { src: "/images/installations/201.webp", cat: "cuisiniere", modele: "Godin Le Petit Godin Cuisinière", lieu: "Maison familiale", lien: "/cuisinieres" },
+  { src: "/images/installations/gallery14-60.webp", cat: "bois", modele: "Poêle à bois Godin", lieu: "Pièce à vivre · Eure", lien: "/poeles-a-bois" },
+  { src: "/images/installations/gallery14-116.webp", cat: "granules", modele: "Poêle à granulés Godin", lieu: "Maison normande", lien: "/poeles-a-granules" },
+  { src: "/images/installations/gallery78-107.webp", cat: "bois", modele: "Poêle à bois Godin", lieu: "Salon contemporain", lien: "/poeles-a-bois" },
 ];
 ---
 
 <BaseLayout
-  title="Galerie de nos installations en Normandie"
-  description="Découvrez plus de 27 installations réalisées par nos équipes : poêles à bois, granulés, cheminées et inserts dans l'Eure et la Normandie."
+  title="Galerie de nos installations de poêles en Normandie"
+  description="Découvrez des installations de poêles à bois, à granulés et de cuisinières Godin réalisées par nos équipes dans l'Eure et en Normandie."
 >
   <section class="bg-gradient-to-br from-ink-900 via-ink-800 to-ink-900 text-white py-12 sm:py-16">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -44,10 +36,10 @@ const allInstallations = [
         Nos réalisations
       </p>
       <h1 class="mt-3 text-4xl sm:text-5xl font-bold tracking-tight">
-        Galerie de nos installations
+        Nos installations de poêles
       </h1>
       <p class="mt-4 text-lg text-ink-300 max-w-3xl">
-        Plus de 27 installations réalisées par nos équipes ces dernières années en Eure, Seine-Maritime et alentours. Cliquez sur une image pour voir la gamme du modèle utilisé.
+        Poêles à bois, à granulés et cuisinières Godin posés par nos équipes en Eure, Seine-Maritime et alentours. Cliquez sur une image pour voir la gamme du modèle utilisé.
       </p>
     </div>
   </section>
@@ -56,19 +48,16 @@ const allInstallations = [
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="flex flex-wrap gap-3 mb-8" role="group" aria-label="Filtres par type de produit">
         <button type="button" data-filter="all" class="filter-btn px-4 py-2 rounded-full bg-brand-500 text-white text-sm font-semibold transition" aria-pressed="true">
-          Tout (27)
+          Tout (19)
         </button>
-        <button type="button" data-filter="bois" class="filter-btn px-4 py-2 rounded-full bg-ink-100 text-ink-700 text-sm font-semibold hover:bg-ink-200 transition" aria-pressed="false">
+        <button type="button" data-filter="bois" class="filter-btn px-4 py-2 rounded-full bg-steel-100 text-ink-700 text-sm font-semibold hover:bg-steel-200 transition" aria-pressed="false">
           Poêles à bois
         </button>
-        <button type="button" data-filter="granules" class="filter-btn px-4 py-2 rounded-full bg-ink-100 text-ink-700 text-sm font-semibold hover:bg-ink-200 transition" aria-pressed="false">
+        <button type="button" data-filter="granules" class="filter-btn px-4 py-2 rounded-full bg-steel-100 text-ink-700 text-sm font-semibold hover:bg-steel-200 transition" aria-pressed="false">
           Poêles à granulés
         </button>
-        <button type="button" data-filter="insert" class="filter-btn px-4 py-2 rounded-full bg-ink-100 text-ink-700 text-sm font-semibold hover:bg-ink-200 transition" aria-pressed="false">
-          Inserts
-        </button>
-        <button type="button" data-filter="cheminee" class="filter-btn px-4 py-2 rounded-full bg-ink-100 text-ink-700 text-sm font-semibold hover:bg-ink-200 transition" aria-pressed="false">
-          Cheminées
+        <button type="button" data-filter="cuisiniere" class="filter-btn px-4 py-2 rounded-full bg-steel-100 text-ink-700 text-sm font-semibold hover:bg-steel-200 transition" aria-pressed="false">
+          Cuisinières
         </button>
       </div>
 
@@ -167,10 +156,10 @@ const allInstallations = [
       buttons.forEach((b) => {
         b.setAttribute("aria-pressed", "false");
         b.classList.remove("bg-brand-500", "text-white");
-        b.classList.add("bg-ink-100", "text-ink-700");
+        b.classList.add("bg-steel-100", "text-ink-700");
       });
       btn.setAttribute("aria-pressed", "true");
-      btn.classList.remove("bg-ink-100", "text-ink-700");
+      btn.classList.remove("bg-steel-100", "text-ink-700");
       btn.classList.add("bg-brand-500", "text-white");
       applyDisplay();
     });

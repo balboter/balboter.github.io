@@ -2,9 +2,10 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
 import BandeauConfiance from "../components/BandeauConfiance.astro";
-import ServicesEnTroisEtapes from "../components/ServicesEnTroisEtapes.astro";
-import AidesEstimator from "../components/AidesEstimator.astro";
 import PuissanceCalculator from "../components/PuissanceCalculator.astro";
+import ComparatifBoisGranules from "../components/ComparatifBoisGranules.astro";
+import LaGamme from "../components/LaGamme.astro";
+import AidesEstimator from "../components/AidesEstimator.astro";
 import GalerieTemoignages from "../components/GalerieTemoignages.astro";
 import Faq from "../components/Faq.astro";
 import CTA from "../components/CTA.astro";
@@ -30,19 +31,20 @@ const faqEssentielles = [
 ---
 
 <BaseLayout
-  title="Poêles Godin à Évreux — Vente et installation en Normandie depuis 1986"
-  description="Revendeur officiel Godin depuis 1986. Vente, installation et SAV de poêles à bois et granulés dans l'Eure. Devis 48 h, MaPrimeRénov' 2026 incluse."
+  title="Poêles Godin à Évreux — Poêles à bois et à granulés en Normandie depuis 1986"
+  description="Revendeur officiel Godin depuis 1986. Vente et installation de poêles à bois et à granulés dans l'Eure. Rendement jusqu'à 92 %, devis 48 h, MaPrimeRénov' 2026 incluse."
 >
   <Hero />
   <BandeauConfiance />
-  <ServicesEnTroisEtapes />
-  <AidesEstimator />
   <PuissanceCalculator />
+  <ComparatifBoisGranules />
+  <LaGamme />
+  <AidesEstimator />
   <GalerieTemoignages />
   <Faq questions={faqEssentielles} variant="warm" />
   <CTA
-    heading="Parlons de votre projet."
-    description="Visitez notre showroom à Normanville ou demandez un devis personnalisé en 48 h."
+    heading="Parlons de votre projet de poêle."
+    description="Visitez notre showroom à Normanville ou demandez un devis chiffré en 48 h — aides MaPrimeRénov' incluses."
     ctaLabel="Demander mon devis"
     ctaHref="/contact"
   />
