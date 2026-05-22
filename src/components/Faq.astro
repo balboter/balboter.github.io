@@ -73,3 +73,16 @@ const bgClass = variant === "warm" ? "bg-warm-50" : "bg-white";
     </div>
   </div>
 </section>
+
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: questions.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  })}
+/>
