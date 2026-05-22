@@ -229,7 +229,7 @@ const zonesLabels = {
 
       <p class="mt-6 text-sm text-ink-500 text-center">
         Hors zone ? Appelez-nous au{" "}
-        <a href="tel:+33232395900" class="text-brand-500 hover:text-brand-500 font-semibold">02 32 39 59 00</a>{" "}
+        <a href="tel:+33232395900" class="text-brand-500 hover:text-brand-600 font-semibold">02 32 39 59 00</a>{" "}
         — on étudie au cas par cas.
       </p>
     </div>
@@ -281,13 +281,13 @@ const zonesLabels = {
       result.className = "mt-4 p-4 rounded-lg bg-brand-50 border border-brand-300 text-ink-900";
       result.innerHTML = `
         <p class="font-bold text-brand-500">✅ Votre commune est dans notre zone d'intervention.</p>
-        <p class="mt-1 text-sm">On peut planifier une visite technique gratuite. <a href="/contact" class="font-semibold text-brand-500 hover:text-brand-500 underline">Demander un devis →</a></p>
+        <p class="mt-1 text-sm">On peut planifier une visite technique gratuite. <a href="/contact" class="font-semibold text-brand-500 hover:text-brand-600 underline">Demander un devis →</a></p>
       `;
     } else {
       result.className = "mt-4 p-4 rounded-lg bg-warm-50 border border-warm-200 text-ink-900";
       result.innerHTML = `
         <p class="font-bold text-ink-900">⚠️ Vous êtes en dehors de notre zone standard.</p>
-        <p class="mt-1 text-sm">On étudie au cas par cas selon la distance. Appelez-nous au <a href="tel:+33232395900" class="font-semibold text-brand-500 hover:text-brand-500">02 32 39 59 00</a> pour vérifier.</p>
+        <p class="mt-1 text-sm">On étudie au cas par cas selon la distance. Appelez-nous au <a href="tel:+33232395900" class="font-semibold text-brand-500 hover:text-brand-600">02 32 39 59 00</a> pour vérifier.</p>
       `;
     }
     result.classList.remove("hidden");
