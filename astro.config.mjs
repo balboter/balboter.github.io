@@ -10,7 +10,13 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      filter: (page) =>
+        !page.includes('/mentions-legales') &&
+        !page.includes('/politique-de-confidentialite'),
+    }),
+  ],
   build: {
     inlineStylesheets: 'auto',
   },
